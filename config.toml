@@ -1,0 +1,4 @@
+baseURL = "http://blog.nicro.land/"
+languageCode = "en-gb"
+title = "Geek w/ god complex"
+theme = "kube"
