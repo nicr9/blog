@@ -1,4 +1,4 @@
-FROM ubuntu:latest as STAGEONE
+FROM ubuntu:latest
 
 # install hugo
 ENV HUGO_VERSION=0.31
@@ -11,8 +11,8 @@ RUN apt-get install -y python3-pygments
 
 # build site
 COPY . /source
-RUN hugo --source=/source/ --destination=/public/
+RUN hugo -D --source=/source/ --destination=/public/
 
 FROM nginx:stable-alpine
-COPY --from=STAGEONE /public/ /usr/share/nginx/html/
+COPY --from=0 /public/ /usr/share/nginx/html/
 EXPOSE 80
