@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: blog
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: nicro-ip
+spec:
+  rules:
+    - host: blog.nicro.land
+      http:
+        paths:
+        - backend:
+            serviceName: blog
+            servicePort: 80

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: blog
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: blog
+    spec:
+      containers:
+        - name: blog
+          image: "gcr.io/kubetest-1251/github-nicr9-blog"
+          ports:
+          - containerPort: 80
+          imagePullPolicy: Always
