@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='I&rsquo;ve used CronJobs to implement a number of system automation tasks in the past and I&rsquo;m going to run through a common example here; resource pruning.
+If you&rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type to want to target and provide criteria for preserving certain resources. Generally cluster operators find it really useful.'>
+
+<meta property='og:title' content='Automatic resource pruning in OpenShift • Geek w/ god complex'>
+<meta property='og:description' content='I&rsquo;ve used CronJobs to implement a number of system automation tasks in the past and I&rsquo;m going to run through a common example here; resource pruning.
+If you&rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type to want to target and provide criteria for preserving certain resources. Generally cluster operators find it really useful.'>
+<meta property='og:url' content='http://nicr9.github.com/blog/posts/resource-pruning/'>
+<meta property='og:site_name' content='Geek w/ god complex'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:published_time' content='2017-12-22T12:56:17Z'/><meta property='article:modified_time' content='2017-12-22T12:56:17Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.28" />
+
+  <title>Automatic resource pruning in OpenShift • Geek w/ god complex</title>
+  <link rel='canonical' href='http://nicr9.github.com/blog/posts/resource-pruning/'>
+  
+  
+  <link rel='icon' href='/blog/favicon.ico'>
+<link rel='stylesheet' href='/blog/assets/css/main.7a50ccd3.css'><link rel='stylesheet' href='/blog/css/custom.css'>
+</head>
+
+
+<body class='page type-posts'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Geek w/ god complex</p>
+          
+          <p class='site-description subtitle'>and his senseless ramblings...</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Automatic resource pruning in OpenShift</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2017-12-22T12:56:17Z'>22 Dec 2017</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+3 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p>I&rsquo;ve used CronJobs to implement a number of system automation tasks in the past and I&rsquo;m going to run through a common example here; resource pruning.</p>
+
+<p>If you&rsquo;re looking to tidy up old resources (<code>builds</code>, <code>deployments</code> or <code>images</code>) then OpenShift provides the <code>oc adm prune ...</code> command for doing just that. You can specify the resource type to want to target and provide criteria for preserving certain resources. Generally cluster operators find it really useful. The main complaint that I&rsquo;ve heard from some clients is that the command needs to be run manually.</p>
+
+<h1 id="enter-the-cronjob">Enter; The CronJob</h1>
+
+<p>If you&rsquo;re not familiar with a Kubernetes Job, it&rsquo;s a primitive for running containers that are expected to complete whatever work they&rsquo;re doing and exit. The CronJob (tech preview since <a href="https://docs.openshift.com/container-platform/3.7/dev_guide/cron_jobs.html#overview" target="_blank">OpenShift v3.3.1</a>) is exactly what it sounds like: a container that is run periodically on a schedule that you can specify with a cronstring.</p>
+
+<p>Let&rsquo;s take a look:</p>
+
+<pre><code>apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    name: prune-${PRUNE_RESOURCE}
+  spec:
+    concurrencyPolicy: Allow
+    jobTemplate:
+      spec:
+        template:
+          metadata:
+            labels:
+              parent: prune-${PRUNE_RESOURCE}
+          spec:
+            containers:
+            - command:
+              - /usr/bin/bash
+              - -c
+              - &quot;oc adm prune ${PRUNE_RESOURCE} ${PRUNE_OPTIONS} --confirm&quot;
+              image: registry.access.redhat.com/openshift3/ose
+              imagePullPolicy: Always
+              name: oadm-prune-${PRUNE_RESOURCE}
+              terminationMessagePath: /dev/termination-log
+            restartPolicy: OnFailure
+            serviceAccountName: pruner
+            securityContext: {}
+            terminationGracePeriodSeconds: 30
+    schedule: ${PRUNE_SCHEDULE}
+    suspend: false
+  status: {}
+</code></pre>
+
+<p>In this example we&rsquo;re using the <a href="https://access.redhat.com/containers/?tab=overview#/registry.access.redhat.com/openshift3/ose" target="_blank"><code>openshift3/ose</code></a> image (because I know it ships with <code>oc</code>) and running the <code>oc adm prune ...</code> command on a schedule.</p>
+
+<p>The params are:</p>
+
+<ul>
+<li><code>PRUNE_RESOURCE</code> - Either <code>builds</code>, <code>deployments</code> or <code>images</code></li>
+<li><code>PRUNE_OPTIONS</code> - Each resource type comes with it&rsquo;s own options for protecting more recent resource objects</li>
+<li><code>PRUNE_SCHEDULE</code> - A cronstring</li>
+</ul>
+
+<p>I&rsquo;ll update this post soon and convert the above manifest to a template! This should make it much easier to manage these pruning CronJobs.</p>
+
+<h2 id="so-what-s-the-catch">So what&rsquo;s the catch!?</h2>
+
+<p>Well the thing that catches people out when they first start pruning images is that the <code>oc adm prune ...</code> command only cleans up the objects representing images in etcd; it doesn&rsquo;t delete the images themselves from the registry. Once you&rsquo;ve run an image prune you can move onto <a href="https://docs.openshift.com/container-platform/3.7/admin_guide/pruning_resources.html#hard-pruning-registry" target="_blank">&ldquo;hard pruning&rdquo; the registry</a> which will force the registry to clean out images that are missing from etcd.</p>
+
+<p>If I come up with a suitable way of automating hard pruning with another CronJob then I&rsquo;ll update the post with that too!</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The CronJob is a particularly useful primitive in Kubernetes/OpenShift. This isn&rsquo;t too surprising given how useful the <code>cron</code> unix utility is in general. It&rsquo;s particularly useful for automating system administration tasks.</p>
+
+<p>If you come up with any other useful system admin automation using CronJobs, <a href="twitter.com/nicr9_" target="_blank">reach out to me</a>, I&rsquo;d love to hear about it!</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  
+  </div>
+</footer>
+
+
+  </article>
+  
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/nicr9' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:nicroland9@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/nicroland' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2017-2018 Nic Roland 
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='/blog/assets/js/main.5871befd.js'></script><script src='/blog/js/custom.js'></script></body>
+
+</html>
+
