@@ -13,6 +13,7 @@ RUN apt-get install -y python3-pygments
 COPY . /source
 RUN hugo -D --source=/source/ --destination=/public/
 
-#FROM nginx:stable-alpine
-#COPY --from=0 /public/ /usr/share/nginx/html/
-#EXPOSE 80
+FROM nginx:stable-alpine
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=0 /public/ /usr/share/nginx/html/
+EXPOSE 80
