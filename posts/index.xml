@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Geek w/ god complex</title>
-    <link>http://nicr9.github.com/blog/posts/</link>
+    <link>http://blog.nicro.land/posts/</link>
     <description>Recent content in Posts on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
     
-	<atom:link href="http://nicr9.github.com/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.nicro.land/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Automatic resource pruning in OpenShift</title>
-      <link>http://nicr9.github.com/blog/posts/resource-pruning/</link>
+      <link>http://blog.nicro.land/posts/resource-pruning/</link>
       <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
       
-      <guid>http://nicr9.github.com/blog/posts/resource-pruning/</guid>
+      <guid>http://blog.nicro.land/posts/resource-pruning/</guid>
       <description>I&amp;rsquo;ve used CronJobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning.
 If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type to want to target and provide criteria for preserving certain resources. Generally cluster operators find it really useful.</description>
     </item>

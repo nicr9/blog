@@ -3,34 +3,34 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://nicr9.github.com/blog/posts/resource-pruning/</loc>
+    <loc>http://blog.nicro.land/posts/resource-pruning/</loc>
     <lastmod>2017-12-22T12:56:17+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://nicr9.github.com/blog/authors/</loc>
+    <loc>http://blog.nicro.land/authors/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://nicr9.github.com/blog/categories/</loc>
+    <loc>http://blog.nicro.land/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://nicr9.github.com/blog/</loc>
-    <lastmod>2017-12-22T12:56:17+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://nicr9.github.com/blog/posts/</loc>
+    <loc>http://blog.nicro.land/</loc>
     <lastmod>2017-12-22T12:56:17+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://nicr9.github.com/blog/tags/</loc>
+    <loc>http://blog.nicro.land/posts/</loc>
+    <lastmod>2017-12-22T12:56:17+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.nicro.land/tags/</loc>
     <priority>0</priority>
   </url>
   
