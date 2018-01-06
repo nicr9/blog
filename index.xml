@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Geek w/ god complex</title>
+    <link>http://blog.nicro.land/</link>
+    <description>Recent content on Geek w/ god complex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
+    <atom:link href="http://blog.nicro.land/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Automatic resource pruning in OpenShift</title>
+      <link>http://blog.nicro.land/posts/resource-pruning/</link>
+      <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/posts/resource-pruning/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;ve used CronJobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re looking to tidy up old resources (&lt;code&gt;builds&lt;/code&gt;, &lt;code&gt;deployments&lt;/code&gt; or &lt;code&gt;images&lt;/code&gt;) then OpenShift provides the &lt;code&gt;oc adm prune ...&lt;/code&gt; command for doing just that. You can specify the resource type to want to target and provide criteria for preserving certain resources. Generally cluster operators find it really useful. The main complaint that I&amp;rsquo;ve heard from some clients is that the command needs to be run manually.&lt;/p&gt;
+
+&lt;h1 id=&#34;enter-the-cronjob&#34;&gt;Enter; The CronJob&lt;/h1&gt;
+
+&lt;p&gt;If you&amp;rsquo;re not familiar with a Kubernetes Job, it&amp;rsquo;s a primitive for running containers that are expected to complete whatever work they&amp;rsquo;re doing and exit. The CronJob (tech preview since &lt;a href=&#34;https://docs.openshift.com/container-platform/3.7/dev_guide/cron_jobs.html#overview&#34; target=&#34;_blank&#34;&gt;OpenShift v3.3.1&lt;/a&gt;) is exactly what it sounds like: a container that is run periodically on a schedule that you can specify with a cronstring.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a look:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;apiVersion: batch/v2alpha1
+  kind: CronJob
+  metadata:
+    name: prune-${PRUNE_RESOURCE}
+  spec:
+    concurrencyPolicy: Allow
+    jobTemplate:
+      spec:
+        template:
+          metadata:
+            labels:
+              parent: prune-${PRUNE_RESOURCE}
+          spec:
+            containers:
+            - command:
+              - /usr/bin/bash
+              - -c
+              - &amp;quot;oc adm prune ${PRUNE_RESOURCE} ${PRUNE_OPTIONS} --confirm&amp;quot;
+              image: registry.access.redhat.com/openshift3/ose
+              imagePullPolicy: Always
+              name: oadm-prune-${PRUNE_RESOURCE}
+              terminationMessagePath: /dev/termination-log
+            restartPolicy: OnFailure
+            serviceAccountName: pruner
+            securityContext: {}
+            terminationGracePeriodSeconds: 30
+    schedule: ${PRUNE_SCHEDULE}
+    suspend: false
+  status: {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example we&amp;rsquo;re using the &lt;a href=&#34;https://access.redhat.com/containers/?tab=overview#/registry.access.redhat.com/openshift3/ose&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;openshift3/ose&lt;/code&gt;&lt;/a&gt; image (because I know it ships with &lt;code&gt;oc&lt;/code&gt;) and running the &lt;code&gt;oc adm prune ...&lt;/code&gt; command on a schedule.&lt;/p&gt;
+
+&lt;p&gt;The params are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;PRUNE_RESOURCE&lt;/code&gt; - Either &lt;code&gt;builds&lt;/code&gt;, &lt;code&gt;deployments&lt;/code&gt; or &lt;code&gt;images&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PRUNE_OPTIONS&lt;/code&gt; - Each resource type comes with it&amp;rsquo;s own options for protecting more recent resource objects&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;PRUNE_SCHEDULE&lt;/code&gt; - A cronstring&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;ll update this post soon and convert the above manifest to a template! This should make it much easier to manage these pruning CronJobs.&lt;/p&gt;
+
+&lt;h2 id=&#34;so-what-s-the-catch&#34;&gt;So what&amp;rsquo;s the catch!?&lt;/h2&gt;
+
+&lt;p&gt;Well the thing that catches people out when they first start pruning images is that the &lt;code&gt;oc adm prune ...&lt;/code&gt; command only cleans up the objects representing images in etcd; it doesn&amp;rsquo;t delete the images themselves from the registry. Once you&amp;rsquo;ve run an image prune you can move onto &lt;a href=&#34;https://docs.openshift.com/container-platform/3.7/admin_guide/pruning_resources.html#hard-pruning-registry&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;hard pruning&amp;rdquo; the registry&lt;/a&gt; which will force the registry to clean out images that are missing from etcd.&lt;/p&gt;
+
+&lt;p&gt;If I come up with a suitable way of automating hard pruning with another CronJob then I&amp;rsquo;ll update the post with that too!&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;The CronJob is a particularly useful primitive in Kubernetes/OpenShift. This isn&amp;rsquo;t too surprising given how useful the &lt;code&gt;cron&lt;/code&gt; unix utility is in general. It&amp;rsquo;s particularly useful for automating system administration tasks.&lt;/p&gt;
+
+&lt;p&gt;If you come up with any other useful system admin automation using CronJobs, &lt;a href=&#34;twitter.com/nicr9_&#34; target=&#34;_blank&#34;&gt;reach out to me&lt;/a&gt;, I&amp;rsquo;d love to hear about it!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
