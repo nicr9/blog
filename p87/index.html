@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
+The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.
+That was then&#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.'>
+
+<meta property='og:title' content='Running QtCreator in Docker • Geek w/ god complex'>
+<meta property='og:description' content='Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
+The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.
+That was then&#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.'>
+<meta property='og:url' content='http://blog.nicro.land/p87/'>
+<meta property='og:site_name' content='Geek w/ god complex'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='qt'><meta property='article:published_time' content='2015-12-06T19:53:55Z'/><meta property='article:modified_time' content='2015-12-06T19:53:55Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.28" />
+
+  <title>Running QtCreator in Docker • Geek w/ god complex</title>
+  <link rel='canonical' href='http://blog.nicro.land/p87/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.7a50ccd3.css'><link rel='stylesheet' href='/css/custom.css'>
+</head>
+
+
+<body class='page type-post'>
+  <div class='site'>
+
+    <a class='screen-reader' href='#main'>Skip to Content</a>
+
+    <header id='header' class='header-container'>
+      <div class='header site-header'>
+        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
+  <ul class='main-menu'>
+  
+  </ul>
+</nav>
+
+        <div class='header-info'>
+          
+          <p class='site-title title'>Geek w/ god complex</p>
+          
+          <p class='site-description subtitle'>and his senseless ramblings...</p>
+        </div>
+      </div>
+    </header>
+
+
+<main id='main' class='main'>
+  <article lang='en' class='entry'>
+    <header class='header-container'>
+  <div class='header entry-header'>
+    <div class='header-info'>
+      <h1 class='title'>Running QtCreator in Docker</h1>
+      
+
+    </div>
+    
+<div class='meta'>
+  <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+  
+</svg>
+<span class='screen-reader'>Posted on </span>
+  <time class='date' datetime='2015-12-06T19:53:55Z'>06 Dec 2015</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+  
+</svg>
+5 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+    
+    
+
+    <div class='entry-content'>
+  
+
+<p><strong>Update:</strong> I wrote a follow up post detailing potential security risks of running GUIs in containers, <a href="https://nicroland.wordpress.com/2016/02/27/docker-security-risks-guis-xorg/" target="_blank">check it out here</a>.</p>
+
+<p>The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.</p>
+
+<p><img class=" size-full wp-image-134 aligncenter" src="http://wp.docker.localhost:8000/wp-content/uploads/2015/11/5954820.png" alt="5954820" width="280" height="280" srcset="http://wp.docker.localhost:8000/wp-content/uploads/2015/11/5954820.png 280w, http://wp.docker.localhost:8000/wp-content/uploads/2015/11/5954820-150x150.png 150w, http://wp.docker.localhost:8000/wp-content/uploads/2015/11/5954820-100x100.png 100w" sizes="(max-width: 280px) 100vw, 280px" /></p>
+
+<h2 id="that-was-then-8230">That was then&#8230;</h2>
+
+<p>I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&#8217;s limitations and I finally decided it was time to find something with more power.</p>
+
+<p>All I remember was putting together the endless list of dependencies and sitting through lectures while they were compiling. Clearly I hadn&#8217;t discovered <a href="https://github.com/Homebrew/homebrew" target="_blank">homebrew</a> at this point. From what I can tell Qt and it&#8217;s python bindings (pyqt) were added to homebrew around the same time I needed them in 2009, go figure!</p>
+
+<h2 id="8230-this-is-now">&#8230; This is now!</h2>
+
+<p>This week I decided to take the latest Qt for a spin and see what I&#8217;d been missing all these years!</p>
+
+<p>I found their <a href="https://wiki.qt.io/Install_Qt_5_on_Ubuntu" target="_blank">wiki</a> which points to the official download page where you can get an installer for QtCreator with instructions on how to chmod/run it. This made me feel a bit uncomfortable for a number of reasons (no signed deb/rpm, no https and twas binary so no source and no insight into what the installer actually does).</p>
+
+<p>I thought that it&#8217;d be a nice idea to run the installer inside a container. This isn&#8217;t a perfect buffer from potential threats of executing untrusted code (see security notes below) but at least it&#8217;s a first step.</p>
+
+<p><img class=" size-full wp-image-163 aligncenter" src="http://wp.docker.localhost:8000/wp-content/uploads/2015/11/docker_qt.png" alt="docker_qt" width="1973" height="1080" srcset="http://wp.docker.localhost:8000/wp-content/uploads/2015/11/docker_qt.png 1973w, http://wp.docker.localhost:8000/wp-content/uploads/2015/11/docker_qt-300x164.png 300w, http://wp.docker.localhost:8000/wp-content/uploads/2015/11/docker_qt-768x420.png 768w, http://wp.docker.localhost:8000/wp-content/uploads/2015/11/docker_qt-1024x561.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></p>
+
+<p>Here&#8217;s my plan:</p>
+
+<ul>
+<li>Build a base image (qt:base) with all dependencies installed and a copy of the installer.</li>
+<li>Run installer in container, go through installation wizard, the container should exit when everything is finished.</li>
+<li>Commit that container to another image (qt:installed).</li>
+</ul>
+
+<p>I hate installation wizards. Maybe I&#8217;ve been spoiled by wealth of scriptable packaging and configuration tools available on Linux. Hopefully as I learn more about how QtCreator works, I&#8217;ll find a way to automate away the configuration steps (hell, I might even find the time to write a Dockerfile that builds it from source so that I can save other people the trouble!)</p>
+
+<p>In the meantime, I&#8217;ll have what I need: an image that I can run QtCreator from whenever I have any GUI development on hand. Lets get to it!</p>
+
+<h2 id="building-qtcreator-inside-a-container">Building QtCreator inside a container</h2>
+
+<p>Here&#8217;s the dockerfile I wrote:</p>
+
+<p><a href="https://gist.github.com/nicr9/c945194f7f0227eb8c22" target="_blank">https://gist.github.com/nicr9/c945194f7f0227eb8c22</a></p>
+
+<p>Here&#8217;s the commands to get things working:</p>
+
+<p><a href="https://gist.github.com/nicr9/0b49f576efcf606ee325" target="_blank">https://gist.github.com/nicr9/0b49f576efcf606ee325</a></p>
+
+<h2 id="problems-encountered">Problems encountered</h2>
+
+<p>When I was trying to get this working, there were a few things that broke straight away.</p>
+
+<p>This error in particular appeared straight away and meant that both the installer and QtCreator wouldn&#8217;t accept keyboard input at all:</p>
+
+<pre>xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+Qt: Failed to create XKB context!
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .</pre>
+
+<p>When launching QtCreator it also warned me with pop ups about a few libs it couldn&#8217;t find like libxslt and libgstapp.</p>
+
+<p>I was able to solve these problems by adding a few more packages to the list that are installed in the Dockerfile: libxkbcommon-dev, libxcb-xkb-dev, libxslt1-dev and libgstreamer-plugins-base0.10-dev.</p>
+
+<h2 id="security-concerns">Security Concerns</h2>
+
+<p>As for security implications of running untrusted code in a container; Docker is such a fast evolving field right now, it makes it difficult to stay on top of the potential security implications.</p>
+
+<p>My first thought was that it might be a bad idea to execute code using the root inside the container given that it had access to stuff I didn&#8217;t fully understand: /tmp/.X11-unix, /dev/shm and /dev/dri.</p>
+
+<p>To understand the risks a bit better I had to find some reading material.</p>
+
+<p>The docker docs have <a href="http://docs.docker.com/engine/articles/security/" target="_blank">a page</a> which gives a broad outline of security concerns. This was a good read but it didn&#8217;t give any hints regarding my own concerns other than I should run as non-root user. I&#8217;ve tried this but I need to find a way to allow installation as non-root user without adding complexity of multiple docker build steps (things are bad enough as they are). I&#8217;d say it just requires some permissions changes inside the container, I&#8217;ll poke around and update here when I&#8217;ve got it working.</p>
+
+<p>Took me a while to find a decent article with details I was looking for, written by someone who knows what they&#8217;re talking about. Stéphane Graber discusses <a href="https://www.stgraber.org/2014/02/09/lxc-1-0-gui-in-containers/" target="_blank">some of the problems with access to X11 and things in /dev</a> on his blog. Essentially, GUIs running in containers could still eavesdrop on the host while the container is running but when the container is off, nothing you installed in there will continue running. FYI: Examples of eavesdropping permitted by giving untrusted code access to X might include key logging or ability to take screenshots.</p>
+
+<p>If anyone has suggestions regarding container security, please <a href="https://twitter.com/nicr9_" target="_blank">reach out to me</a>! Container security is a pretty cool topic and I&#8217;m really interested to hear your thoughts!</p>
+
+<h2 id="more-about-guis-in-containers">More about GUIs in containers</h2>
+
+<p>For anyone who hasn&#8217;t seen &#8217;em yet, Jessie Frazelle (a core contributor to Docker) has some great <a href="https://blog.jessfraz.com/post/docker-containers-on-the-desktop/" target="_blank">blog posts</a> and <a href="https://youtu.be/1qlLUf7KtAw" target="_blank">conference</a> <a href="https://youtu.be/GsLZz8cZCzc" target="_blank">talks</a> about running GUI applications inside containers! I looked to these to get some inspiration, you should check &#8217;em out too!</p>
+
+<p>Aquameerkat also had a <a href="https://linuxmeerkat.wordpress.com/2014/10/17/running-a-gui-application-in-a-docker-container/" target="_blank">great article</a> that gives a crash course on the X server, what displays are, and how to run headless GUIs in docker containers for testing purposes (not what I was doing here but interesting all the same!).</p>
+
+</div>
+
+    
+<footer class='entry-footer-container'>
+  <div class='entry-footer'>
+  <div class='categories'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/uncategorised'>Uncategorised</a></div>
+<div class='tags'>
+  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+  
+</svg>
+</span>
+  <span class='screen-reader'>Tags: </span><a class='tag' href='/tags/docker'>Docker</a>, <a class='tag' href='/tags/qt'>Qt</a></div>
+
+  </div>
+</footer>
+
+
+  </article>
+  
+<nav class='entry-nav-container'>
+  <div class='entry-nav'><div class='prev-entry'>
+      <a href='/p61/'>
+        <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+  
+</svg>
+ Previous</span>
+        <span class='screen-reader'>Previous post: </span>Golang Ramblings from a Python Dev</a>
+    </div><div class='next-entry'>
+      <a href='/p555/'>
+        <span class='screen-reader'>Next post: </span>Nested decorator functions in Python<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+  
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+  
+</main>
+
+    <footer id='footer' class='footer-container'>
+      <div class='footer'>
+        <div class='social-menu-container'>
+  <nav aria-label='Social Menu'>
+    <ul class='social-menu'><li>
+        <a href='https://github.com/nicr9' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:nicroland9@gmail.com' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+  <polyline points="22,6 12,13 2,6"/>
+  
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/nicroland' target='_blank' rel='noopener'>
+          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</div>
+        <div class='copyright'>
+  <p>
+        
+          
+        
+      
+
+       &copy; 2017-2018 Nic Roland 
+  </p>
+</div>
+
+      </div>
+    </footer>
+
+  </div><script src='/assets/js/main.5871befd.js'></script><script src='/js/custom.js'></script></body>
+
+</html>
+

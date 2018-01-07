@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Geek w/ god complex</title>
+    <link>http://blog.nicro.land/tags/docker/</link>
+    <description>Recent content in Docker on Geek w/ god complex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 27 Feb 2016 11:39:47 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.nicro.land/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker Security Risks: GUIs &#43; Xorg</title>
+      <link>http://blog.nicro.land/p496/</link>
+      <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p496/</guid>
+      <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;#8217;t be confident of the software&amp;#8217;s origins and thought it&amp;#8217;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&amp;#8217;t everything running in Docker secure? First things first, let&amp;#8217;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
+    </item>
+    
+    <item>
+      <title>Running QtCreator in Docker</title>
+      <link>http://blog.nicro.land/p87/</link>
+      <pubDate>Sun, 06 Dec 2015 19:53:55 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p87/</guid>
+      <description>Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
+The first thing I ever tried installing from source was Qt. For those who don&amp;#8217;t know, Qt is a cross platform framework for writing GUI applications.
+That was then&amp;#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.</description>
+    </item>
+    
+    <item>
+      <title>Weekly Notes – 18/7/15</title>
+      <link>http://blog.nicro.land/p10/</link>
+      <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p10/</guid>
+      <description>This is the first post in a series that I&amp;#8217;ll (hopefully) send out every week. It&amp;#8217;ll cover the problems I have during the week as well as how I overcome those issues.
+Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
+Docker machine + docker compose
+https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png
+So I&amp;#8217;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
+    </item>
+    
+  </channel>
+</rss>

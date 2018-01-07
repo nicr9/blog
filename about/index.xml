@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on Geek w/ god complex</title>
+    <link>http://blog.nicro.land/about/</link>
+    <description>Recent content in Abouts on Geek w/ god complex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 16 Jul 2015 21:46:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.nicro.land/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About Me</title>
+      <link>http://blog.nicro.land/about/</link>
+      <pubDate>Thu, 16 Jul 2015 21:46:51 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/about/</guid>
+      <description>I&amp;#8217;m many things; software developer, board game geek, sugar junkie. At the end of the day I&amp;#8217;m just someone who loves to learn and discover new things. Whether it&amp;#8217;s finding out how certain software works or exploring a new language, I&amp;#8217;m driven to illuminate the unknown, find new perspectives and, whenever possible, share that journey with others.
+This blog is intended to be as much about documenting the things I learn as it is about reaching out to like minded people who can&amp;#8217;t/won&amp;#8217;t stop till their curiosity is satisfied!</description>
+    </item>
+    
+  </channel>
+</rss>

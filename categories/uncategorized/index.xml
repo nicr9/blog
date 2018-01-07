@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Uncategorized on Geek w/ god complex</title>
+    <link>http://blog.nicro.land/categories/uncategorized/</link>
+    <description>Recent content in Uncategorized on Geek w/ god complex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Mon, 07 Sep 2015 07:28:17 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.nicro.land/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang Ramblings from a Python Dev</title>
+      <link>http://blog.nicro.land/p61/</link>
+      <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p61/</guid>
+      <description>I&amp;#8217;ve been spending time lately learning Go and I thought I&amp;#8217;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
+
+Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;#8217;ve only had a chance to play around with a few of the CLI&amp;#8217;s features but already I&amp;#8217;m impressed with how simple it makes some day to day things.</description>
+    </item>
+    
+    <item>
+      <title>I’m back!</title>
+      <link>http://blog.nicro.land/p58/</link>
+      <pubDate>Sun, 23 Aug 2015 14:36:18 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p58/</guid>
+      <description>I know that it&amp;#8217;s been a while since I wrote a post! I haven&amp;#8217;t been keeping up with my own goal to write something new at least every week.
+At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;#8217;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!</description>
+    </item>
+    
+    <item>
+      <title>Weekly Notes – 26/7/15</title>
+      <link>http://blog.nicro.land/p50/</link>
+      <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p50/</guid>
+      <description>Setup.py and rpm.spec:
+So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&amp;#8217;ve used distutils and setuptools in the past) and there&amp;#8217;s a bit of a confusing history regarding which tool is recommended.</description>
+    </item>
+    
+    <item>
+      <title>Hello world!</title>
+      <link>http://blog.nicro.land/p7/</link>
+      <pubDate>Thu, 16 Jul 2015 21:46:52 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p7/</guid>
+      <description>Why I started this blog
+I&amp;#8217;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
+I&amp;#8217;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;#8217;ll help others who run into the same stumbling blocks on their own journey.</description>
+    </item>
+    
+  </channel>
+</rss>
