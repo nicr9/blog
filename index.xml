@@ -97,17 +97,6 @@ Most Python tools are packaged by writing a `setup.py` script. There are actuall
     </item>
     
     <item>
-      <title>My Side Projects</title>
-      <link>http://blog.nicro.land/my-side-projects/</link>
-      <pubDate>Sun, 19 Jul 2015 13:40:28 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/my-side-projects/</guid>
-      <description>I&amp;#8217;ve a number of side projects (and a pretty short attention span).
-I usually keep track of suggested features and fixes in a Trello board and iterate through the projects as my attention and needs wander.
-When I have the time I&amp;#8217;ll write more in depth posts about each of these but until then, here is the short list of projects that I spend most of my time on:</description>
-    </item>
-    
-    <item>
       <title>Weekly Notes – 18/7/15</title>
       <link>http://blog.nicro.land/p10/</link>
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
@@ -129,16 +118,6 @@ So I&amp;#8217;ve been playing around with docker-machine while working on a pe
       <description>Why I started this blog
 I&amp;#8217;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
 I&amp;#8217;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;#8217;ll help others who run into the same stumbling blocks on their own journey.</description>
-    </item>
-    
-    <item>
-      <title>About Me</title>
-      <link>http://blog.nicro.land/about/</link>
-      <pubDate>Thu, 16 Jul 2015 21:46:51 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/about/</guid>
-      <description>I&amp;#8217;m many things; software developer, board game geek, sugar junkie. At the end of the day I&amp;#8217;m just someone who loves to learn and discover new things. Whether it&amp;#8217;s finding out how certain software works or exploring a new language, I&amp;#8217;m driven to illuminate the unknown, find new perspectives and, whenever possible, share that journey with others.
-This blog is intended to be as much about documenting the things I learn as it is about reaching out to like minded people who can&amp;#8217;t/won&amp;#8217;t stop till their curiosity is satisfied!</description>
     </item>
     
   </channel>

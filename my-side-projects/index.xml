@@ -1,26 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My-side-projects on Geek w/ god complex</title>
+    <title>My Side Projects on Geek w/ god complex</title>
     <link>http://blog.nicro.land/my-side-projects/</link>
-    <description>Recent content in My-side-projects on Geek w/ god complex</description>
+    <description>Recent content in My Side Projects on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 19 Jul 2015 13:40:28 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/my-side-projects/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>My Side Projects</title>
-      <link>http://blog.nicro.land/my-side-projects/</link>
-      <pubDate>Sun, 19 Jul 2015 13:40:28 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/my-side-projects/</guid>
-      <description>I&amp;#8217;ve a number of side projects (and a pretty short attention span).
-I usually keep track of suggested features and fixes in a Trello board and iterate through the projects as my attention and needs wander.
-When I have the time I&amp;#8217;ll write more in depth posts about each of these but until then, here is the short list of projects that I spend most of my time on:</description>
-    </item>
     
   </channel>
 </rss>
