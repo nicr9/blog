@@ -69,6 +69,14 @@ tag = "tags"
 [permalinks]
 page = "/:slug/"
 
+[[menu.main]]
+name = "About"
+url = "/about/"
+
+[[menu.main]]
+name = "Side Projects"
+url = "/my-side-projects/"
+
 [blackfriday]
 hrefTargetBlank = true
 
