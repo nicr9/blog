@@ -13,7 +13,7 @@ tags:
 ---
 I&#8217;m a big fan of Microsoft&#8217;s &#8220;Natural Ergonomic Keyboard 4000&#8221;. I&#8217;m just not a fan of it&#8217;s name, it&#8217;s a mouthful! (How about for future reference we just call it the Ergo?)
 
-<img class="alignnone size-full wp-image-1498" src="http://wp.docker.localhost:8000/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg" alt="b112ddfc-0541-4948-a804-a7268b0cc2a7" width="540" height="310" srcset="http://wp.docker.localhost:8000/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg 540w, http://wp.docker.localhost:8000/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7-300x172.jpg 300w" sizes="(max-width: 540px) 100vw, 540px" />
+<img class="alignnone size-full wp-image-1498" src="/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg" alt="b112ddfc-0541-4948-a804-a7268b0cc2a7" width="540" height="310" srcset="/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg 540w, /wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7-300x172.jpg 300w" sizes="(max-width: 540px) 100vw, 540px" />
 
 &nbsp;
 

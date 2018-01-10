@@ -17,7 +17,7 @@ Greptools is a collection of source code searching tools. The idea is to have la
 
 For example, the first greptool I wrote was pygt (PYthon GrepTool). Results are sorted by method, class and file and results look like this:
 
-[<img class="alignnone size-medium wp-image-41" src="http://wp.docker.localhost:8000/wp-content/uploads/2015/07/pygt_example.png?w=300" alt="pygt_example" width="300" height="158" srcset="http://wp.docker.localhost:8000/wp-content/uploads/2015/07/pygt_example.png 971w, http://wp.docker.localhost:8000/wp-content/uploads/2015/07/pygt_example-300x158.png 300w, http://wp.docker.localhost:8000/wp-content/uploads/2015/07/pygt_example-768x404.png 768w" sizes="(max-width: 300px) 100vw, 300px" />][3]
+[<img class="alignnone size-medium wp-image-41" src="/wp-content/uploads/2015/07/pygt_example.png?w=300" alt="pygt_example" width="300" height="158" srcset="/wp-content/uploads/2015/07/pygt_example.png 971w, /wp-content/uploads/2015/07/pygt_example-300x158.png 300w, /wp-content/uploads/2015/07/pygt_example-768x404.png 768w" sizes="(max-width: 300px) 100vw, 300px" />][3]
 
 ## **[Daftpunk][4]**
 
@@ -42,7 +42,7 @@ I&#8217;ve also made a number of contributions to various open source projects:
 
  [1]: http://trello.com
  [2]: https://github.com/nicr9/greptools
- [3]: http://wp.docker.localhost:8000/wp-content/uploads/2015/07/pygt_example.png
+ [3]: /wp-content/uploads/2015/07/pygt_example.png
  [4]: https://github.com/nicr9/daftpunk
  [5]: http://daft.ie
  [6]: https://github.com/nicr9/vim-orca
