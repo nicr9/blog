@@ -181,19 +181,13 @@ Event: time 1468247448.373417, type 1 (EV_KEY), code 109 (KEY_PAGEDOWN), value 0
 
 <p>In newer versions of Ubuntu (15.01+) you might need to change the device matching rule to include a bus number (a four digit code, 0003 for USB devices). Here&#8217;s an example:</p>
 
-<p>&#8220;`</p>
-
-<p>keyboard:usb:b0003v045Ep00DB*</p>
-
-<p>&#8220;`</p>
+<pre><code>keyboard:usb:b0003v045Ep00DB*
+</code></pre>
 
 <p>In the example the scan codes started with a zero. Sometimes this doesn&#8217;t work (but I&#8217;ve no idea why). Try it out without the leading zero, like so:</p>
 
-<p>&#8220;`</p>
-
-<p>KEYBOARD_KEY_c022d=pageup</p>
-
-<p>&#8220;`</p>
+<pre><code>KEYBOARD\_KEY\_c022d=pageup
+</code></pre>
 
 <h2 id="footnotes">Footnotes</h2>
 
