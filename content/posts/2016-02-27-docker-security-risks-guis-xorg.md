@@ -48,11 +48,11 @@ Imagemagik is used a lot on Linux to take screenshots and it does this by intera
 
 Here&#8217;s a demo dockerfile that screenshots with imagemagik and displays the resulting image with feh:
 
-https://gist.github.com/nicr9/b239a57f9cc93151cc73
+<script src="https://gist.github.com/nicr9/b239a57f9cc93151cc73.js"></script>
 
 Here&#8217;s the commands needed to get this working:
 
-https://gist.github.com/nicr9/5950d050744c24a1d7ff
+<script src="https://gist.github.com/nicr9/5950d050744c24a1d7ff.js"></script>
 
 You&#8217;ll notice that the only additional things this container needs is to tell xhost to allow any access from localhost, to mount the X socket and the provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container.
 
@@ -62,7 +62,7 @@ This example installs xdotool which can be used for (among other things) simulat
 
 Clearly I&#8217;m some kind of deranged lunatic for coming up with something this nefarious. Use responsibly.
 
-https://gist.github.com/nicr9/55a6f2ac73cdf3bf33f9
+<script src="https://gist.github.com/nicr9/55a6f2ac73cdf3bf33f9.js"></script>
 
 Pretty much the same docker commands for running this container so I won&#8217;t bother including those from now on.
 
@@ -70,13 +70,13 @@ Pretty much the same docker commands for running this container so I won&#8217
 
 This one is ridiculously easy! Xclip is a tool for read and write access to the various clipboards provided by X. That includes the regular clipboard (Ctrl+c/Ctrl+v), used in the example here, as well as the selection clipboard (highlight/middle mouse button) if you&#8217;re on Linux.
 
-https://gist.github.com/nicr9/989836942f582ce17610
+<script src="https://gist.github.com/nicr9/989836942f582ce17610.js"></script>
 
 ### Scripting mouse movements
 
 Our old friend xdotool can also be used to script mouse movements! Here&#8217;s an example of it moving to certain co-ordinates (15, 15) and clicking, it&#8217;s just a minor modification of the capslock example:
 
-https://gist.github.com/nicr9/d0d703185da4bc21e471
+<script src="https://gist.github.com/nicr9/d0d703185da4bc21e471.js"></script>
 
 On it&#8217;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&#8217;d like to click to cause the most damage.
 

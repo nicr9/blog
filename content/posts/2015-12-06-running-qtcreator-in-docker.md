@@ -48,11 +48,11 @@ In the meantime, I&#8217;ll have what I need: an image that I can run QtCreator
 
 Here&#8217;s the dockerfile I wrote:
 
-https://gist.github.com/nicr9/c945194f7f0227eb8c22
+<script src="https://gist.github.com/nicr9/c945194f7f0227eb8c22.js"></script>
 
 Here&#8217;s the commands to get things working:
 
-https://gist.github.com/nicr9/0b49f576efcf606ee325
+<script src="https://gist.github.com/nicr9/0b49f576efcf606ee325.js"></script>
 
 ## Problems encountered
 

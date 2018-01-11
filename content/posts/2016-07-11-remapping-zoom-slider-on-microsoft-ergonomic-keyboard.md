@@ -86,19 +86,15 @@ Depending on what distro of Linux you&#8217;re using, you might need to tweak th
 
 In newer versions of Ubuntu (15.01+) you might need to change the device matching rule to include a bus number (a four digit code, 0003 for USB devices). Here&#8217;s an example:
 
-&#8220;\`
-  
+```
 keyboard:usb:b0003v045Ep00DB*
-  
-&#8220;\`
+```
 
 In the example the scan codes started with a zero. Sometimes this doesn&#8217;t work (but I&#8217;ve no idea why). Try it out without the leading zero, like so:
 
-&#8220;\`
-  
+```
 KEYBOARD\_KEY\_c022d=pageup
-  
-&#8220;\`
+```
 
 ## Footnotes
 

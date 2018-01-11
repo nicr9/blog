@@ -39,7 +39,7 @@ Simple: flask app in a docker container. It uses [pandoc][2] to convert to HTML 
 
 You can pull it from the Docker Hub and mount the folder with all your notes when you run it. No fuss, relatively little muss. Here&#8217;s the commands to serve files from ~/notes at [localhost:4000][4] if you wanna try it yourself:
 
-https://gist.github.com/nicr9/4bbc01b7c3dceb14c323a6d1ba89705a
+<script src="https://gist.github.com/nicr9/4bbc01b7c3dceb14c323a6d1ba89705a.js"></script>
 
 Want to take a closer look? The code is up on my [github][5] and the latest image is on the [docker hub][6]! It&#8217;s just something I threw together quickly. If you have ideas for improvements I&#8217;ll be happy to look at any pull requests.
 

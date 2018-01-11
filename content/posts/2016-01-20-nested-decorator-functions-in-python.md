@@ -20,13 +20,13 @@ I thought I&#8217;d write up this quick blog post with some examples that will d
 
 So here&#8217;s a rick rolling example using classes:
 
-https://gist.github.com/nicr9/cb79b8367bc25ee00c6d
+<script src="https://gist.github.com/nicr9/cb79b8367bc25ee00c6d.js"></script>
 
 ## Using nested functions
 
 And here&#8217;s the corresponding example which uses nested functions:
 
-https://gist.github.com/nicr9/7b18c005cf27d173a55b
+<script src="https://gist.github.com/nicr9/7b18c005cf27d173a55b.js"></script>
 
 ## Conclusion
 
