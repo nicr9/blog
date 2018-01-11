@@ -77,6 +77,10 @@ url = "/about/"
 name = "Side Projects"
 url = "/my-side-projects/"
 
+[[menu.main]]
+name = "Slides"
+url = "http://slides.nicro.land"
+
 [blackfriday]
 hrefTargetBlank = true
 
