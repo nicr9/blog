@@ -46,7 +46,16 @@ showReadingTime = true
 showLastmod = true
 taxonomyCloudShuffle = true
 accentColor = "#ffcd00"
-hideMainMenu = false
+hideMainMenu = true
+
+[params.sidebar]
+enable = true
+
+[params.widgets]
+header = []
+homepage = ["recent_posts"]
+sidebar = ["about","sidebar_menu","taxonomy_cloud"]
+footer = ["social_menu"]
 
 [params.opengraph.twitter]
 page = "" # Twitter page username
@@ -70,17 +79,19 @@ tag = "tags"
 [permalinks]
 page = "/:slug/"
 
-[[menu.main]]
-name = "About"
-url = "/about/"
 
-[[menu.main]]
-name = "Side Projects"
-url = "/my-side-projects/"
+[menu]
+    [[menu.main]]
+    name = "About"
+    url = "/about/"
 
-[[menu.main]]
-name = "Slides"
-url = "http://slides.nicro.land"
+    [[menu.main]]
+    name = "Side Projects"
+    url = "/my-side-projects/"
+
+    [[menu.main]]
+    name = "Slides"
+    url = "http://slides.nicro.land"
 
 [blackfriday]
 hrefTargetBlank = true

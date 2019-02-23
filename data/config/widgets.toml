@@ -1,0 +1,7 @@
+[about]
+title = "Nic Roland"
+description = " " # disabled
+logo = "/images/shocked-circle.png" 
+
+[sidebar_menu]
+mirror = "main"
