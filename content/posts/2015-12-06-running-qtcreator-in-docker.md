@@ -88,7 +88,7 @@ For anyone who hasn&#8217;t seen &#8217;em yet, Jessie Frazelle (a core contrib
 
 Aquameerkat also had a [great article][10] that gives a crash course on the X server, what displays are, and how to run headless GUIs in docker containers for testing purposes (not what I was doing here but interesting all the same!).
 
- [1]: https://nicroland.wordpress.com/2016/02/27/docker-security-risks-guis-xorg/
+ [1]: https://blog.nicro.land/p496/
  [2]: https://github.com/Homebrew/homebrew
  [3]: https://wiki.qt.io/Install_Qt_5_on_Ubuntu
  [4]: http://docs.docker.com/engine/articles/security/
