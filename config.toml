@@ -1,5 +1,4 @@
 baseURL = "http://blog.nicro.land/"
-languageCode = "en-gb"
 title = "Geek w/ god complex"
 copyright = ""
 
@@ -16,12 +15,14 @@ enableRobotsTXT = true # generate robots.txt
 # Syntax Highlighting ( https://gohugo.io/content-management/syntax-highlighting/ )
 pygmentsCodefences = true
 
+enableEmoji = true
+
 # Missing translations will default to this content language
 defaultContentLanguage = "en"
 
 [params.info]
 description = "and his senseless ramblings..."
-title404 = "Nothing's here!"
+title404 = "Nothing to see here!"
 
 [params.assets]
 favicon = "favicon.ico"
@@ -40,10 +41,12 @@ suffix = ""
 dateFormat = "02 Jan 2006"
 listDateFormat = "02 Jan 2006"
 hideEntryNavigation = ["page"] # boolean / array of sections
-recentPostsLength = 4
-hideSocialMenu = false
+hideEntryMeta = ["page"] # boolean / array of sections
 showReadingTime = true
-noTermCloudShuffle = false
+showLastmod = true
+taxonomyCloudShuffle = true
+accentColor = "#ffcd00"
+hideMainMenu = false
 
 [params.opengraph.twitter]
 page = "" # Twitter page username
@@ -58,12 +61,10 @@ github = "nicr9"
 linkedin = "nicroland"
 twitter = "nicr9_"
 
-[params.social.config]
-platforms = ["github","twitter","email","linkedin"]
-
 [taxonomies]
 author = "authors"
 category = "categories"
+series = "series"
 tag = "tags"
 
 [permalinks]
@@ -87,6 +88,6 @@ hrefTargetBlank = true
 [languages]
 # edit this block for your own language
 [languages.en]
-lang = "en"
+lang = "en-gb"
 languageName = "English"
 weight = 1
