@@ -1,73 +1,144 @@
 <!DOCTYPE html>
-<html lang='en'>
-
-<head>
+<html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.
 He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).'>
+<meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Nested decorator functions in Python • Geek w/ god complex'>
 <meta property='og:description' content='When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.
 He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).'>
 <meta property='og:url' content='http://blog.nicro.land/p555/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='Python'><meta property='article:published_time' content='2016-01-20T23:32:58Z'/><meta property='article:modified_time' content='2016-01-20T23:32:58Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='Python'><meta property='article:published_time' content='2016-01-20T23:32:58Z'/><meta property='article:modified_time' content='2016-01-20T23:32:58Z'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.28" />
+<meta name="generator" content="Hugo 0.54.0" />
 
   <title>Nested decorator functions in Python • Geek w/ god complex</title>
   <link rel='canonical' href='http://blog.nicro.land/p555/'>
   
   
   <link rel='icon' href='/favicon.ico'>
-<link rel='stylesheet' href='/assets/css/main.7a50ccd3.css'><link rel='stylesheet' href='/css/custom.css'>
-</head>
+<link rel='stylesheet' href='/assets/css/main.4a10984a.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
 
-
-<body class='page type-post'>
-  <div class='site'>
-
-    <a class='screen-reader' href='#main'>Skip to Content</a>
-
-    <header id='header' class='header-container'>
-      <div class='header site-header'>
-        <nav id='main-menu' class='main-menu-container' aria-label='Main Menu'>
-  <ul class='main-menu'>
-  <li>
-      <a href='/about/'>About</a>
-    </li>
-  <li>
-      <a href='/my-side-projects/'>Side Projects</a>
-    </li>
-  <li>
-      <a href='http://slides.nicro.land'>Slides</a>
-    </li>
   
-  </ul>
-</nav>
 
-        <div class='header-info'>
-          
-          <p class='site-title title'>Geek w/ god complex</p>
-          
-          <p class='site-description subtitle'>and his senseless ramblings...</p>
-        </div>
+</head>
+<body class='page type-post has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/shocked-circle.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+    Nic Roland
+    </h2>
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/about/'>About</a></li><li class='item'>
+  <a href='/my-side-projects/'>Side Projects</a></li><li class='item'>
+  <a href='http://slides.nicro.land'>Slides</a></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/python/' style='font-size:1.5em'>Python</a>
+      </li><li>
+        <a href='/tags/compose/' style='font-size:1em'>compose</a>
+      </li><li>
+        <a href='/tags/docker/' style='font-size:2em'>docker</a>
+      </li><li>
+        <a href='/tags/golang/' style='font-size:1em'>golang</a>
+      </li><li>
+        <a href='/tags/lifehacks/' style='font-size:1.5em'>lifehacks</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.5em'>linux</a>
+      </li><li>
+        <a href='/tags/machine/' style='font-size:1em'>machine</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/qt/' style='font-size:1em'>qt</a>
+      </li><li>
+        <a href='/tags/rpm.spec/' style='font-size:1em'>rpm.spec</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li><li>
+        <a href='/tags/setup.py/' style='font-size:1em'>setup.py</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+  
+</svg>
+</span>
+  <span class='close'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+  
+</svg>
+</span>
+</button><div class='header-widgets'>
+        <div class='container'></div>
       </div>
-    </header>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Geek w/ god complex</p><p class='desc site-desc'>and his senseless ramblings...</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
 
 
-<main id='main' class='main'>
-  <article lang='en' class='entry'>
-    <header class='header-container'>
-  <div class='header entry-header'>
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
     <div class='header-info'>
       <h1 class='title'>Nested decorator functions in Python</h1>
       
 
     </div>
-    
-<div class='meta'>
+    <div class='entry-meta'>
   <span class='posted-on'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -76,8 +147,8 @@ He lamented how you need to google around for tutorials any time you wanted to w
   <line x1="3" y1="10" x2="21" y2="10"/>
   
 </svg>
-<span class='screen-reader'>Posted on </span>
-  <time class='date' datetime='2016-01-20T23:32:58Z'>20 Jan 2016</time>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2016-01-20T23:32:58Z'>20 Jan 2016</time>
 </span>
 
   
@@ -98,10 +169,10 @@ One min read
   </div>
 </header>
 
-    
-    
+  
+  
 
-    <div class='entry-content'>
+  <div class='container entry-content'>
   
 
 <p>When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.</p>
@@ -130,35 +201,30 @@ One min read
 
 </div>
 
-    
-<footer class='entry-footer-container'>
-  <div class='entry-footer'>
-  <div class='categories'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
   
 </svg>
-</span>
-  <span class='screen-reader'>Categories: </span><a class='category' href='/categories/uncategorised'>Uncategorised</a></div>
-<div class='tags'>
-  <span class='taxonomyTerm-icon'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/uncategorised/'>Uncategorised</a></div>
+<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-</span>
-  <span class='screen-reader'>Tags: </span><a class='tag' href='/tags/python'>Python</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/python/'>Python</a></div>
 
   </div>
 </footer>
 
 
-  </article>
-  
-<nav class='entry-nav-container'>
-  <div class='entry-nav'><div class='prev-entry'>
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
       <a href='/p87/'>
         <span aria-hidden='true'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
@@ -167,10 +233,10 @@ One min read
   
 </svg>
  Previous</span>
-        <span class='screen-reader'>Previous post: </span>Running QtCreator in Docker</a>
-    </div><div class='next-entry'>
+        <span class='screen-reader-text'>Previous post: </span>Running QtCreator in Docker</a>
+    </div><div class='next-entry sep-before'>
       <a href='/p496/'>
-        <span class='screen-reader'>Next post: </span>Docker Security Risks: GUIs &#43; Xorg<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+        <span class='screen-reader-text'>Next post: </span>Docker Security Risks: GUIs &#43; Xorg<span aria-hidden='true'>Next <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <line x1="4" y1="12" x2="20" y2="12"/>
   <polyline points="14 6 20 12 14 18"/>
@@ -181,16 +247,16 @@ One min read
     </div></div>
 </nav>
 
-  
-</main>
 
-    <footer id='footer' class='footer-container'>
-      <div class='footer'>
-        <div class='social-menu-container'>
-  <nav aria-label='Social Menu'>
-    <ul class='social-menu'><li>
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
         <a href='https://github.com/nicr9' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
   
@@ -198,7 +264,7 @@ One min read
 </a>
       </li><li>
         <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
   
@@ -206,7 +272,7 @@ One min read
 </a>
       </li><li>
         <a href='mailto:nicroland9@gmail.com' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
   <polyline points="22,6 12,13 2,6"/>
@@ -215,30 +281,29 @@ One min read
 </a>
       </li><li>
         <a href='https://linkedin.com/in/nicroland' target='_blank' rel='noopener'>
-          <span class='screen-reader'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
-  <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+  <rect x="2" y="9" width="4" height="12"/>
+  <circle cx="4" cy="4" r="2"/>
   
 </svg>
 </a>
       </li></ul>
   </nav>
-</div>
-        <div class='copyright'>
-  <p>
-        
-          
-        
-      
-
-       &copy; 2017-2018 Nic Roland 
-  </p>
+</section><div class='copyright'>
+  <p> &copy; 2017-2019 Nic Roland </p>
 </div>
 
-      </div>
-    </footer>
+        </div>
+      </footer>
 
-  </div><script src='/assets/js/main.5871befd.js'></script><script src='/js/custom.js'></script></body>
+    </div>
+  </div><script>window.__public_path__='\/assets\/js\/'</script>
+
+<script src='/assets/js/main.fae8ed32.js'></script><script src='/js/custom.js'></script>
+
+</body>
 
 </html>
 

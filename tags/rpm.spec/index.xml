@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Rpm.spec on Geek w/ god complex</title>
+    <title>rpm.spec on Geek w/ god complex</title>
     <link>http://blog.nicro.land/tags/rpm.spec/</link>
-    <description>Recent content in Rpm.spec on Geek w/ god complex</description>
+    <description>Recent content in rpm.spec on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
     <lastBuildDate>Sun, 26 Jul 2015 12:06:03 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/tags/rpm.spec/index.xml" rel="self" type="application/rss+xml" />

@@ -5,11 +5,20 @@
     <link>http://blog.nicro.land/</link>
     <description>Recent content on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    <lastBuildDate>Mon, 11 Jul 2016 14:39:07 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OpenShift: Automated Resource Pruning</title>
+      <link>http://blog.nicro.land/posts/resource-pruning/</link>
+      <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/posts/resource-pruning/</guid>
+      <description>I&amp;rsquo;ve used cronjobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.
+If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.</description>
+    </item>
     
     <item>
       <title>Remapping zoom slider on Microsoft Ergonomic Keyboard</title>

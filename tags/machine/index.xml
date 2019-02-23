@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine on Geek w/ god complex</title>
+    <title>machine on Geek w/ god complex</title>
     <link>http://blog.nicro.land/tags/machine/</link>
-    <description>Recent content in Machine on Geek w/ god complex</description>
+    <description>Recent content in machine on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
     <lastBuildDate>Sun, 19 Jul 2015 10:18:48 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/tags/machine/index.xml" rel="self" type="application/rss+xml" />

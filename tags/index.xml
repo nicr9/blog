@@ -5,65 +5,10 @@
     <link>http://blog.nicro.land/tags/</link>
     <description>Recent content in Tags on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    <lastBuildDate>Sun, 19 Jul 2015 10:18:48 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 20 Jan 2016 23:32:58 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Compose</title>
-      <link>http://blog.nicro.land/tags/compose/</link>
-      <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/compose/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>http://blog.nicro.land/tags/docker/</link>
-      <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>http://blog.nicro.land/tags/golang/</link>
-      <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lifehacks</title>
-      <link>http://blog.nicro.land/tags/lifehacks/</link>
-      <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/lifehacks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>http://blog.nicro.land/tags/linux/</link>
-      <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine</title>
-      <link>http://blog.nicro.land/tags/machine/</link>
-      <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/tags/machine/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>Python</title>
@@ -75,7 +20,70 @@
     </item>
     
     <item>
-      <title>Qt</title>
+      <title>compose</title>
+      <link>http://blog.nicro.land/tags/compose/</link>
+      <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/compose/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>http://blog.nicro.land/tags/docker/</link>
+      <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>http://blog.nicro.land/tags/golang/</link>
+      <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lifehacks</title>
+      <link>http://blog.nicro.land/tags/lifehacks/</link>
+      <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/lifehacks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://blog.nicro.land/tags/linux/</link>
+      <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>machine</title>
+      <link>http://blog.nicro.land/tags/machine/</link>
+      <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openshift</title>
+      <link>http://blog.nicro.land/tags/openshift/</link>
+      <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/tags/openshift/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>qt</title>
       <link>http://blog.nicro.land/tags/qt/</link>
       <pubDate>Sun, 06 Dec 2015 19:53:55 +0000</pubDate>
       
@@ -84,7 +92,7 @@
     </item>
     
     <item>
-      <title>Rpm.spec</title>
+      <title>rpm.spec</title>
       <link>http://blog.nicro.land/tags/rpm.spec/</link>
       <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
       
@@ -93,7 +101,7 @@
     </item>
     
     <item>
-      <title>Security</title>
+      <title>security</title>
       <link>http://blog.nicro.land/tags/security/</link>
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
       
@@ -102,7 +110,7 @@
     </item>
     
     <item>
-      <title>Setup.py</title>
+      <title>setup.py</title>
       <link>http://blog.nicro.land/tags/setup.py/</link>
       <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
       

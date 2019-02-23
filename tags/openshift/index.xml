@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>openshift on Geek w/ god complex</title>
+    <link>http://blog.nicro.land/tags/openshift/</link>
+    <description>Recent content in openshift on Geek w/ god complex</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
+    
+	<atom:link href="http://blog.nicro.land/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>OpenShift: Automated Resource Pruning</title>
+      <link>http://blog.nicro.land/posts/resource-pruning/</link>
+      <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/posts/resource-pruning/</guid>
+      <description>I&amp;rsquo;ve used cronjobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.
+If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.</description>
+    </item>
+    
+  </channel>
+</rss>
