@@ -3,13 +3,13 @@ title: My Side Projects
 author: nicr9
 type: page
 date: 2015-07-19T13:40:28+00:00
-
 ---
-I&#8217;ve a number of side projects (and a pretty short attention span).
+
+I've a number of side projects (and a pretty short attention span).
 
 I usually keep track of suggested features and fixes in a [Trello][1] board and iterate through the projects as my attention and needs wander.
 
-When I have the time I&#8217;ll write more in depth posts about each of these but until then, here is the short list of projects that I spend most of my time on:
+When I have the time I'll write more in depth posts about each of these but until then, here is the short list of projects that I spend most of my time on:
 
 ## **[Greptools][2]**
 
@@ -23,17 +23,17 @@ For example, the first greptool I wrote was pygt (PYthon GrepTool). Results are 
 
 Daftpunk is a project I started to help me search for interesting properties on the Irish property market by analysing data found on [daft.ie][5].
 
-It&#8217;s early days at the moment but I&#8217;m hoping to use this project as a platform to learn more about a vast array of different technologies such as: docker, AWS, web development tech such as Flask and D3.js, redis and eventually data science techniques like topic modelling.
+It's early days at the moment but I'm hoping to use this project as a platform to learn more about a vast array of different technologies such as: docker, AWS, web development tech such as Flask and D3.js, redis and eventually data science techniques like topic modelling.
 
 ## **[Vim-orca][6]**
 
 This is my first serious vim plugin. It wraps around the docker cli in mush the same way that [fugitive][7] wraps git. It makes use of preview windows and key mappings to speed up my workflow.
 
-It currently offers experimental integration with not only docker but fig as well. I&#8217;m hoping to expand on this and support tools like docker-machine and docker-compose very soon!
+It currently offers experimental integration with not only docker but fig as well. I'm hoping to expand on this and support tools like docker-machine and docker-compose very soon!
 
 ## Open Source Contributions
 
-I&#8217;ve also made a number of contributions to various open source projects:
+I've also made a number of contributions to various open source projects:
 
   * [python-diamond/Diamond][8]
   * [ejcx/passgo][9]

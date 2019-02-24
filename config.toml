@@ -86,8 +86,8 @@ page = "/:slug/"
     url = "/about/"
 
     [[menu.main]]
-    name = "Side Projects"
-    url = "/my-side-projects/"
+    name = "Posts"
+    url = "/posts/"
 
     [[menu.main]]
     name = "Slides"

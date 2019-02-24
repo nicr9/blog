@@ -5,11 +5,17 @@ type: page
 date: 2015-07-16T21:46:51+00:00
 
 ---
-I&#8217;m many things; software developer, board game geek, sugar junkie. At the end of the day I&#8217;m just someone who loves to learn and discover new things. Whether it&#8217;s finding out how certain software works or exploring a new language, I&#8217;m driven to illuminate the unknown, find new perspectives and, whenever possible, share that journey with others.
+I've filled a few different roles in my career; Software Developer, DevOps Consultant, Site Reliability Engineer. I have a tendancy to move around looking for new challenges because I love to learn and discover new things. I'm a generalist at heart.
 
-This blog is intended to be as much about documenting the things I learn as it is about reaching out to like minded people who can&#8217;t/won&#8217;t stop till their curiosity is satisfied!
+Whether it's finding out how certain software works or exploring a new language, I'm driven to illuminate the unknown, find new perspectives and, whenever possible, share that journey with others.
 
-If you&#8217;d like to get in touch there&#8217;s a number of ways you can:
+This blog is intended to be as much about documenting the things I learn as it is about reaching out to like minded people who can't/won't stop till their curiosity is satisfied!
+
+From time to time I may blog about one of my many hobbies too; here's the ones that I can represent with emoji:
+
+# :computer: :video_game: :horse_racing: :bowling: :game_die: :guitar: :books: :bicyclist: :tent:
+
+If you'd like to get in touch there's a number of ways you can:
 
   * [Twitter][1]
   * [LinkedIn][2]
