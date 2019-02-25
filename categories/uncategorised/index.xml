@@ -33,16 +33,6 @@ This is great when I&amp;#8217;ve spent a lot of time learning something new and
     </item>
     
     <item>
-      <title>Nested decorator functions in Python</title>
-      <link>http://blog.nicro.land/p555/</link>
-      <pubDate>Wed, 20 Jan 2016 23:32:58 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p555/</guid>
-      <description>When I was at PyConIE last October I was talking with an old friend about Python&amp;#8217;s decorator functions.
-He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).</description>
-    </item>
-    
-    <item>
       <title>Weekly Notes – 18/7/15</title>
       <link>http://blog.nicro.land/p10/</link>
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>

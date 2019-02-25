@@ -2,12 +2,12 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.
+<meta name='description' content='When I was at PyConIE last October I was talking with an old friend about Python&rsquo;s decorator functions.
 He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Nested decorator functions in Python • Geek w/ god complex'>
-<meta property='og:description' content='When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.
+<meta property='og:description' content='When I was at PyConIE last October I was talking with an old friend about Python&rsquo;s decorator functions.
 He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).'>
 <meta property='og:url' content='http://blog.nicro.land/p555/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
@@ -157,7 +157,7 @@ He lamented how you need to google around for tutorials any time you wanted to w
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-One min read
+2 mins read
 </span>
 
 
@@ -173,27 +173,101 @@ One min read
   <div class='container entry-content'>
   
 
-<p>When I was at PyConIE last October I was talking with an old friend about Python&#8217;s decorator functions.</p>
+<p>When I was at <a href="http://python.ie/previous-pycons/pycon-2015/" target="_blank">PyConIE last October</a> I was talking with an old friend about Python&rsquo;s decorator functions.</p>
 
 <p>He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).</p>
 
-<p>I thought I&#8217;d write up this quick blog post with some examples that will demonstrate how to do this and serve as a reference in case I forget any of this stuff myself!</p>
+<p>I thought I&rsquo;d write up this quick blog post with some examples that will demonstrate how to do this and serve as a reference in case I forget any of this stuff myself!</p>
 
 <h2 id="using-classes">Using classes</h2>
 
-<p>So here&#8217;s a rick rolling example using classes:</p>
+<p>So here&rsquo;s a rick rolling example using classes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WithoutParams</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self, func):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Constructor receives target function.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>func <span style="color:#f92672">=</span> func
 
-<script src="https://gist.github.com/nicr9/cb79b8367bc25ee00c6d.js"></script>
+    <span style="color:#66d9ef">def</span> __call__(self, <span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Arguments intended for target function are passed to __call__.
+</span><span style="color:#e6db74">        From here you can call the target any way you see fit.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>func(<span style="color:#e6db74">&#34;Never gonna give you up&#34;</span>)
 
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WithParams</span>(object):
+    <span style="color:#66d9ef">def</span> __init__(self, val):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Constructor takes decorator params instead of target.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        self<span style="color:#f92672">.</span>val <span style="color:#f92672">=</span> val
+
+    <span style="color:#66d9ef">def</span> __call__(self, func):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Target function is passed in here instead.
+</span><span style="color:#e6db74">        This is where we create a wrapper function to replace the target.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">wrapped</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+            <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">            Wrapper function takes the target arguments and calls target.
+</span><span style="color:#e6db74">            &#34;&#34;&#34;</span>
+            func(self<span style="color:#f92672">.</span>val)
+
+        <span style="color:#66d9ef">return</span> wrapped
+
+<span style="color:#a6e22e">@WithoutParams</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">a</span>(text):
+    <span style="color:#66d9ef">print</span> text
+
+<span style="color:#a6e22e">@WithParams</span>(<span style="color:#e6db74">&#34;Never gonna let you down&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">b</span>(text):
+    <span style="color:#66d9ef">print</span> text
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    a(<span style="color:#e6db74">&#34;hello world&#34;</span>)
+    b(<span style="color:#e6db74">&#34;foo bar&#34;</span>)</code></pre></div>
 <h2 id="using-nested-functions">Using nested functions</h2>
 
-<p>And here&#8217;s the corresponding example which uses nested functions:</p>
+<p>And here&rsquo;s the corresponding example which uses nested functions:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">without_params</span>(func):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Outer function takes target function and returns a wrapped one.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_without_params</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+        <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">        Inner function takes target arguments and makes the call.
+</span><span style="color:#e6db74">        &#34;&#34;&#34;</span>
+        <span style="color:#66d9ef">return</span> func(<span style="color:#e6db74">&#34;Never gonna run around&#34;</span>)
 
-<script src="https://gist.github.com/nicr9/7b18c005cf27d173a55b.js"></script>
+    <span style="color:#66d9ef">return</span> _without_params
 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">with_params</span>(val):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    If you need to take params, it&#39;s the same but wrapped in another function.
+</span><span style="color:#e6db74">    This one takes the decorator parameters and returns a doubly wrapped function.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_with_params</span>(func):
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__with_params</span>(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs):
+            <span style="color:#66d9ef">return</span> func(val)
+        <span style="color:#66d9ef">return</span> __with_params
+    <span style="color:#66d9ef">return</span> _with_params
+
+<span style="color:#a6e22e">@without_params</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">a</span>(text):
+    <span style="color:#66d9ef">print</span> text
+
+<span style="color:#a6e22e">@with_params</span>(<span style="color:#e6db74">&#34;and desert you!&#34;</span>)
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">b</span>(text):
+    <span style="color:#66d9ef">print</span> text
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    a(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>)
+    b(<span style="color:#e6db74">&#34;fizz bang&#34;</span>)</code></pre></div>
 <h2 id="conclusion">Conclusion</h2>
 
-<p>In summary: class decorators are confusing because arguments and functions are sent to different places depending on the context. Nested function decorators are a neater abstraction because the base decorator is the same in both cases, if you want parameters you just wrap it in an additional function.</p>
+<p>Class decorators are confusing because arguments and functions are sent to different places depending on the context. Nested function decorators are a neater abstraction because the base decorator is the same in both cases, if you want parameters you just wrap it in an additional function.</p>
 
 <p>Hope this comes in handy!</p>
 
@@ -201,13 +275,7 @@ One min read
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/uncategorised/'>Uncategorised</a></div>
-<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
