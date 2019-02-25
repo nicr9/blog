@@ -5,21 +5,10 @@
     <link>http://blog.nicro.land/categories/uncategorized/</link>
     <description>Recent content in Uncategorized on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Sep 2015 07:28:17 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2015 14:36:18 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/categories/uncategorized/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Golang Ramblings from a Python Dev</title>
-      <link>http://blog.nicro.land/p61/</link>
-      <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p61/</guid>
-      <description>I&amp;#8217;ve been spending time lately learning Go and I thought I&amp;#8217;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
-
-Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;#8217;ve only had a chance to play around with a few of the CLI&amp;#8217;s features but already I&amp;#8217;m impressed with how simple it makes some day to day things.</description>
-    </item>
     
     <item>
       <title>I’m back!</title>
