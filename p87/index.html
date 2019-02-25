@@ -3,17 +3,17 @@
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
-The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.
+The first thing I ever tried installing from source was Qt. For those who don&rsquo;t know, Qt is a cross platform framework for writing GUI applications.
 That was then&#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Running QtCreator in Docker • Geek w/ god complex'>
 <meta property='og:description' content='Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
-The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.
+The first thing I ever tried installing from source was Qt. For those who don&rsquo;t know, Qt is a cross platform framework for writing GUI applications.
 That was then&#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.'>
 <meta property='og:url' content='http://blog.nicro.land/p87/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='qt'><meta property='article:published_time' content='2015-12-06T19:53:55Z'/><meta property='article:modified_time' content='2015-12-06T19:53:55Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2015-12-06T19:53:55Z'/><meta property='article:modified_time' content='2015-12-06T19:53:55Z'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.54.0" />
 
@@ -83,8 +83,6 @@ That was then&#8230; I was in college, I had a macbook at the time and I was toy
         <a href='/tags/machine/' style='font-size:1em'>machine</a>
       </li><li>
         <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
-      </li><li>
-        <a href='/tags/qt/' style='font-size:1em'>qt</a>
       </li><li>
         <a href='/tags/rpm.spec/' style='font-size:1em'>rpm.spec</a>
       </li><li>
@@ -161,7 +159,7 @@ That was then&#8230; I was in college, I had a macbook at the time and I was toy
   <polyline points="12 6 12 12 15 15"/>
   
 </svg>
-5 mins read
+6 mins read
 </span>
 
 
@@ -177,29 +175,29 @@ That was then&#8230; I was in college, I had a macbook at the time and I was toy
   <div class='container entry-content'>
   
 
-<p><strong>Update:</strong> I wrote a follow up post detailing potential security risks of running GUIs in containers, <a href="https://blog.nicro.land/p496/" target="_blank">check it out here</a>.</p>
+<p><strong>Update:</strong> I wrote a follow up post detailing potential security risks of running GUIs in containers, <a href="/p496/">check it out here</a>.</p>
 
-<p>The first thing I ever tried installing from source was Qt. For those who don&#8217;t know, Qt is a cross platform framework for writing GUI applications.</p>
+<p>The first thing I ever tried installing from source was Qt. For those who don&rsquo;t know, Qt is a cross platform framework for writing GUI applications.</p>
 
 <p><img class=" size-full wp-image-134 aligncenter" src="/wp-content/uploads/2015/11/5954820.png" alt="5954820" width="280" height="280" srcset="/wp-content/uploads/2015/11/5954820.png 280w, /wp-content/uploads/2015/11/5954820-150x150.png 150w, /wp-content/uploads/2015/11/5954820-100x100.png 100w" sizes="(max-width: 280px) 100vw, 280px" /></p>
 
 <h2 id="that-was-then-8230">That was then&#8230;</h2>
 
-<p>I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&#8217;s limitations and I finally decided it was time to find something with more power.</p>
+<p>I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&rsquo;s limitations and I finally decided it was time to find something with more power.</p>
 
-<p>All I remember was putting together the endless list of dependencies and sitting through lectures while they were compiling. Clearly I hadn&#8217;t discovered <a href="https://github.com/Homebrew/homebrew" target="_blank">homebrew</a> at this point. From what I can tell Qt and it&#8217;s python bindings (pyqt) were added to homebrew around the same time I needed them in 2009, go figure!</p>
+<p>All I remember was putting together the endless list of dependencies and sitting through lectures while they were compiling. Clearly I hadn&rsquo;t discovered <a href="https://github.com/Homebrew/homebrew" target="_blank">homebrew</a> at this point. From what I can tell Qt and it&rsquo;s python bindings (pyqt) were added to homebrew around the same time I needed them in 2009, go figure!</p>
 
 <h2 id="8230-this-is-now">&#8230; This is now!</h2>
 
-<p>This week I decided to take the latest Qt for a spin and see what I&#8217;d been missing all these years!</p>
+<p>This week I decided to take the latest Qt for a spin and see what I&rsquo;d been missing all these years!</p>
 
 <p>I found their <a href="https://wiki.qt.io/Install_Qt_5_on_Ubuntu" target="_blank">wiki</a> which points to the official download page where you can get an installer for QtCreator with instructions on how to chmod/run it. This made me feel a bit uncomfortable for a number of reasons (no signed deb/rpm, no https and twas binary so no source and no insight into what the installer actually does).</p>
 
-<p>I thought that it&#8217;d be a nice idea to run the installer inside a container. This isn&#8217;t a perfect buffer from potential threats of executing untrusted code (see security notes below) but at least it&#8217;s a first step.</p>
+<p>I thought that it&rsquo;d be a nice idea to run the installer inside a container. This isn&rsquo;t a perfect buffer from potential threats of executing untrusted code (see security notes below) but at least it&rsquo;s a first step.</p>
 
 <p><img class=" size-full wp-image-163 aligncenter" src="/wp-content/uploads/2015/11/docker_qt.png" alt="docker_qt" width="1973" height="1080" srcset="/wp-content/uploads/2015/11/docker_qt.png 1973w, /wp-content/uploads/2015/11/docker_qt-300x164.png 300w, /wp-content/uploads/2015/11/docker_qt-768x420.png 768w, /wp-content/uploads/2015/11/docker_qt-1024x561.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></p>
 
-<p>Here&#8217;s my plan:</p>
+<p>Here&rsquo;s my plan:</p>
 
 <ul>
 <li>Build a base image (qt:base) with all dependencies installed and a copy of the installer.</li>
@@ -207,31 +205,54 @@ That was then&#8230; I was in college, I had a macbook at the time and I was toy
 <li>Commit that container to another image (qt:installed).</li>
 </ul>
 
-<p>I hate installation wizards. Maybe I&#8217;ve been spoiled by wealth of scriptable packaging and configuration tools available on Linux. Hopefully as I learn more about how QtCreator works, I&#8217;ll find a way to automate away the configuration steps (hell, I might even find the time to write a Dockerfile that builds it from source so that I can save other people the trouble!)</p>
+<p>I hate installation wizards. Maybe I&rsquo;ve been spoiled by wealth of scriptable packaging and configuration tools available on Linux. Hopefully as I learn more about how QtCreator works, I&rsquo;ll find a way to automate away the configuration steps (hell, I might even find the time to write a Dockerfile that builds it from source so that I can save other people the trouble!)</p>
 
-<p>In the meantime, I&#8217;ll have what I need: an image that I can run QtCreator from whenever I have any GUI development on hand. Lets get to it!</p>
+<p>In the meantime, I&rsquo;ll have what I need: an image that I can run QtCreator from whenever I have any GUI development on hand. Lets get to it!</p>
 
 <h2 id="building-qtcreator-inside-a-container">Building QtCreator inside a container</h2>
 
-<p>Here&#8217;s the dockerfile I wrote:</p>
+<p>Here&rsquo;s the dockerfile I wrote:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install lots of packages</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> apt-get install -y libxcb-keysyms1-dev libxcb-image0-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libxcb-shm0-dev libxcb-icccm4-dev libxcb-sync0-dev libxcb-xfixes0-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libxcb-shape0-dev libxcb-randr0-dev libxcb-render-util0-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libfontconfig1-dev libfreetype6-dev libx11-dev libxext-dev libxfixes-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libxi-dev libxrender-dev libxcb1-dev libx11-xcb-dev libxcb-glx0-dev x11vnc <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    xauth build-essential mesa-common-dev libglu1-mesa-dev libxkbcommon-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    libxcb-xkb-dev libxslt1-dev libgstreamer-plugins-base0.10-dev wget<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Download script</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> chmod +x ./qt-unified-linux-x64-online.run<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run installer as entrypoint</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> ./qt-unified-linux-x64-online.run</span></code></pre></div>
+<p>Here&rsquo;s the commands to get things working:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Build base image</span>
+docker build -t qt:base .
 
-<script src="https://gist.github.com/nicr9/c945194f7f0227eb8c22.js"></script>
+<span style="color:#75715e"># N.B. This is an important step any time you&#39;re running GUIs in containers</span>
+xhost local:root
 
-<p>Here&#8217;s the commands to get things working:</p>
+<span style="color:#75715e"># Run installation wizard, save to new image, delete left over container</span>
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY -v /dev/shm:/dev/shm --device /dev/dri --name qt_install --entrypoint /qt-unified-linux-x64-online.run qt:base
+docker commit qt_install qt:latest
+docker rm qt_install
 
-<script src="https://gist.github.com/nicr9/0b49f576efcf606ee325.js"></script>
-
+<span style="color:#75715e"># Then you can run QtCreator with this monster of a command</span>
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY -v /dev/shm:/dev/shm -v ~/src:/root --device /dev/dri --name qt_creator --rm --entrypoint /opt/Qt/Tools/QtCreator/bin/qtcreator qt:latest</code></pre></div>
 <h2 id="problems-encountered">Problems encountered</h2>
 
 <p>When I was trying to get this working, there were a few things that broke straight away.</p>
 
-<p>This error in particular appeared straight away and meant that both the installer and QtCreator wouldn&#8217;t accept keyboard input at all:</p>
-
-<pre>xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
+<p>This error in particular appeared straight away and meant that both the installer and QtCreator wouldn&rsquo;t accept keyboard input at all:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
 Qt: Failed to create XKB context!
-Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .</pre>
-
-<p>When launching QtCreator it also warned me with pop ups about a few libs it couldn&#8217;t find like libxslt and libgstapp.</p>
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add <span style="color:#e6db74">&#39;:&#39;</span> as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .</code></pre></div>
+<p>When launching QtCreator it also warned me with pop ups about a few libs it couldn&rsquo;t find like libxslt and libgstapp.</p>
 
 <p>I was able to solve these problems by adding a few more packages to the list that are installed in the Dockerfile: libxkbcommon-dev, libxcb-xkb-dev, libxslt1-dev and libgstreamer-plugins-base0.10-dev.</p>
 
@@ -239,19 +260,19 @@ Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search pa
 
 <p>As for security implications of running untrusted code in a container; Docker is such a fast evolving field right now, it makes it difficult to stay on top of the potential security implications.</p>
 
-<p>My first thought was that it might be a bad idea to execute code using the root inside the container given that it had access to stuff I didn&#8217;t fully understand: /tmp/.X11-unix, /dev/shm and /dev/dri.</p>
+<p>My first thought was that it might be a bad idea to execute code using the root inside the container given that it had access to stuff I didn&rsquo;t fully understand: /tmp/.X11-unix, /dev/shm and /dev/dri.</p>
 
 <p>To understand the risks a bit better I had to find some reading material.</p>
 
-<p>The docker docs have <a href="http://docs.docker.com/engine/articles/security/" target="_blank">a page</a> which gives a broad outline of security concerns. This was a good read but it didn&#8217;t give any hints regarding my own concerns other than I should run as non-root user. I&#8217;ve tried this but I need to find a way to allow installation as non-root user without adding complexity of multiple docker build steps (things are bad enough as they are). I&#8217;d say it just requires some permissions changes inside the container, I&#8217;ll poke around and update here when I&#8217;ve got it working.</p>
+<p>The docker docs have <a href="http://docs.docker.com/engine/articles/security/" target="_blank">a page</a> which gives a broad outline of security concerns. This was a good read but it didn&rsquo;t give any hints regarding my own concerns other than I should run as non-root user. I&rsquo;ve tried this but I need to find a way to allow installation as non-root user without adding complexity of multiple docker build steps (things are bad enough as they are). I&rsquo;d say it just requires some permissions changes inside the container, I&rsquo;ll poke around and update here when I&rsquo;ve got it working.</p>
 
-<p>Took me a while to find a decent article with details I was looking for, written by someone who knows what they&#8217;re talking about. Stéphane Graber discusses <a href="https://www.stgraber.org/2014/02/09/lxc-1-0-gui-in-containers/" target="_blank">some of the problems with access to X11 and things in /dev</a> on his blog. Essentially, GUIs running in containers could still eavesdrop on the host while the container is running but when the container is off, nothing you installed in there will continue running. FYI: Examples of eavesdropping permitted by giving untrusted code access to X might include key logging or ability to take screenshots.</p>
+<p>Took me a while to find a decent article with details I was looking for, written by someone who knows what they&rsquo;re talking about. Stéphane Graber discusses <a href="https://www.stgraber.org/2014/02/09/lxc-1-0-gui-in-containers/" target="_blank">some of the problems with access to X11 and things in /dev</a> on his blog. Essentially, GUIs running in containers could still eavesdrop on the host while the container is running but when the container is off, nothing you installed in there will continue running. FYI: Examples of eavesdropping permitted by giving untrusted code access to X might include key logging or ability to take screenshots.</p>
 
-<p>If anyone has suggestions regarding container security, please <a href="https://twitter.com/nicr9_" target="_blank">reach out to me</a>! Container security is a pretty cool topic and I&#8217;m really interested to hear your thoughts!</p>
+<p>If anyone has suggestions regarding container security, please <a href="https://twitter.com/nicr9_" target="_blank">reach out to me</a>! Container security is a pretty cool topic and I&rsquo;m really interested to hear your thoughts!</p>
 
 <h2 id="more-about-guis-in-containers">More about GUIs in containers</h2>
 
-<p>For anyone who hasn&#8217;t seen &#8217;em yet, Jessie Frazelle (a core contributor to Docker) has some great <a href="https://blog.jessfraz.com/post/docker-containers-on-the-desktop/" target="_blank">blog posts</a> and <a href="https://youtu.be/1qlLUf7KtAw" target="_blank">conference</a> <a href="https://youtu.be/GsLZz8cZCzc" target="_blank">talks</a> about running GUI applications inside containers! I looked to these to get some inspiration, you should check &#8217;em out too!</p>
+<p>For anyone who hasn&rsquo;t seen &lsquo;em yet, Jessie Frazelle (a core contributor to Docker) has some great <a href="https://blog.jessfraz.com/post/docker-containers-on-the-desktop/" target="_blank">blog posts</a> and <a href="https://youtu.be/1qlLUf7KtAw" target="_blank">conference</a> <a href="https://youtu.be/GsLZz8cZCzc" target="_blank">talks</a> about running GUI applications inside containers! I looked to these to get some inspiration, you should check &lsquo;em out too!</p>
 
 <p>Aquameerkat also had a <a href="https://linuxmeerkat.wordpress.com/2014/10/17/running-a-gui-application-in-a-docker-container/" target="_blank">great article</a> that gives a crash course on the X server, what displays are, and how to run headless GUIs in docker containers for testing purposes (not what I was doing here but interesting all the same!).</p>
 
@@ -259,19 +280,13 @@ Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search pa
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/uncategorised/'>Uncategorised</a></div>
-<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>docker</a>, <a class='tag' href='/tags/qt/'>qt</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>docker</a></div>
 
   </div>
 </footer>

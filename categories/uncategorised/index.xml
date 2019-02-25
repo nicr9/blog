@@ -53,17 +53,6 @@ He lamented how you need to google around for tutorials any time you wanted to w
     </item>
     
     <item>
-      <title>Running QtCreator in Docker</title>
-      <link>http://blog.nicro.land/p87/</link>
-      <pubDate>Sun, 06 Dec 2015 19:53:55 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p87/</guid>
-      <description>Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
-The first thing I ever tried installing from source was Qt. For those who don&amp;#8217;t know, Qt is a cross platform framework for writing GUI applications.
-That was then&amp;#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.</description>
-    </item>
-    
-    <item>
       <title>Weekly Notes – 18/7/15</title>
       <link>http://blog.nicro.land/p10/</link>
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
