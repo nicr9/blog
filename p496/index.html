@@ -2,13 +2,13 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&#8217;t be confident of the software&#8217;s origins and thought it&#8217;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&#8217;t everything running in Docker secure? First things first, let&#8217;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+<meta name='description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex'>
-<meta property='og:description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&#8217;t be confident of the software&#8217;s origins and thought it&#8217;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&#8217;t everything running in Docker secure? First things first, let&#8217;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+<meta property='og:description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
 <meta property='og:url' content='http://blog.nicro.land/p496/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='security'><meta property='article:published_time' content='2016-02-27T11:39:47Z'/><meta property='article:modified_time' content='2016-02-27T11:39:47Z'/><meta name='twitter:card' content='summary'>
@@ -173,99 +173,124 @@ But isn&#8217;t everything running in Docker secure? First things first, let&#82
   <div class='container entry-content'>
   
 
-<p>Recently I <a href="http://blog.nicro.land/p87/" target="_blank">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&#8217;t be confident of the software&#8217;s origins and thought it&#8217;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
+<p>Recently I <a href="http://blog.nicro.land/p87/" target="_blank">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
 
 <p><img class="alignnone size-full wp-image-833" src="/wp-content/uploads/2016/02/docker_and_xorg2.png" alt="docker_and_xorg" width="2000" height="901" srcset="/wp-content/uploads/2016/02/docker_and_xorg2.png 2000w, /wp-content/uploads/2016/02/docker_and_xorg2-300x135.png 300w, /wp-content/uploads/2016/02/docker_and_xorg2-768x346.png 768w, /wp-content/uploads/2016/02/docker_and_xorg2-1024x461.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" /></p>
 
-<h2 id="but-isn-8217-t-everything-running-in-docker-secure">But isn&#8217;t everything running in Docker secure?</h2>
+<h2 id="but-isn-t-everything-running-in-docker-secure">But isn&rsquo;t everything running in Docker secure?</h2>
 
-<p>First things first, let&#8217;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</p>
+<p>First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</p>
 
-<p>One of the major selling points of containers is the various forms of isolation that they provide (here&#8217;s Solomon&#8217;s <a href="http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84" target="_blank">list from DockerConEu</a>). Docker&#8217;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
+<p>One of the major selling points of containers is the various forms of isolation that they provide (here&rsquo;s Solomon&rsquo;s <a href="http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84" target="_blank">list from DockerConEu</a>). Docker&rsquo;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
 
-<p>This means that you&#8217;re free to provide containers with access to things like <em>/var/run/docker.sock</em> which means they can control the docker engine running on the host. People do this all the time, e.g., if they&#8217;re running Continuous Integration software inside a container that wants to execute build plans in other containers. That doesn&#8217;t mean that it&#8217;s particularly safe if you don&#8217;t trust code running in those build plans. Processes in these containers could use this to become root on the host (here&#8217;s a <a href="http://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54" target="_blank">pretty succinct explanation</a> of how this works), although it&#8217;s my understanding that the new <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/" target="_blank">support for user namespaces</a> in Docker 1.10 nips this in the bud.</p>
+<p>This means that you&rsquo;re free to provide containers with access to things like <code>/var/run/docker.sock</code> which means they can control the docker engine running on the host. People do this all the time, e.g., if they&rsquo;re running Continuous Integration software inside a container that wants to execute build plans in other containers. That doesn&rsquo;t mean that it&rsquo;s particularly safe if you don&rsquo;t trust code running in those build plans. Processes in these containers could use this to become root on the host (here&rsquo;s a <a href="http://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54" target="_blank">pretty succinct explanation</a> of how this works), although it&rsquo;s my understanding that the new <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/" target="_blank">support for user namespaces</a> in Docker 1.10 nips this in the bud.</p>
 
-<p>This brings me back to running  GUI applications in Docker. To display the GUI they need to be able to talk to the X server (Xorg) running on your host through a socket file; _/tmp/.X11-unix._ This also provides it with access to a smorgasbord of things that it can use against you.</p>
+<p>This brings me back to running  GUI applications in Docker. To display the GUI they need to be able to talk to the X server (Xorg) running on your host through a socket file; <code>/tmp/.X11-unix</code>. This also provides it with access to a smorgasbord of things that it can use against you.</p>
 
-<p>The problem is that Xorg is in charge of more than just what gets displayed on the screen, it also handles input from keyboard/mouse. It does have a security layer but it&#8217;s kinda tacked on and doesn&#8217;t support fine grain control over which resources are accessible.</p>
+<p>The problem is that Xorg is in charge of more than just what gets displayed on the screen, it also handles input from keyboard/mouse. It does have a security layer but it&rsquo;s kinda tacked on and doesn&rsquo;t support fine grain control over which resources are accessible.</p>
 
 <h2 id="what-can-i-do-about-it">What can I do about it?</h2>
 
-<p>So how do we know when access to certain resources is a bad idea? I don&#8217;t believe it&#8217;s an exaggeration to say that every piece of software that serves a practical purpose also comes with potential security implications. Security omniscience (knowing every facet of the software we run, understanding how it relates to security and how these facets interrelate) is impractical, for this reason security omnipotence (the power to be 100% secure) is impossible.</p>
+<p>So how do we know when access to certain resources is a bad idea? I don&rsquo;t believe it&rsquo;s an exaggeration to say that every piece of software that serves a practical purpose also comes with potential security implications. Security omniscience (knowing every facet of the software we run, understanding how it relates to security and how these facets interrelate) is impractical, for this reason security omnipotence (the power to be 100% secure) is impossible.</p>
 
-<p>The best we can do is to constantly seek clarity on what it is that our software does and (if at all possible) how it does it. I&#8217;ve found that as a result of adopting this policy, an intuition regarding security will naturally begin to develop. It all boils down to this: never stop asking questions.</p>
+<p>The best we can do is to constantly seek clarity on what it is that our software does and (if at all possible) how it does it. I&rsquo;ve found that as a result of adopting this policy, an intuition regarding security will naturally begin to develop. It all boils down to this: never stop asking questions.</p>
 
-<p>So the next question to ask is&#8230;</p>
+<p>So let&rsquo;s start asking the real questions&hellip;</p>
 
 <h2 id="how-can-i-fuck-over-the-end-user">How can I fuck over the end-user?</h2>
 
 <p>After poking around for a bit I realised that containers with access to Xorg could indeed do some scary things (at least while the container was still running.)</p>
 
-<p>So I decided I&#8217;d throw together a few demos of containers that spy on/manipulate their host. These are really basic! They&#8217;re purely to remind you that just because you&#8217;re running something in a container doesn&#8217;t mean you&#8217;re not exposed to potential attacks.</p>
+<p>So I decided I&rsquo;d throw together a few demos of containers that spy on/manipulate their host. These are really basic! They&rsquo;re purely to remind you that just because you&rsquo;re running something in a container doesn&rsquo;t mean you&rsquo;re not exposed to potential attacks.</p>
 
 <h3 id="screenshots">Screenshots</h3>
 
-<p>Imagemagik is used a lot on Linux to take screenshots and it does this by interacting with X. Ergo; if your container has access to X on the host, than it can screenshot the host (and without any particular form of warning).</p>
+<p>Imagemagik is used a lot on Linux to take screenshots and it does this by interacting with X. Ergo; if your container has access to X on the host, than it can screenshot the host (and without any particular form of warning/indication to users).</p>
 
-<p>Here&#8217;s a demo dockerfile that screenshots with imagemagik and displays the resulting image with feh:</p>
-
-<script src="https://gist.github.com/nicr9/b239a57f9cc93151cc73.js"></script>
-
-<p>Here&#8217;s the commands needed to get this working:</p>
-
-<script src="https://gist.github.com/nicr9/5950d050744c24a1d7ff.js"></script>
-
-<p>You&#8217;ll notice that the only additional things this container needs is to tell xhost to allow any access from localhost, to mount the X socket and the provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container.</p>
+<p>Here&rsquo;s a demo <code>Dockerfile</code> that screenshots with imagemagik and displays the resulting image with <code>feh</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y imagemagick feh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> import -window root -display :0 /tmp/0.png &amp;&amp; \</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>feh -. /tmp/0.png</code></pre></div>
+<p>Here&rsquo;s the commands needed to get this working:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#75715e"># Build the demo dockerfile</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker build -f Dockerfile.screenshot -t xattacks:screenshot .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Allow Docker processes to access X</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>xhost local:root<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run container that takes a screenshot on the host (imagemagick) and displays it for you (feh)</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY xattacks:screenshot</code></pre></div>
+<p>You&rsquo;ll notice that the only additional things this container needs is to tell <code>xhost</code> to allow any access from localhost, to mount the X socket and provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container so nothing out of the ordinary here&hellip;</p>
 
 <h3 id="toggling-capslock-every-20-minutes">Toggling capslock every 20 minutes</h3>
 
-<p>This example installs xdotool which can be used for (among other things) simulating keypresses. Then it creates a cron that uses xdotool to toggle caps lock every 20 minutes.</p>
+<p>This example installs <code>xdotool</code> which can be used for (among other things) simulating keypresses. Then it creates a <code>cron</code> that uses <code>xdotool</code> to toggle caps lock every 20 minutes.</p>
 
-<p>Clearly I&#8217;m some kind of deranged lunatic for coming up with something this nefarious. Use responsibly.</p>
-
-<script src="https://gist.github.com/nicr9/55a6f2ac73cdf3bf33f9.js"></script>
-
-<p>Pretty much the same docker commands for running this container so I won&#8217;t bother including those from now on.</p>
+<p>Clearly I&rsquo;m some kind of deranged lunatic for coming up with something this nefarious. <strong>Please use responsibly</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool key Caps_Lock&#34;</span> &gt; capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> cron -f</span></code></pre></div>
+<p>Pretty much the same docker commands for running this container so I won&rsquo;t bother including those from now on.</p>
 
 <h3 id="peeking-at-the-clipboard">Peeking at the clipboard</h3>
 
-<p>This one is ridiculously easy! Xclip is a tool for read and write access to the various clipboards provided by X. That includes the regular clipboard (Ctrl+c/Ctrl+v), used in the example here, as well as the selection clipboard (highlight/middle mouse button) if you&#8217;re on Linux.</p>
-
-<script src="https://gist.github.com/nicr9/989836942f582ce17610.js"></script>
-
+<p>This one is ridiculously easy! <code>xclip</code> is a tool for read and write access to the various clipboards provided by X. That includes the regular clipboard (<code>Ctrl+c</code>/<code>Ctrl+v</code>), used in the example here, as well as the selection clipboard (highlight/middle mouse button) if you&rsquo;re on Linux.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xclip <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> xclip -o -selection clipboard</span></code></pre></div>
 <h3 id="scripting-mouse-movements">Scripting mouse movements</h3>
 
-<p>Our old friend xdotool can also be used to script mouse movements! Here&#8217;s an example of it moving to certain co-ordinates (15, 15) and clicking, it&#8217;s just a minor modification of the capslock example:</p>
-
-<script src="https://gist.github.com/nicr9/d0d703185da4bc21e471.js"></script>
-
-<p>On it&#8217;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&#8217;d like to click to cause the most damage.</p>
+<p>Our old friend <code>xdotool</code> can also be used to script mouse movements! Here&rsquo;s an example of it moving to certain co-ordinates (15, 15) and clicking, it&rsquo;s just a minor modification of the capslock example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool movemouse 15 15 click 1&#34;</span> &gt; mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span><span style="color:#e6db74"> cron -f</span></code></pre></div>
+<p>On it&rsquo;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&rsquo;d like to click to cause the most damage.</p>
 
 <h3 id="what-else">What else?</h3>
 
-<p>We could go further and grant access to other stuff like /dev/input/* (log data from keyboard + mouse), /dev/snd (speakers + microphones) or /dev/video0 (web cams). The possibilities are endless.</p>
+<p>We could go further and grant access to other stuff like <code>/dev/input/*</code> (to log data from keyboard + mouse), <code>/dev/snd</code> (speakers + microphones) or <code>/dev/video0</code> (web cams). The possibilities are endless.</p>
 
-<p>With all of this we could put together a <a href="https://www.google.ie/search?q=remote+access+trojan" target="_blank">RAT</a>!&#8230; But at the risk of being put on some kinda watch-list, I think I&#8217;ll just leave that as an exercise for the reader&#8230;</p>
+<p>With all of this we could put together a <a href="https://www.google.ie/search?q=remote+access+trojan" target="_blank">RAT</a>!&hellip; But at the risk of being put on some kinda watch-list, I think I&rsquo;ll just leave that as an exercise for the reader&hellip;</p>
 
 <h2 id="conclusions">Conclusions</h2>
 
-<p>The purpose of this article is to inform you of what you&#8217;re opening yourself up to when running GUIs in containers. Don&#8217;t do it when you&#8217;re working on anything sensitive on the host!</p>
+<p>The purpose of this article is to inform you of what you&rsquo;re opening yourself up to when running GUIs in containers. Don&rsquo;t do it when you&rsquo;re working on anything sensitive on the host!</p>
 
-<p>If you don&#8217;t actually need to interact with the GUI itself (maybe you&#8217;re considering your testing options) then you might get some of the benefits of containerisation by running these applications headless (a lot of people <a href="http://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html" target="_blank">containerise Selenium tests</a> this way).</p>
+<p>If you don&rsquo;t actually need to interact with the GUI itself (maybe you&rsquo;re considering your testing options) then you might get some of the benefits of containerisation by running these applications headless (a lot of people <a href="http://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html" target="_blank">containerise Selenium tests</a> this way).</p>
 
-<p><strong>Silver lining</strong>: Programs running in containers need a some kind of exploit to escape the confines of that container (like the /var/run/docker.sock thing I talked about at the beginning). This means that most of the time we can be assured that as soon as we stop the container running our hypothetical RAT, it will be unable to continue spying on us (it&#8217;s the equivalent of pulling the plug.)</p>
+<p><strong>Silver lining</strong>: Programs running in containers need some kind of exploit to escape the confines of that container (like the <code>/var/run/docker.sock</code> thing I talked about at the beginning). This means that most of the time we can be assured that as soon as we stop the container running our hypothetical RAT, it will be unable to continue spying on us (it&rsquo;s the equivalent of pulling the plug.)</p>
 
 </div>
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/uncategorised/'>Uncategorised</a></div>
-<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>

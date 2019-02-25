@@ -48,8 +48,8 @@ This is great when I&amp;#8217;ve spent a lot of time learning something new and
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
       
       <guid>http://blog.nicro.land/p496/</guid>
-      <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;#8217;t be confident of the software&amp;#8217;s origins and thought it&amp;#8217;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&amp;#8217;t everything running in Docker secure? First things first, let&amp;#8217;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
+      <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;rsquo;t be confident of the software&amp;rsquo;s origins and thought it&amp;rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&amp;rsquo;t everything running in Docker secure? First things first, let&amp;rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
     </item>
     
     <item>
