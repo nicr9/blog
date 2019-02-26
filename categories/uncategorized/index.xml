@@ -20,27 +20,5 @@
 At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;#8217;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!</description>
     </item>
     
-    <item>
-      <title>Weekly Notes – 26/7/15</title>
-      <link>http://blog.nicro.land/p50/</link>
-      <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p50/</guid>
-      <description>Setup.py and rpm.spec:
-So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
-Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&amp;#8217;ve used distutils and setuptools in the past) and there&amp;#8217;s a bit of a confusing history regarding which tool is recommended.</description>
-    </item>
-    
-    <item>
-      <title>Hello world!</title>
-      <link>http://blog.nicro.land/p7/</link>
-      <pubDate>Thu, 16 Jul 2015 21:46:52 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p7/</guid>
-      <description>Why I started this blog
-I&amp;#8217;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
-I&amp;#8217;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;#8217;ll help others who run into the same stumbling blocks on their own journey.</description>
-    </item>
-    
   </channel>
 </rss>

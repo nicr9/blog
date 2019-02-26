@@ -2,22 +2,18 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='This is the first post in a series that I&#8217;ll (hopefully) send out every week. It&#8217;ll cover the problems I have during the week as well as how I overcome those issues.
+<meta name='description' content='This is the first post in a series that I&rsquo;ll (hopefully) send out every week. It&rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
 Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
-Docker machine &#43; docker compose
-https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png
-So I&#8217;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.'>
+Docker machine &#43; docker compose So I&rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Weekly Notes – 18/7/15 • Geek w/ god complex'>
-<meta property='og:description' content='This is the first post in a series that I&#8217;ll (hopefully) send out every week. It&#8217;ll cover the problems I have during the week as well as how I overcome those issues.
+<meta property='og:description' content='This is the first post in a series that I&rsquo;ll (hopefully) send out every week. It&rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
 Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
-Docker machine &#43; docker compose
-https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png
-So I&#8217;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.'>
+Docker machine &#43; docker compose So I&rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.'>
 <meta property='og:url' content='http://blog.nicro.land/p10/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='compose'><meta property='article:tag' content='docker'><meta property='article:tag' content='machine'><meta property='article:published_time' content='2015-07-19T10:18:48Z'/><meta property='article:modified_time' content='2015-07-19T10:18:48Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2015-07-19T10:18:48Z'/><meta property='article:modified_time' content='2015-07-19T10:18:48Z'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.54.0" />
 
@@ -74,25 +70,19 @@ So I&#8217;ve been playing around with docker-machine while working on a pet pr
   <ul class='list taxonomy-cloud'><li>
         <a href='/tags/python/' style='font-size:1.3333333333333333em'>Python</a>
       </li><li>
-        <a href='/tags/compose/' style='font-size:1em'>compose</a>
-      </li><li>
         <a href='/tags/docker/' style='font-size:2em'>docker</a>
       </li><li>
         <a href='/tags/golang/' style='font-size:1em'>golang</a>
       </li><li>
         <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>lifehacks</a>
       </li><li>
-        <a href='/tags/linux/' style='font-size:1em'>linux</a>
-      </li><li>
-        <a href='/tags/machine/' style='font-size:1em'>machine</a>
+        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>linux</a>
       </li><li>
         <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
       </li><li>
-        <a href='/tags/rpm.spec/' style='font-size:1em'>rpm.spec</a>
+        <a href='/tags/python/' style='font-size:1em'>python</a>
       </li><li>
         <a href='/tags/security/' style='font-size:1em'>security</a>
-      </li><li>
-        <a href='/tags/setup.py/' style='font-size:1em'>setup.py</a>
       </li></ul>
 </div>
 
@@ -177,77 +167,49 @@ So I&#8217;ve been playing around with docker-machine while working on a pet pr
   
 
   <div class='container entry-content'>
-  <p>This is the first post in a series that I&#8217;ll (hopefully) send out every week. It&#8217;ll cover the problems I have during the week as well as how I overcome those issues.</p>
+  
+
+<p>This is the first post in a series that I&rsquo;ll (hopefully) send out every week. It&rsquo;ll cover the problems I have during the week as well as how I overcome those issues.</p>
 
 <p>Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!</p>
 
-<p><strong>Docker machine + docker compose</strong></p>
+<h2 id="docker-machine-docker-compose">Docker machine + docker compose</h2>
 
-<p><a href="https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png" target="_blank">https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png</a></p>
+<p><img src="/wp-content/uploads/2015/07/docker-machine.png" alt="" /></p>
 
-<p>So I&#8217;ve been playing around with <a href="https://github.com/docker/machine" target="_blank">docker-machine</a> while working on a pet project of mine: <a href="https://github.com/nicr9/daftpunk" target="_blank">daftpunk</a>.</p>
+<p>So I&rsquo;ve been playing around with <a href="https://github.com/docker/machine" target="_blank"><code>docker-machine</code></a> while working on a pet project of mine: <a href="https://github.com/nicr9/daftpunk" target="_blank">daftpunk</a>.</p>
 
-<p>For those of you that aren&#8217;t familiar: docker-machine is a tool to manage hosts running the docker-engine (the server part of docker that actually manages containers). You can use it to create VMs locally using virtual box or vmware that run boot2docker. It can also create instances on various cloud providers and have them all set up and ready to go in minutes. It&#8217;s been really handy, I&#8217;ve used it to create an EC2 instance to host all the components of my project as containers.</p>
+<p>For those of you that aren&rsquo;t familiar: <code>docker-machine</code> is a tool to manage hosts running the docker-engine (the server part of docker that actually manages containers). You can use it to create VMs locally using virtual box or vmware that run boot2docker. It can also create instances on various cloud providers and have them all set up and ready to go in minutes. It&rsquo;s been really handy, I&rsquo;ve used it to create an EC2 instance to host all the components of my project as containers.</p>
 
-<p>Because daftpunk sports a web front end (written using flask), I thought it would be cool to mount all the flask-related code as a shared volume. That way I could make changes locally and they would be synced to the container hosting the flask app in AWS. Since changes to a flask app would reload the debug server automatically it seemed like a pretty neat way of testing out any changes I was making; at least, in theory. Here&#8217;s a mock up of the docker-compose config I&#8217;d need to get this to work:</p>
+<p>Because daftpunk sports a web front end (written using flask), I thought it would be cool to mount all the flask-related code as a shared volume. That way I could make changes locally and they would be synced to the container hosting the flask app in AWS. Since changes to a flask app would reload the debug server automatically it seemed like a pretty neat way of testing out any changes I was making; at least, in theory. Here&rsquo;s a mock up of the docker-compose config I&rsquo;d need to get this to work:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">web:
+ build: frontend
+ volumes:
+ - frontend: /opt/frontend
+ ports:
+ - <span style="color:#ae81ff">5000</span>:<span style="color:#ae81ff">5000</span></code></pre></div>
+<p>It worked just fine when I ran it against my local docker-engine but I spent some time wrestling with the setup when I switched to AWS. The flask server wouldn&rsquo;t start and when I investigated it seemed that the mount point in the container was empty. Eventually it dawned on me. You just can&rsquo;t mount files/folders to a remote container.</p>
 
-<p>[code]</p>
+<p>This makes perfect sense once I stopped to think about it for a minute. What would happen if I turned off my local box? Let&rsquo;s say for the sake of the argument that the remote container would keep the files it had; those files might be important to it&rsquo;s operation after all. But things would get complicated if I tried to reconnect to the remote engine. Should it try to find the same stuff on my host and sync with it? This raises questions about merging file changes and that&rsquo;s really the realm of <a href="https://en.wikipedia.org/wiki/Distributed_revision_control" target="_blank">DVCS</a>&rsquo; like git. Too complicated. Much simpler to just leave that functionality out when working with remote docker-engines.</p>
 
-<p>web:</p>
-
-<p>build: frontend</p>
-
-<p>volumes:</p>
-
-<p>&#8211; frontend:/opt/frontend</p>
-
-<p>ports:</p>
-
-<p>&#8211; 5000:5000</p>
-
-<p>[/code]</p>
-
-<p>It worked just fine when I ran it against my local docker-engine but I spent some time wrestling with the setup when I switched to AWS. The flask server wouldn&#8217;t start and when I investigated it seemed that the mount point in the container was empty. Eventually it dawned on me. You just can&#8217;t mount files/folders to a remote container.</p>
-
-<p>This makes perfect sense once I stopped to think about it for a minute. What would happen if I turned off my local box? Let&#8217;s say for the sake of the argument that the remote container would keep the files it had; those files might be important to it&#8217;s operation after all. But things would get complicated if I tried to reconnect to the remote engine. Should it try to find the same stuff on my host and sync with it? This raises questions about merging file changes and that&#8217;s really the realm of <a href="https://en.wikipedia.org/wiki/Distributed_revision_control" target="_blank">DVCS</a>&#8216; like git. Too complicated. Much simpler to just leave that functionality out when working with remote docker-engines.</p>
-
-<p>So what&#8217;s the best way to reload the web front end? Well first I needed to add the front end code when I&#8217;m building the image instead of mounting it when I&#8217;m running the container. In the docker-compose.yaml file I just remove the volumes section and I add this to frontend/Dockerfile:</p>
-
-<p>[code]</p>
-
-<p>ADD . /opt/frontend</p>
-
-<p>[/code]</p>
-
+<p>So what&rsquo;s the best way to reload the web front end? Well first I needed to add the front end code when I&rsquo;m building the image instead of mounting it when I&rsquo;m running the container. In the <code>docker-compose.yaml</code> file I just remove the volumes section and I add this to frontend/<code>Dockerfile</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">ADD</span><span style="color:#e6db74"> . /opt/frontend</span></code></pre></div>
 <p>Then any time I want to test new changes I can use docker-compose to rebuild and redeploy only the front end container, like so:</p>
-
-<p>[code language=&#8221;bash&#8221;]</p>
-
-<p>docker-compose build web</p>
-
-<p>docker-compose up web</p>
-
-<p>[/code]</p>
-
-<p>This takes a little bit longer but I don&#8217;t have to worry about syncing files to remote hosts.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose build web
+$ docker-compose up web</code></pre></div>
+<p>This takes a little bit longer but I don&rsquo;t have to worry about syncing files to remote hosts.</p>
 
 </div>
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/uncategorised/'>Uncategorised</a></div>
-<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/compose/'>compose</a>, <a class='tag' href='/tags/docker/'>docker</a>, <a class='tag' href='/tags/machine/'>machine</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>docker</a></div>
 
   </div>
 </footer>

@@ -2,18 +2,16 @@
 <html lang='en'><head>
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<meta name='description' content='Setup.py and rpm.spec:
-So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
-Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&#8217;ve used distutils and setuptools in the past) and there&#8217;s a bit of a confusing history regarding which tool is recommended.'>
+<meta name='description' content='setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&rsquo;ve used distutils and setuptools in the past) and there&rsquo;s a bit of a confusing history regarding which tool is recommended.'>
 <meta name='theme-color' content='#ffcd00'>
 
 <meta property='og:title' content='Weekly Notes – 26/7/15 • Geek w/ god complex'>
-<meta property='og:description' content='Setup.py and rpm.spec:
-So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
-Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&#8217;ve used distutils and setuptools in the past) and there&#8217;s a bit of a confusing history regarding which tool is recommended.'>
+<meta property='og:description' content='setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&rsquo;ve used distutils and setuptools in the past) and there&rsquo;s a bit of a confusing history regarding which tool is recommended.'>
 <meta property='og:url' content='http://blog.nicro.land/p50/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='rpm.spec'><meta property='article:tag' content='setup.py'><meta property='article:published_time' content='2015-07-26T12:06:03Z'/><meta property='article:modified_time' content='2015-07-26T12:06:03Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='linux'><meta property='article:tag' content='python'><meta property='article:published_time' content='2015-07-26T12:06:03Z'/><meta property='article:modified_time' content='2015-07-26T12:06:03Z'/><meta name='twitter:card' content='summary'>
 
 <meta name="generator" content="Hugo 0.54.0" />
 
@@ -70,25 +68,19 @@ Most Python tools are packaged by writing a `setup.py` script. There are actuall
   <ul class='list taxonomy-cloud'><li>
         <a href='/tags/python/' style='font-size:1.3333333333333333em'>Python</a>
       </li><li>
-        <a href='/tags/compose/' style='font-size:1em'>compose</a>
-      </li><li>
         <a href='/tags/docker/' style='font-size:2em'>docker</a>
       </li><li>
         <a href='/tags/golang/' style='font-size:1em'>golang</a>
       </li><li>
         <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>lifehacks</a>
       </li><li>
-        <a href='/tags/linux/' style='font-size:1em'>linux</a>
-      </li><li>
-        <a href='/tags/machine/' style='font-size:1em'>machine</a>
+        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>linux</a>
       </li><li>
         <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
       </li><li>
-        <a href='/tags/rpm.spec/' style='font-size:1em'>rpm.spec</a>
+        <a href='/tags/python/' style='font-size:1em'>python</a>
       </li><li>
         <a href='/tags/security/' style='font-size:1em'>security</a>
-      </li><li>
-        <a href='/tags/setup.py/' style='font-size:1em'>setup.py</a>
       </li></ul>
 </div>
 
@@ -173,77 +165,56 @@ Most Python tools are packaged by writing a `setup.py` script. There are actuall
   
 
   <div class='container entry-content'>
-  <p><strong>Setup.py and rpm.spec:</strong></p>
+  
+
+<h3 id="setup-py-and-rpm-spec"><code>setup.py</code> and <code>rpm.spec</code></h3>
 
 <p><img class="alignnone" src="https://rkuska.fedorapeople.org/pyp2rpm.png" alt="https://rkuska.fedorapeople.org/pyp2rpm.png" /></p>
 
 <p>So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.</p>
 
-<p>Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&#8217;ve used distutils and setuptools in the past) and there&#8217;s a bit of a confusing <a href="http://stackoverflow.com/a/14753678" target="_blank">history regarding which tool is recommended</a>. I mostly use setuptools.</p>
+<p>Python tools are generally packaged by writing a <code>setup.py</code> script. There are actually a number of tools you can use (I&rsquo;ve used <code>distutils</code> and <code>setuptools</code> in the past) and there&rsquo;s a bit of a confusing <a href="http://stackoverflow.com/a/14753678" target="_blank">history regarding which tool is recommended</a>. I mostly use <code>setuptools</code>.</p>
 
-<p>Most (all?) of the software we use in work are packaged as RPMs which are built from a `rpm.spec`. I don&#8217;t want to get bogged down in the advantages/disadvantages of this approach here so I&#8217;ll keep this part short: It&#8217;s more powerful than setup.py scripts but not as well documented. It&#8217;s simple enough to install files to specific places that setuptools/distutils don&#8217;t make easy (like an init.d script) or to execute code during build/install. On the other hand you really need to understand the ins and outs of your application when writing an rpm.spec. There are some subtle things that happen when you&#8217;re building RPMs and that can cause a lot of confusion when you&#8217;re starting out.</p>
+<p>Most (all?) of the software we use in work are packaged as RPMs which are built from a <code>rpm.spec</code>. I don&rsquo;t want to get bogged down in the advantages/disadvantages of this approach here so I&rsquo;ll keep this part short: It&rsquo;s more powerful than <code>setup.py</code> scripts but not as well documented. It&rsquo;s simple enough to install files to specific places that <code>setuptools</code>/<code>distutils</code> don&rsquo;t make easy (like an <code>init.d</code> script) or to execute code during build/install. On the other hand you really need to understand the ins and outs of your application when writing an <code>rpm.spec</code>. There are some subtle things that happen when you&rsquo;re building RPMs and that can cause a lot of confusion when you&rsquo;re starting out.</p>
 
-<p>Now, you can use setuptools to <a href="https://docs.python.org/2/distutils/builtdist.html#creating-rpm-packages" target="_blank">create an RPM package</a>, which is handy. It bypasses the weirdness of rpm.specs and setuptools nicely wraps up some of the messy details of where you should install packages so that they&#8217;re available on the python path. Unfortunately, this approach limits you to the features available in setuptools and you lose out on all of rpm.specs flexibility! Just not good enough for my needs.</p>
+<p>Now, you can use <code>setuptools</code> to <a href="https://docs.python.org/2/distutils/builtdist.html#creating-rpm-packages" target="_blank">create an RPM package</a>, which is handy. It bypasses the weirdness of <code>rpm.specs</code> and <code>setuptools</code> nicely wraps up some of the messy details of where you should install packages so that they&rsquo;re available on the python path. Unfortunately, this approach limits you to the features available in <code>setuptools</code> and you lose out on all of <code>rpm.spec</code>s flexibility! Just not good enough for my needs.</p>
 
-<p>What I really wanted to do is write both and mix them together. An rpm.spec that delegates some of the hard work to setup.py and looks after the detailed work itself. Luckily this is possible!</p>
+<p>What I really wanted to do is write both and mix them together. An <code>rpm.spec</code> that delegates some of the hard work to <code>setup.py</code> and looks after the detailed work itself. Luckily this is possible!</p>
 
-<p>Here&#8217;s what you need inside your rpm.spec to get setup.py to do the heavy lifting.</p>
+<p>Here&rsquo;s what you need inside your <code>rpm.spec</code> to get <code>setup.py</code> to do the heavy lifting.</p>
 
 <p>The build phase is pretty self explanitory:</p>
 
-<p>[code]</p>
+<pre><code>%build
+python2.7 setup.py build
+</code></pre>
 
-<p>%build</p>
+<p>Then during install you need to point it to install inside the RPM build directory and to save a list of files to <code>INSTALLED_FILES</code>:</p>
 
-<p>python2.7 setup.py build</p>
+<pre><code>%install
+python2.7 setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+</code></pre>
 
-<p>[/code]</p>
+<p>Then that file list can be passed into the <code>%files</code> directive by using <code>-f</code>. This means that you won&rsquo;t need to maintain a list of files that <code>setup.py</code> will be looking after.</p>
 
-<p>Then during install you need to point it to install inside the RPM build directory and to save a list of files to INSTALLED_FILES:</p>
+<pre><code>%files -f INSTALLED_FILES
+</code></pre>
 
-<p>[code]</p>
-
-<p>%install</p>
-
-<p>python2.7 setup.py install &#8211;root=$RPM_BUILD_ROOT &#8211;record=INSTALLED_FILES</p>
-
-<p>[/code]</p>
-
-<p>Then that file list can be passed into the `%files` directive by using `-f`. This means that you won&#8217;t need to maintain a list of files that setup.py will be looking after.</p>
-
-<p>[code]</p>
-
-<p>%files -f INSTALLED_FILES</p>
-
-<p>[/code]</p>
-
-<p>You can still list any other files that are taken care of by the rpm.spec after the `%files` directive.</p>
+<p>You can still list any other files that are taken care of by the <code>rpm.spec</code> after the <code>%files</code> directive.</p>
 
 <p>If you try this out yourself, you can check that it all worked by listing the files inside the resulting rpm:</p>
-
-<p>[code]</p>
-
-<p>rpm -qpl path/to.rpm</p>
-
-<p>[/code]</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qpl path/to.rpm</code></pre></div>
 </div>
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='categories'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-  
-  <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
-  
-</svg>
-<span class='screen-reader-text'>Categories: </span><a class='category' href='/categories/packaging/'>packaging</a>, <a class='category' href='/categories/uncategorized/'>Uncategorized</a></div>
-<div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
   
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/rpm.spec/'>rpm.spec</a>, <a class='tag' href='/tags/setup.py/'>setup.py</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/linux/'>linux</a>, <a class='tag' href='/tags/python/'>python</a></div>
 
   </div>
 </footer>

@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Python on Geek w/ god complex</title>
+    <title>python on Geek w/ god complex</title>
     <link>http://blog.nicro.land/tags/python/</link>
-    <description>Recent content in Python on Geek w/ god complex</description>
+    <description>Recent content in python on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 20 Jan 2016 23:32:58 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 26 Jul 2015 12:06:03 +0000</lastBuildDate>
     
 	<atom:link href="http://blog.nicro.land/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Nested decorator functions in Python</title>
-      <link>http://blog.nicro.land/p555/</link>
-      <pubDate>Wed, 20 Jan 2016 23:32:58 +0000</pubDate>
+      <title>Weekly Notes – 26/7/15</title>
+      <link>http://blog.nicro.land/p50/</link>
+      <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p555/</guid>
-      <description>When I was at PyConIE last October I was talking with an old friend about Python&amp;rsquo;s decorator functions.
-He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).</description>
-    </item>
-    
-    <item>
-      <title>Golang Ramblings from a Python Dev</title>
-      <link>http://blog.nicro.land/p61/</link>
-      <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/p61/</guid>
-      <description>I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
-
-Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.</description>
+      <guid>http://blog.nicro.land/p50/</guid>
+      <description>setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&amp;rsquo;ve used distutils and setuptools in the past) and there&amp;rsquo;s a bit of a confusing history regarding which tool is recommended.</description>
     </item>
     
   </channel>

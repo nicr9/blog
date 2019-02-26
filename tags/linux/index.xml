@@ -21,5 +21,15 @@
 The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
     </item>
     
+    <item>
+      <title>Weekly Notes – 26/7/15</title>
+      <link>http://blog.nicro.land/p50/</link>
+      <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
+      
+      <guid>http://blog.nicro.land/p50/</guid>
+      <description>setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&amp;rsquo;ve used distutils and setuptools in the past) and there&amp;rsquo;s a bit of a confusing history regarding which tool is recommended.</description>
+    </item>
+    
   </channel>
 </rss>

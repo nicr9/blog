@@ -100,9 +100,8 @@ At first this was because I was on holidays and internet access was spotty at be
       <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
       
       <guid>http://blog.nicro.land/p50/</guid>
-      <description>Setup.py and rpm.spec:
-So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
-Most Python tools are packaged by writing a `setup.py` script. There are actually a number of tools you can use (I&amp;#8217;ve used distutils and setuptools in the past) and there&amp;#8217;s a bit of a confusing history regarding which tool is recommended.</description>
+      <description>setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
+Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&amp;rsquo;ve used distutils and setuptools in the past) and there&amp;rsquo;s a bit of a confusing history regarding which tool is recommended.</description>
     </item>
     
     <item>
@@ -111,11 +110,9 @@ Most Python tools are packaged by writing a `setup.py` script. There are actuall
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
       
       <guid>http://blog.nicro.land/p10/</guid>
-      <description>This is the first post in a series that I&amp;#8217;ll (hopefully) send out every week. It&amp;#8217;ll cover the problems I have during the week as well as how I overcome those issues.
+      <description>This is the first post in a series that I&amp;rsquo;ll (hopefully) send out every week. It&amp;rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
 Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
-Docker machine + docker compose
-https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png
-So I&amp;#8217;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
+Docker machine + docker compose So I&amp;rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
     </item>
     
     <item>
@@ -124,9 +121,8 @@ So I&amp;#8217;ve been playing around with docker-machine while working on a pe
       <pubDate>Thu, 16 Jul 2015 21:46:52 +0000</pubDate>
       
       <guid>http://blog.nicro.land/p7/</guid>
-      <description>Why I started this blog
-I&amp;#8217;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
-I&amp;#8217;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;#8217;ll help others who run into the same stumbling blocks on their own journey.</description>
+      <description>Why I started this blog I&amp;rsquo;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
+I&amp;rsquo;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;rsquo;ll help others who run into the same stumbling blocks on their own journey.</description>
     </item>
     
   </channel>

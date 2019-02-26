@@ -48,11 +48,9 @@ That was then&amp;#8230; I was in college, I had a macbook at the time and I was
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
       
       <guid>http://blog.nicro.land/p10/</guid>
-      <description>This is the first post in a series that I&amp;#8217;ll (hopefully) send out every week. It&amp;#8217;ll cover the problems I have during the week as well as how I overcome those issues.
+      <description>This is the first post in a series that I&amp;rsquo;ll (hopefully) send out every week. It&amp;rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
 Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
-Docker machine + docker compose
-https://raw.githubusercontent.com/docker/machine/master/docs/img/logo.png
-So I&amp;#8217;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
+Docker machine + docker compose So I&amp;rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
     </item>
     
   </channel>
