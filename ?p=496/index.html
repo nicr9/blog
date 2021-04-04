@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex'>
+<meta property='og:description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
+But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+<meta property='og:url' content='http://blog.nicro.land/?p=496/'>
+<meta property='og:site_name' content='Geek w/ god complex'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='security'><meta property='article:published_time' content='2016-02-27T11:39:47Z'/><meta property='article:modified_time' content='2016-02-27T11:39:47Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.81.0" />
+
+  <title>Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex</title>
+  <link rel='canonical' href='http://blog.nicro.land/?p=496/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+  
+
+</head>
+<body class='page type-post has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/shocked-circle.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Nic Roland
+      </a>
+    </h2>
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/about/'>About</a></li><li class='item'>
+  <a href='/posts/'>Posts</a></li><li class='item'>
+  <a href='http://slides.nicro.land'>Slides</a></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/docker/' style='font-size:2em'>docker</a>
+      </li><li>
+        <a href='/tags/golang/' style='font-size:1em'>golang</a>
+      </li><li>
+        <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>lifehacks</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>linux</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/python/' style='font-size:1.6666666666666665em'>python</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+
+</svg>
+</span>
+  <span class='close'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+
+</svg>
+</span>
+</button><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Geek w/ god complex</p><p class='desc site-desc'>and his senseless ramblings...</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Docker Security Risks: GUIs &#43; Xorg</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2016-02-27T11:39:47Z'>27 Feb 2016</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+
+</svg>
+6 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>Recently I <a href="http://blog.nicro.land/p87/">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
+<p><!-- raw HTML omitted --></p>
+<h2 id="but-isnt-everything-running-in-docker-secure">But isn&rsquo;t everything running in Docker secure?</h2>
+<p>First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</p>
+<p>One of the major selling points of containers is the various forms of isolation that they provide (here&rsquo;s Solomon&rsquo;s <a href="http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84">list from DockerConEu</a>). Docker&rsquo;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
+<p>This means that you&rsquo;re free to provide containers with access to things like <code>/var/run/docker.sock</code> which means they can control the docker engine running on the host. People do this all the time, e.g., if they&rsquo;re running Continuous Integration software inside a container that wants to execute build plans in other containers. That doesn&rsquo;t mean that it&rsquo;s particularly safe if you don&rsquo;t trust code running in those build plans. Processes in these containers could use this to become root on the host (here&rsquo;s a <a href="http://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54">pretty succinct explanation</a> of how this works), although it&rsquo;s my understanding that the new <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/">support for user namespaces</a> in Docker 1.10 nips this in the bud.</p>
+<p>This brings me back to running  GUI applications in Docker. To display the GUI they need to be able to talk to the X server (Xorg) running on your host through a socket file; <code>/tmp/.X11-unix</code>. This also provides it with access to a smorgasbord of things that it can use against you.</p>
+<p>The problem is that Xorg is in charge of more than just what gets displayed on the screen, it also handles input from keyboard/mouse. It does have a security layer but it&rsquo;s kinda tacked on and doesn&rsquo;t support fine grain control over which resources are accessible.</p>
+<h2 id="what-can-i-do-about-it">What can I do about it?</h2>
+<p>So how do we know when access to certain resources is a bad idea? I don&rsquo;t believe it&rsquo;s an exaggeration to say that every piece of software that serves a practical purpose also comes with potential security implications. Security omniscience (knowing every facet of the software we run, understanding how it relates to security and how these facets interrelate) is impractical, for this reason security omnipotence (the power to be 100% secure) is impossible.</p>
+<p>The best we can do is to constantly seek clarity on what it is that our software does and (if at all possible) how it does it. I&rsquo;ve found that as a result of adopting this policy, an intuition regarding security will naturally begin to develop. It all boils down to this: never stop asking questions.</p>
+<p>So let&rsquo;s start asking the real questions&hellip;</p>
+<h2 id="how-can-i-fuck-over-the-end-user">How can I fuck over the end-user?</h2>
+<p>After poking around for a bit I realised that containers with access to Xorg could indeed do some scary things (at least while the container was still running.)</p>
+<p>So I decided I&rsquo;d throw together a few demos of containers that spy on/manipulate their host. These are really basic! They&rsquo;re purely to remind you that just because you&rsquo;re running something in a container doesn&rsquo;t mean you&rsquo;re not exposed to potential attacks.</p>
+<h3 id="screenshots">Screenshots</h3>
+<p>Imagemagik is used a lot on Linux to take screenshots and it does this by interacting with X. Ergo; if your container has access to X on the host, than it can screenshot the host (and without any particular form of warning/indication to users).</p>
+<p>Here&rsquo;s a demo <code>Dockerfile</code> that screenshots with imagemagik and displays the resulting image with <code>feh</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y imagemagick feh<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> import -window root -display :0 /tmp/0.png <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>feh -. /tmp/0.png<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Here&rsquo;s the commands needed to get this working:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#75715e"># Build the demo dockerfile</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker build -f Dockerfile.screenshot -t xattacks:screenshot .<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Allow Docker processes to access X</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>xhost local:root<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run container that takes a screenshot on the host (imagemagick) and displays it for you (feh)</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY xattacks:screenshot<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>You&rsquo;ll notice that the only additional things this container needs is to tell <code>xhost</code> to allow any access from localhost, to mount the X socket and provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container so nothing out of the ordinary here&hellip;</p>
+<h3 id="toggling-capslock-every-20-minutes">Toggling capslock every 20 minutes</h3>
+<p>This example installs <code>xdotool</code> which can be used for (among other things) simulating keypresses. Then it creates a <code>cron</code> that uses <code>xdotool</code> to toggle caps lock every 20 minutes.</p>
+<p>Clearly I&rsquo;m some kind of deranged lunatic for coming up with something this nefarious. <strong>Please use responsibly</strong>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool key Caps_Lock&#34;</span> &gt; capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Pretty much the same docker commands for running this container so I won&rsquo;t bother including those from now on.</p>
+<h3 id="peeking-at-the-clipboard">Peeking at the clipboard</h3>
+<p>This one is ridiculously easy! <code>xclip</code> is a tool for read and write access to the various clipboards provided by X. That includes the regular clipboard (<code>Ctrl+c</code>/<code>Ctrl+v</code>), used in the example here, as well as the selection clipboard (highlight/middle mouse button) if you&rsquo;re on Linux.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xclip <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> xclip -o -selection clipboard<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h3 id="scripting-mouse-movements">Scripting mouse movements</h3>
+<p>Our old friend <code>xdotool</code> can also be used to script mouse movements! Here&rsquo;s an example of it moving to certain co-ordinates (15, 15) and clicking, it&rsquo;s just a minor modification of the capslock example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool movemouse 15 15 click 1&#34;</span> &gt; mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>On it&rsquo;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&rsquo;d like to click to cause the most damage.</p>
+<h3 id="what-else">What else?</h3>
+<p>We could go further and grant access to other stuff like <code>/dev/input/*</code> (to log data from keyboard + mouse), <code>/dev/snd</code> (speakers + microphones) or <code>/dev/video0</code> (web cams). The possibilities are endless.</p>
+<p>With all of this we could put together a <a href="https://www.google.ie/search?q=remote+access+trojan">RAT</a>!&hellip; But at the risk of being put on some kinda watch-list, I think I&rsquo;ll just leave that as an exercise for the reader&hellip;</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>The purpose of this article is to inform you of what you&rsquo;re opening yourself up to when running GUIs in containers. Don&rsquo;t do it when you&rsquo;re working on anything sensitive on the host!</p>
+<p>If you don&rsquo;t actually need to interact with the GUI itself (maybe you&rsquo;re considering your testing options) then you might get some of the benefits of containerisation by running these applications headless (a lot of people <a href="http://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html">containerise Selenium tests</a> this way).</p>
+<p><strong>Silver lining</strong>: Programs running in containers need some kind of exploit to escape the confines of that container (like the <code>/var/run/docker.sock</code> thing I talked about at the beginning). This means that most of the time we can be assured that as soon as we stop the container running our hypothetical RAT, it will be unable to continue spying on us (it&rsquo;s the equivalent of pulling the plug.)</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>docker</a>, <a class='tag' href='/tags/security/'>security</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/?p=555/'>
+        <span aria-hidden='true'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>Nested decorator functions in Python</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/?p=992/'>
+        <span class='screen-reader-text'>Next post: </span>A Markdown notes server<span aria-hidden='true'>Next <svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/nicr9' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <title>Twitter icon</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:nicroland9@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/nicroland' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2021 Nic Roland </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+

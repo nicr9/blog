@@ -1,21 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>security on Geek w/ god complex</title>
     <link>http://blog.nicro.land/tags/security/</link>
     <description>Recent content in security on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 27 Feb 2016 11:39:47 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.nicro.land/tags/security/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 27 Feb 2016 11:39:47 +0000</lastBuildDate><atom:link href="http://blog.nicro.land/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Docker Security Risks: GUIs &#43; Xorg</title>
-      <link>http://blog.nicro.land/p496/</link>
+      <link>http://blog.nicro.land/?p=496/</link>
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p496/</guid>
+      <guid>http://blog.nicro.land/?p=496/</guid>
       <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;rsquo;t be confident of the software&amp;rsquo;s origins and thought it&amp;rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
 But isn&amp;rsquo;t everything running in Docker secure? First things first, let&amp;rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
     </item>

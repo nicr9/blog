@@ -1,22 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Geek w/ god complex</title>
     <link>http://blog.nicro.land/categories/</link>
     <description>Recent content in Categories on Geek w/ god complex</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="http://blog.nicro.land/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Uncategorized</title>
-      <link>http://blog.nicro.land/categories/uncategorized/</link>
-      <pubDate>Sun, 23 Aug 2015 14:36:18 +0000</pubDate>
-      
-      <guid>http://blog.nicro.land/categories/uncategorized/</guid>
-      <description></description>
-    </item>
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="http://blog.nicro.land/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

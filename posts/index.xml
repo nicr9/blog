@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Geek w/ god complex</title>
     <link>http://blog.nicro.land/posts/</link>
     <description>Recent content in Posts on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
-    
-	<atom:link href="http://blog.nicro.land/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate><atom:link href="http://blog.nicro.land/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenShift: Automated Resource Pruning</title>
       <link>http://blog.nicro.land/posts/resource-pruning/</link>
@@ -22,21 +18,20 @@ If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or ima
     
     <item>
       <title>Remapping zoom slider on Microsoft Ergonomic Keyboard</title>
-      <link>http://blog.nicro.land/p1487/</link>
+      <link>http://blog.nicro.land/?p=1487/</link>
       <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p1487/</guid>
+      <guid>http://blog.nicro.land/?p=1487/</guid>
       <description>I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)
-&amp;nbsp;
-The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
+ The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
     </item>
     
     <item>
       <title>A Markdown notes server</title>
-      <link>http://blog.nicro.land/p992/</link>
+      <link>http://blog.nicro.land/?p=992/</link>
       <pubDate>Mon, 11 Apr 2016 08:35:01 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p992/</guid>
+      <guid>http://blog.nicro.land/?p=992/</guid>
       <description>I keep a lot of notes&amp;hellip;
 Writing notes Any time I&amp;rsquo;m researching anything computing related, whether it&amp;rsquo;s for work or in my spare time, I keep a log of my &amp;ldquo;stream of conciousness&amp;rdquo;. This includes thoughts like &amp;ldquo;I think this is because&amp;hellip;&amp;rdquo;, &amp;ldquo;I wonder if this is related to&amp;hellip;&amp;rdquo;, &amp;ldquo;What the fuck is&amp;hellip;?&amp;rdquo;.
 This is great when I&amp;rsquo;ve spent a lot of time learning something new and I can look back over them once a week to reinforce the stuff I&amp;rsquo;ve covered.</description>
@@ -44,41 +39,41 @@ This is great when I&amp;rsquo;ve spent a lot of time learning something new and
     
     <item>
       <title>Docker Security Risks: GUIs &#43; Xorg</title>
-      <link>http://blog.nicro.land/p496/</link>
+      <link>http://blog.nicro.land/?p=496/</link>
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p496/</guid>
+      <guid>http://blog.nicro.land/?p=496/</guid>
       <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;rsquo;t be confident of the software&amp;rsquo;s origins and thought it&amp;rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
 But isn&amp;rsquo;t everything running in Docker secure? First things first, let&amp;rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
     </item>
     
     <item>
       <title>Nested decorator functions in Python</title>
-      <link>http://blog.nicro.land/p555/</link>
+      <link>http://blog.nicro.land/?p=555/</link>
       <pubDate>Wed, 20 Jan 2016 23:32:58 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p555/</guid>
+      <guid>http://blog.nicro.land/?p=555/</guid>
       <description>When I was at PyConIE last October I was talking with an old friend about Python&amp;rsquo;s decorator functions.
 He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).</description>
     </item>
     
     <item>
       <title>Running QtCreator in Docker</title>
-      <link>http://blog.nicro.land/p87/</link>
+      <link>http://blog.nicro.land/?p=87/</link>
       <pubDate>Sun, 06 Dec 2015 19:53:55 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p87/</guid>
+      <guid>http://blog.nicro.land/?p=87/</guid>
       <description>Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
 The first thing I ever tried installing from source was Qt. For those who don&amp;rsquo;t know, Qt is a cross platform framework for writing GUI applications.
-That was then&amp;#8230; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter.</description>
+That was then&amp;hellip; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&amp;rsquo;s limitations and I finally decided it was time to find something with more power.</description>
     </item>
     
     <item>
       <title>Golang Ramblings from a Python Dev</title>
-      <link>http://blog.nicro.land/p61/</link>
+      <link>http://blog.nicro.land/?p=61/</link>
       <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p61/</guid>
+      <guid>http://blog.nicro.land/?p=61/</guid>
       <description>I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
 
 Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.</description>
@@ -86,30 +81,30 @@ Tooling I guess the first thing that jumps out is the quality of the tooling, I&
     
     <item>
       <title>I’m back!</title>
-      <link>http://blog.nicro.land/p58/</link>
+      <link>http://blog.nicro.land/?p=58/</link>
       <pubDate>Sun, 23 Aug 2015 14:36:18 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p58/</guid>
-      <description>I know that it&amp;#8217;s been a while since I wrote a post! I haven&amp;#8217;t been keeping up with my own goal to write something new at least every week.
-At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;#8217;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!</description>
+      <guid>http://blog.nicro.land/?p=58/</guid>
+      <description>I know that it&amp;rsquo;s been a while since I wrote a post! I haven&amp;rsquo;t been keeping up with my own goal to write something new at least every week.
+At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;rsquo;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!</description>
     </item>
     
     <item>
       <title>Weekly Notes – 26/7/15</title>
-      <link>http://blog.nicro.land/p50/</link>
+      <link>http://blog.nicro.land/?p=50/</link>
       <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p50/</guid>
+      <guid>http://blog.nicro.land/?p=50/</guid>
       <description>setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
 Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&amp;rsquo;ve used distutils and setuptools in the past) and there&amp;rsquo;s a bit of a confusing history regarding which tool is recommended.</description>
     </item>
     
     <item>
       <title>Weekly Notes – 18/7/15</title>
-      <link>http://blog.nicro.land/p10/</link>
+      <link>http://blog.nicro.land/?p=10/</link>
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p10/</guid>
+      <guid>http://blog.nicro.land/?p=10/</guid>
       <description>This is the first post in a series that I&amp;rsquo;ll (hopefully) send out every week. It&amp;rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
 Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
 Docker machine + docker compose So I&amp;rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
@@ -117,10 +112,10 @@ Docker machine + docker compose So I&amp;rsquo;ve been playing around with docke
     
     <item>
       <title>Hello world!</title>
-      <link>http://blog.nicro.land/p7/</link>
+      <link>http://blog.nicro.land/?p=7/</link>
       <pubDate>Thu, 16 Jul 2015 21:46:52 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/p7/</guid>
+      <guid>http://blog.nicro.land/?p=7/</guid>
       <description>Why I started this blog I&amp;rsquo;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
 I&amp;rsquo;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;rsquo;ll help others who run into the same stumbling blocks on their own journey.</description>
     </item>
