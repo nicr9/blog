@@ -3,7 +3,7 @@ title: Golang Ramblings from a Python Dev
 author: nicr9
 type: post
 date: 2015-09-07T07:28:17+00:00
-url: /?p=61
+url: /2015/09/07/golang-ramblings-from-a-python-dev/
 tags:
   - golang
   - Python

@@ -1,4 +1,4 @@
-baseURL = "http://blog.nicro.land/"
+baseURL = "https://blog.nicro.land/"
 title = "Geek w/ god complex"
 copyright = ""
 
@@ -91,7 +91,7 @@ page = "/:slug/"
 
     [[menu.main]]
     name = "Slides"
-    url = "http://slides.nicro.land"
+    url = "https://slides.nicro.land"
 
     [[menu.main]]
     name = "Projects"

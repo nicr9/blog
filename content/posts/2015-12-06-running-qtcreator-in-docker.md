@@ -3,7 +3,7 @@ title: Running QtCreator in Docker
 author: nicr9
 type: post
 date: 2015-12-06T19:53:55+00:00
-url: /?p=87
+url: /2015/12/06/running-qtcreator-in-docker/
 featured_image: /wp-content/uploads/2015/11/docker_qt.png
 tags:
   - docker

@@ -3,7 +3,7 @@ title: Remapping zoom slider on Microsoft Ergonomic Keyboard
 author: nicr9
 type: post
 date: 2016-07-11T14:39:07+00:00
-url: /?p=1487
+url: /2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/
 tags:
   - lifehacks
   - linux

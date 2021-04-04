@@ -3,7 +3,7 @@ title: Nested decorator functions in Python
 author: nicr9
 type: post
 date: 2016-01-20T23:32:58+00:00
-url: /?p=555
+url: /2016/01/20/nested-decorator-functions-in-python/
 tags:
   - Python
 ---

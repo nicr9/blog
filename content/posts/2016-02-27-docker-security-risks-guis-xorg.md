@@ -3,7 +3,7 @@ title: 'Docker Security Risks: GUIs + Xorg'
 author: nicr9
 type: post
 date: 2016-02-27T11:39:47+00:00
-url: /?p=496
+url: /2016/02/27/docker-security-risks-guis-xorg/
 featured_image: /wp-content/uploads/2016/02/docker_and_xorg2.png
 tags:
   - docker

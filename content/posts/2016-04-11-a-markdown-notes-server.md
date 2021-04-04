@@ -3,7 +3,7 @@ title: A Markdown notes server
 author: nicr9
 type: post
 date: 2016-04-11T08:35:01+00:00
-url: /?p=992
+url: /2016/04/11/a-markdown-notes-server/
 tags:
   - lifehacks
   - docker

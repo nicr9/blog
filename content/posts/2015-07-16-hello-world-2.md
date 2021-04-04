@@ -3,7 +3,7 @@ title: Hello world!
 author: nicr9
 type: post
 date: 2015-07-16T21:46:52+00:00
-url: /?p=7
+url: /2015/07/16/hello-world/
 ---
 
 ## Why I started this blog
