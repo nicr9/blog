@@ -93,6 +93,10 @@ page = "/:slug/"
     name = "Slides"
     url = "http://slides.nicro.land"
 
+    [[menu.main]]
+    name = "Projects"
+    url = "/my-side-projects/"
+
 [blackfriday]
 hrefTargetBlank = true
 
