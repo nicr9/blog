@@ -2,70 +2,70 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Geek w/ god complex</title>
-    <link>http://blog.nicro.land/tags/</link>
+    <link>https://blog.nicro.land/tags/</link>
     <description>Recent content in Tags on Geek w/ god complex</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate><atom:link href="http://blog.nicro.land/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate><atom:link href="https://blog.nicro.land/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>openshift</title>
-      <link>http://blog.nicro.land/tags/openshift/</link>
+      <link>https://blog.nicro.land/tags/openshift/</link>
       <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/openshift/</guid>
+      <guid>https://blog.nicro.land/tags/openshift/</guid>
       <description></description>
     </item>
     
     <item>
       <title>lifehacks</title>
-      <link>http://blog.nicro.land/tags/lifehacks/</link>
+      <link>https://blog.nicro.land/tags/lifehacks/</link>
       <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/lifehacks/</guid>
+      <guid>https://blog.nicro.land/tags/lifehacks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>linux</title>
-      <link>http://blog.nicro.land/tags/linux/</link>
+      <link>https://blog.nicro.land/tags/linux/</link>
       <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/linux/</guid>
+      <guid>https://blog.nicro.land/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>docker</title>
-      <link>http://blog.nicro.land/tags/docker/</link>
+      <link>https://blog.nicro.land/tags/docker/</link>
       <pubDate>Mon, 11 Apr 2016 08:35:01 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/docker/</guid>
+      <guid>https://blog.nicro.land/tags/docker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>security</title>
-      <link>http://blog.nicro.land/tags/security/</link>
+      <link>https://blog.nicro.land/tags/security/</link>
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/security/</guid>
+      <guid>https://blog.nicro.land/tags/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>http://blog.nicro.land/tags/python/</link>
+      <link>https://blog.nicro.land/tags/python/</link>
       <pubDate>Wed, 20 Jan 2016 23:32:58 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/python/</guid>
+      <guid>https://blog.nicro.land/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>golang</title>
-      <link>http://blog.nicro.land/tags/golang/</link>
+      <link>https://blog.nicro.land/tags/golang/</link>
       <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
       
-      <guid>http://blog.nicro.land/tags/golang/</guid>
+      <guid>https://blog.nicro.land/tags/golang/</guid>
       <description></description>
     </item>
     

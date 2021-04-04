@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang='en' dir='auto'><head>
+  <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='description' content='I&rsquo;ve been spending time lately learning Go and I thought I&rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
+
+Tooling I guess the first thing that jumps out is the quality of the tooling, I&rsquo;ve only had a chance to play around with a few of the CLI&rsquo;s features but already I&rsquo;m impressed with how simple it makes some day to day things.'>
+<meta name='theme-color' content='#ffcd00'>
+
+<meta property='og:title' content='Golang Ramblings from a Python Dev • Geek w/ god complex'>
+<meta property='og:description' content='I&rsquo;ve been spending time lately learning Go and I thought I&rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
+
+Tooling I guess the first thing that jumps out is the quality of the tooling, I&rsquo;ve only had a chance to play around with a few of the CLI&rsquo;s features but already I&rsquo;m impressed with how simple it makes some day to day things.'>
+<meta property='og:url' content='https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/'>
+<meta property='og:site_name' content='Geek w/ god complex'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='golang'><meta property='article:tag' content='Python'><meta property='article:published_time' content='2015-09-07T07:28:17Z'/><meta property='article:modified_time' content='2015-09-07T07:28:17Z'/><meta name='twitter:card' content='summary'>
+
+<meta name="generator" content="Hugo 0.81.0" />
+
+  <title>Golang Ramblings from a Python Dev • Geek w/ god complex</title>
+  <link rel='canonical' href='https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/'>
+  
+  
+  <link rel='icon' href='/favicon.ico'>
+<link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
+:root{--color-accent:#ffcd00;}
+</style>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-PP765DG4ZV', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
+
+</head>
+<body class='page type-post has-sidebar'>
+
+  <div class='site'><div id='sidebar' class='sidebar'>
+  <a class='screen-reader-text' href='#main-menu'>Skip to Main Menu</a>
+
+  <div class='container'><section class='widget widget-about sep-after'>
+  <header>
+    
+    <div class='logo'>
+      <a href='/'>
+        <img src='/images/shocked-circle.png'>
+      </a>
+    </div>
+    
+    <h2 class='title site-title '>
+      <a href='/'>
+      Nic Roland
+      </a>
+    </h2>
+    <div class='desc'>
+    
+    </div>
+  </header>
+
+</section>
+<section class='widget widget-sidebar_menu sep-after'><nav id='sidebar-menu' class='menu sidebar-menu' aria-label='Sidebar Menu'>
+    <div class='container'>
+      <ul><li class='item'>
+  <a href='/about/'>About</a></li><li class='item'>
+  <a href='/posts/'>Posts</a></li><li class='item'>
+  <a href='/my-side-projects/'>Projects</a></li><li class='item'>
+  <a href='https://slides.nicro.land'>Slides</a></li></ul>
+    </div>
+  </nav>
+
+</section><section class='widget widget-taxonomy_cloud sep-after'>
+  <header>
+    <h4 class='title widget-title'>Tags</h4>
+  </header>
+
+  <div class='container list-container'>
+  <ul class='list taxonomy-cloud'><li>
+        <a href='/tags/docker/' style='font-size:2em'>docker</a>
+      </li><li>
+        <a href='/tags/golang/' style='font-size:1em'>golang</a>
+      </li><li>
+        <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>lifehacks</a>
+      </li><li>
+        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>linux</a>
+      </li><li>
+        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+      </li><li>
+        <a href='/tags/python/' style='font-size:1.6666666666666665em'>python</a>
+      </li><li>
+        <a href='/tags/security/' style='font-size:1em'>security</a>
+      </li></ul>
+</div>
+
+
+</section>
+</div>
+
+  <div class='sidebar-overlay'></div>
+</div><div class='main'><a class='screen-reader-text' href='#content'>Skip to Content</a>
+
+<button id='sidebar-toggler' class='sidebar-toggler' aria-controls='sidebar'>
+  <span class='screen-reader-text'>Toggle Sidebar</span>
+  <span class='open'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+
+</svg>
+</span>
+  <span class='close'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="18" y1="6" x2="6" y2="18" />
+  <line x1="6" y1="6" x2="18" y2="18" />
+
+</svg>
+</span>
+</button><div class='header-widgets'>
+        <div class='container'></div>
+      </div>
+
+      <header id='header' class='header site-header'>
+        <div class='container sep-after'>
+          <div class='header-info'><p class='site-title title'>Geek w/ god complex</p><p class='desc site-desc'>and his senseless ramblings...</p>
+          </div>
+        </div>
+      </header>
+
+      <main id='content'>
+
+
+<article lang='en' class='entry'>
+  <header class='header entry-header'>
+  <div class='container sep-after'>
+    <div class='header-info'>
+      <h1 class='title'>Golang Ramblings from a Python Dev</h1>
+      
+
+    </div>
+    <div class='entry-meta'>
+  <span class='posted-on'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+  <line x1="16" y1="2" x2="16" y2="6"/>
+  <line x1="8" y1="2" x2="8" y2="6"/>
+  <line x1="3" y1="10" x2="21" y2="10"/>
+
+</svg>
+<span class='screen-reader-text'>Posted on </span>
+  <time class='entry-date' datetime='2015-09-07T07:28:17Z'>07 Sep 2015</time>
+</span>
+
+  
+  
+<span class='reading-time'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <circle cx="12" cy="12" r="10"/>
+  <polyline points="12 6 12 12 15 15"/>
+
+</svg>
+5 mins read
+</span>
+
+
+</div>
+
+
+  </div>
+</header>
+
+  
+  
+
+  <div class='container entry-content'>
+  <p>I&rsquo;ve been spending time lately learning Go and I thought I&rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!</p>
+<p><a href="https://blog.golang.org/5years/gophers5th.jpg"><!-- raw HTML omitted --></a></p>
+<h2 id="tooling">Tooling</h2>
+<p>I guess the first thing that jumps out is the quality of the tooling, I&rsquo;ve only had a chance to play around with a few of the CLI&rsquo;s features but already I&rsquo;m impressed with how simple it makes some day to day things.</p>
+<p>When you&rsquo;re looking at new code for the first time the first thing on your mind is usually vendoring dependencies (I didn&rsquo;t realise &lsquo;vendor&rsquo; is a verb, ya learn something new every day). <a href="https://golang.org/cmd/go/#hdr-Download_and_install_packages_and_dependencies"><code>go get ...</code></a> will download and install individual dependencies but it can also recursively scan through a project to save you the effort:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get -d ./...
+</code></pre></div><p>This can pull in code automagically from git repositories (mercurial, bazaar and subversion too) which is nice and it doesn&rsquo;t involve installing an extra package like pip/setuptools.</p>
+<p>When you&rsquo;re adding changes to code don&rsquo;t forget about <a href="https://golang.org/cmd/gofmt/"><code>gofmt</code></a>. It takes advantage of the relative ease of parsing Go&rsquo;s syntax to automate/enforce certain elements of coding style like use of whitespace. It&rsquo;s also really easy to include in your workflow; I use <a href="https://github.com/fatih/vim-go">fatih/vim-go</a>, a vim plugin that (among other cool things) runs <code>gofmt</code> every time you save changes. If vim&rsquo;s not your style (pun not intended) then it&rsquo;s easy to find <a href="https://golang.org/misc/git/pre-commit">docs for setting up a git hook</a> that runs <code>gofmt</code> before you commit.</p>
+<p>There are some other tools that use Go&rsquo;s simplicity to automate away the boring stuff. These are tools I haven&rsquo;t had a lot of time to try out but for the adventurous: <a href="http://godoc.org/golang.org/x/tools/cmd/godoc"><code>godoc</code></a> &ldquo;extracts and generates documentation for Go programs&rdquo; and <a href="http://golang.org/cmd/fix/"><code>gofix</code></a> which &ldquo;finds Go programs that use old APIs and rewrites them to use newer ones.&rdquo; The later one sounds particularly ambitious! Reminds me of <a href="https://docs.python.org/2/library/2to3.html">2to3</a>, which never offered any guarantees other than a helping hand; you were still expected to go most of the porting work yourself.</p>
+<p>Next step is usually building/installing code; the <a href="https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies"><code>go build ...</code></a> and <a href="https://golang.org/cmd/go/#hdr-Compile_and_install_packages_and_dependencies"><code>go install ...</code></a> commands serve all your needs here. No need to choose between packaging libs like setuptools and distribute! The problem here is that what these packaging libs provide for is a standard way of declaring package metadata so that they can be found on an index like <a href="http://pypi.python.org">PYPI</a>, which leads me to&hellip;</p>
+<h2 id="argh-packaging">Argh! Packaging!</h2>
+<p>So far this is the first big thing missing for Go and I&rsquo;m not entirely sure how I feel about it!</p>
+<p>On the one hand there is no need to set up and actively maintain your project listings on a centralised site; all you need to do is to choose (and choice is important to developers) which site you host your code on.</p>
+<p>On the other hand PYPI can really leverage that metadata and offer a powerful way to search for the package you need. If you haven&rsquo;t tried browsing by package category before, <a href="https://pypi.python.org/pypi?%3Aaction=browse">give it a quick try</a> so you can see what I mean. I can wait&hellip;</p>
+<p>I tried looking into a similar resource for golang and most of the internet pointed me to <a href="http://godashboard.appspot.com/project">http://godashboard.appspot.com/project</a>, which seems to be down at the time of writing. After a little bit of research it seems that the listings it hosted were moved around some wikis till they found their new home at <a href="https://github.com/golang/go/wiki/Projects">https://github.com/golang/go/wiki/Projects</a>. Having this page in the language&rsquo;s git wiki seems to makes sense in terms of go&rsquo;s philosophy but it just leaves me wanting something better.</p>
+<p>But I Digress&hellip;</p>
+<h2 id="lets-talk-about-testing">Lets Talk About Testing</h2>
+<p>So the compiler hasn&rsquo;t found any problems in your code; it all builds without issue. Hurray!</p>
+<p>The next thing to check is tests and the command for running them is (big surprise here, drum-roll please) <a href="https://golang.org/cmd/go/#hdr-Test_packages"><code>go test</code></a>. This quite frankly makes <code>python -m unittest discover</code> look like an afterthought.</p>
+<p>Here&rsquo;s something that shocked me when I was writing tests: there&rsquo;s no assertions in Go! <a href="https://golang.org/doc/faq#assertions">The aim here</a> was to remove a crutch that developers too often use to avoid thinking about proper error handling. That should be a top consideration when you&rsquo;re writing server-side code; if you&rsquo;re not careful with errors requests will die and cause lots of trouble for the client.</p>
+<p>So what do tests look like in a world without assertions? Not that different really, assertions are just if statements with some syntactic sugar to make things look a bit more formal. All you need is to write your own if statements and make calls to <code>t.Fatal(...)</code> if things look broken.</p>
+<p>I did some soul searching regarding this; is there anything that we really lose from leaving assertions out of the language? At first I was a bit miffed because I&rsquo;m used to the array of assertions available as member functions of <code>unittest.TestCase</code> in Python but I got over it quickly! Keystrokes saved while writing tests aren&rsquo;t worth it if it means people get lazy with error handling.</p>
+<h2 id="convention-over-configuration">Convention Over Configuration</h2>
+<p>The common theme that I keep coming back to in my head here is &ldquo;what can we automate by relying on a convention and what should we let developers control by way of configuration?&rdquo;.</p>
+<p>Go&rsquo;s tooling stuff all depends on a strict directory structure and syntax (which probably required a lot of thinking on Google&rsquo;s part). Python&rsquo;s package distribution relies on the maintainer filling out setup.py. Both languages also have conventions regarding writing test cases to facilitate test discovery.</p>
+<p>It makes me think a lot about the upfront investment in terms of reading docs. When you&rsquo;re starting out learning programming, documentation can be daunting; there&rsquo;s a hell of a lot of it! I&rsquo;m not ready to say which language has the greater learning curve for developers starting out but it&rsquo;s a very important consideration</p>
+<h2 id="more-rambling">More Rambling?</h2>
+<p>I realise that this post has been far from a comprehensive comparison and that there are many important things I left out, e.g., goroutines vs asyncio, support for paradigms like OO and functional programming, third party libraries, etc.</p>
+<p>There&rsquo;s way too much to cover in a single blog post. I hope to write more as I get familiar with the language and maybe I&rsquo;ll ramble about other technologies too!</p>
+<p>If you have any comments, suggestions, or questions feel free to get in contact with me! I&rsquo;d love to hear from you.</p>
+
+</div>
+
+  
+<footer class='entry-footer'>
+  <div class='container sep-before'><div class='tags'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
+  <line x1="7" y1="7" x2="7" y2="7"/>
+
+</svg>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/golang/'>golang</a>, <a class='tag' href='/tags/python/'>python</a></div>
+
+  </div>
+</footer>
+
+
+</article>
+
+<nav class='entry-nav'>
+  <div class='container'><div class='prev-entry sep-before'>
+      <a href='/2015/08/23/im-back/'>
+        <span aria-hidden='true'><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="20" y1="12" x2="4" y2="12"/>
+  <polyline points="10 18 4 12 10 6"/>
+
+</svg>
+ Previous</span>
+        <span class='screen-reader-text'>Previous post: </span>I’m back!</a>
+    </div><div class='next-entry sep-before'>
+      <a href='/2015/12/06/running-qtcreator-in-docker/'>
+        <span class='screen-reader-text'>Next post: </span>Running QtCreator in Docker<span aria-hidden='true'>Next <svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <line x1="4" y1="12" x2="20" y2="12"/>
+  <polyline points="14 6 20 12 14 18"/>
+
+</svg>
+</span>
+      </a>
+    </div></div>
+</nav>
+
+
+
+
+      </main>
+
+      <footer id='footer' class='footer'>
+        <div class='container sep-before'><section class='widget widget-social_menu sep-after'><nav aria-label='Social Menu'>
+    <ul><li>
+        <a href='https://github.com/nicr9' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Github account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+
+</svg>
+</a>
+      </li><li>
+        <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    
+  <title>Twitter icon</title>
+  <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+
+</svg>
+</a>
+      </li><li>
+        <a href='mailto:nicroland9@gmail.com' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Contact via Email</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</a>
+      </li><li>
+        <a href='https://linkedin.com/in/nicroland' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Linkedin account in new tab</span><svg class='icon' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>
+</svg>
+</a>
+      </li></ul>
+  </nav>
+</section><div class='copyright'>
+  <p> &copy; 2017-2021 Nic Roland </p>
+</div>
+
+        </div>
+      </footer>
+
+    </div>
+  </div><script>window.__assets_js_src="/assets/js/"</script>
+
+<script src='/assets/js/main.c3bcf2df.js'></script><script src='/js/custom.js'></script>
+
+</body>
+
+</html>
+
