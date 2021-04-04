@@ -7,7 +7,7 @@ date: 2015-07-19T13:40:28+00:00
 
 I've a number of side projects (and a pretty short attention span).
 
-I usually keep track of suggested features and fixes in a [Trello][1] board and iterate through the projects as my attention and needs wander.
+I usually keep track of suggested features and fixes in a [Trello][1] board and iterate through the projects as my attention wanders and my needs change.
 
 When I have the time I'll write more in depth posts about each of these but until then, here is the short list of projects that I spend most of my time on:
 
