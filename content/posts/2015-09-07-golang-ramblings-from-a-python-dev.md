@@ -17,7 +17,7 @@ I've been spending time lately learning Go and I thought I'd throw some of my th
 
 I guess the first thing that jumps out is the quality of the tooling, I've only had a chance to play around with a few of the CLI's features but already I'm impressed with how simple it makes some day to day things.
 
-When you're looking at new code for the first time the first thing on your mind is usually vendoring dependencies (I didn't realise &#8216;vendor' is a verb, ya learn something new every day). [`go get ...`][2] will download and install individual dependencies but it can also recursively scan through a project to save you the effort:
+When you're looking at new code for the first time the first thing on your mind is usually vendoring dependencies (I didn't realise 'vendor' is a verb, ya learn something new every day). [`go get ...`][2] will download and install individual dependencies but it can also recursively scan through a project to save you the effort:
 
 ```bash
 go get -d ./...
