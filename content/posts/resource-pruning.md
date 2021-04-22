@@ -99,4 +99,4 @@ If I ever work on a suitable way of automating hard pruning with another CronJob
 
 The `cronjob` is a particularly useful primitive in Kubernetes/OpenShift. This isn't too surprising given how useful the `cron` unix utility is in general. It's particularly useful for automating system administration tasks.
 
-If you come up with any other useful system admin automation using CronJobs, [reach out to me](twitter.com/nicr9_), I'd love to hear about it!
+If you come up with any other useful system admin automation using CronJobs, [reach out to me](https://twitter.com/nicr9_), I'd love to hear about it!
