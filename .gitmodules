@@ -1,3 +1,6 @@
 [submodule "themes/minimo"]
 	path = themes/minimo
 	url = https://github.com/MunifTanjim/minimo.git
+[submodule "themes/nicro"]
+	path = themes/nicro
+	url = git@github.com:nicr9/nicro.git

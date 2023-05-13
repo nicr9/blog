@@ -2,7 +2,7 @@ baseURL = "https://blog.nicro.land/"
 title = "Geek w/ god complex"
 copyright = ""
 
-theme = "minimo"
+theme = "nicro"
 
 disqusShortname = ""
 googleAnalytics = ""
