@@ -13,7 +13,7 @@ Python tools are generally packaged by writing a setup.py script. There are actu
 <meta property='og:site_name' content='Geek w/ god complex'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='linux'><meta property='article:tag' content='python'><meta property='article:published_time' content='2015-07-26T12:06:03Z'/><meta property='article:modified_time' content='2015-07-26T12:06:03Z'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.101.0" />
 
   <title>Weekly Notes – 26/7/15 • Geek w/ god complex</title>
   <link rel='canonical' href='https://blog.nicro.land/2015/07/26/weekly-notes-26715/'>
@@ -187,7 +187,7 @@ Python tools are generally packaged by writing a setup.py script. There are actu
 
   <div class='container entry-content'>
   <h3 id="setuppy-and-rpmspec"><code>setup.py</code> and <code>rpm.spec</code></h3>
-<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <p>So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.</p>
 <p>Python tools are generally packaged by writing a <code>setup.py</code> script. There are actually a number of tools you can use (I&rsquo;ve used <code>distutils</code> and <code>setuptools</code> in the past) and there&rsquo;s a bit of a confusing <a href="http://stackoverflow.com/a/14753678">history regarding which tool is recommended</a>. I mostly use <code>setuptools</code>.</p>
 <p>Most (all?) of the software we use in work are packaged as RPMs which are built from a <code>rpm.spec</code>. I don&rsquo;t want to get bogged down in the advantages/disadvantages of this approach here so I&rsquo;ll keep this part short: It&rsquo;s more powerful than <code>setup.py</code> scripts but not as well documented. It&rsquo;s simple enough to install files to specific places that <code>setuptools</code>/<code>distutils</code> don&rsquo;t make easy (like an <code>init.d</code> script) or to execute code during build/install. On the other hand you really need to understand the ins and outs of your application when writing an <code>rpm.spec</code>. There are some subtle things that happen when you&rsquo;re building RPMs and that can cause a lot of confusion when you&rsquo;re starting out.</p>
@@ -204,8 +204,8 @@ python2.7 setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
 <pre tabindex="0"><code>%files -f INSTALLED_FILES
 </code></pre><p>You can still list any other files that are taken care of by the <code>rpm.spec</code> after the <code>%files</code> directive.</p>
 <p>If you try this out yourself, you can check that it all worked by listing the files inside the resulting rpm:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rpm -qpl path/to.rpm
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rpm -qpl path/to.rpm
+</span></span></code></pre></div>
 </div>
 
   
@@ -328,7 +328,7 @@ python2.7 setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2021 Nic Roland </p>
+  <p> &copy; 2017-2023 Nic Roland </p>
 </div>
 
         </div>

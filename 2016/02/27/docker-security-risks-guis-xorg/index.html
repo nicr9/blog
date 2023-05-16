@@ -13,7 +13,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 <meta property='og:site_name' content='Geek w/ god complex'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='security'><meta property='article:published_time' content='2016-02-27T11:39:47Z'/><meta property='article:modified_time' content='2016-02-27T11:39:47Z'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.101.0" />
 
   <title>Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex</title>
   <link rel='canonical' href='https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/'>
@@ -172,7 +172,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 ><circle cx="12" cy="12" r="10" />
 <polyline points="12 6 12 12 15 15" />
 </svg>
-6 mins read
+7 mins read
 </span>
 
 
@@ -187,7 +187,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 
   <div class='container entry-content'>
   <p>Recently I <a href="http://blog.nicro.land/p87/">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
-<p><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
 <h2 id="but-isnt-everything-running-in-docker-secure">But isn&rsquo;t everything running in Docker secure?</h2>
 <p>First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</p>
 <p>One of the major selling points of containers is the various forms of isolation that they provide (here&rsquo;s Solomon&rsquo;s <a href="http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84">list from DockerConEu</a>). Docker&rsquo;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
@@ -204,63 +204,63 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 <h3 id="screenshots">Screenshots</h3>
 <p>Imagemagik is used a lot on Linux to take screenshots and it does this by interacting with X. Ergo; if your container has access to X on the host, than it can screenshot the host (and without any particular form of warning/indication to users).</p>
 <p>Here&rsquo;s a demo <code>Dockerfile</code> that screenshots with imagemagik and displays the resulting image with <code>feh</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y imagemagick feh<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> import -window root -display :0 /tmp/0.png <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>feh -. /tmp/0.png<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Here&rsquo;s the commands needed to get this working:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#75715e"># Build the demo dockerfile</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>docker build -f Dockerfile.screenshot -t xattacks:screenshot .<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Allow Docker processes to access X</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>xhost local:root<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run container that takes a screenshot on the host (imagemagick) and displays it for you (feh)</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span>docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY xattacks:screenshot<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>You&rsquo;ll notice that the only additional things this container needs is to tell <code>xhost</code> to allow any access from localhost, to mount the X socket and provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container so nothing out of the ordinary here&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get install -y imagemagick feh<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> import -window root -display :0 /tmp/0.png <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>feh -. /tmp/0.png<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Here&rsquo;s the commands needed to get this working:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#75715e"># Build the demo dockerfile</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker build -f Dockerfile.screenshot -t xattacks:screenshot .<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Allow Docker processes to access X</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>xhost local:root<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Run container that takes a screenshot on the host (imagemagick) and displays it for you (feh)</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY<span style="color:#f92672">=</span>$DISPLAY xattacks:screenshot<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>You&rsquo;ll notice that the only additional things this container needs is to tell <code>xhost</code> to allow any access from localhost, to mount the X socket and provide the display number. These are all things you would need to do to allow any GUI to run from the confines of a container so nothing out of the ordinary here&hellip;</p>
 <h3 id="toggling-capslock-every-20-minutes">Toggling capslock every 20 minutes</h3>
 <p>This example installs <code>xdotool</code> which can be used for (among other things) simulating keypresses. Then it creates a <code>cron</code> that uses <code>xdotool</code> to toggle caps lock every 20 minutes.</p>
 <p>Clearly I&rsquo;m some kind of deranged lunatic for coming up with something this nefarious. <strong>Please use responsibly</strong>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool key Caps_Lock&#34;</span> &gt; capslock.cron<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab capslock.cron<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Pretty much the same docker commands for running this container so I won&rsquo;t bother including those from now on.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool key Caps_Lock&#34;</span> &gt; capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab capslock.cron<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Pretty much the same docker commands for running this container so I won&rsquo;t bother including those from now on.</p>
 <h3 id="peeking-at-the-clipboard">Peeking at the clipboard</h3>
 <p>This one is ridiculously easy! <code>xclip</code> is a tool for read and write access to the various clipboards provided by X. That includes the regular clipboard (<code>Ctrl+c</code>/<code>Ctrl+v</code>), used in the example here, as well as the selection clipboard (highlight/middle mouse button) if you&rsquo;re on Linux.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y xclip <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> xclip -o -selection clipboard<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h3 id="scripting-mouse-movements">Scripting mouse movements</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get install -y xclip <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> xclip -o -selection clipboard<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="scripting-mouse-movements">Scripting mouse movements</h3>
 <p>Our old friend <code>xdotool</code> can also be used to script mouse movements! Here&rsquo;s an example of it moving to certain co-ordinates (15, 15) and clicking, it&rsquo;s just a minor modification of the capslock example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool movemouse 15 15 click 1&#34;</span> &gt; mouse.cron<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab mouse.cron<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>On it&rsquo;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&rsquo;d like to click to cause the most damage.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> ubuntu:15.10</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> Nic Roland &#34;nicroland9@gmail.com&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get install -y xdotool cron <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    apt-get clean<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;20 * * * * xdotool movemouse 15 15 click 1&#34;</span> &gt; mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> crontab mouse.cron<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENTRYPOINT</span> cron -f<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>On it&rsquo;s own this could be fairly random and useless but if we were to combine this with the screenshots we took above, we could get a reasonable idea of where we&rsquo;d like to click to cause the most damage.</p>
 <h3 id="what-else">What else?</h3>
 <p>We could go further and grant access to other stuff like <code>/dev/input/*</code> (to log data from keyboard + mouse), <code>/dev/snd</code> (speakers + microphones) or <code>/dev/video0</code> (web cams). The possibilities are endless.</p>
 <p>With all of this we could put together a <a href="https://www.google.ie/search?q=remote+access+trojan">RAT</a>!&hellip; But at the risk of being put on some kinda watch-list, I think I&rsquo;ll just leave that as an exercise for the reader&hellip;</p>
@@ -391,7 +391,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2021 Nic Roland </p>
+  <p> &copy; 2017-2023 Nic Roland </p>
 </div>
 
         </div>

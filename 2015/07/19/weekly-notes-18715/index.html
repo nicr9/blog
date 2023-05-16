@@ -15,7 +15,7 @@ Docker machine &#43; docker compose So I&rsquo;ve been playing around with docke
 <meta property='og:site_name' content='Geek w/ god complex'>
 <meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:published_time' content='2015-07-19T10:18:48Z'/><meta property='article:modified_time' content='2015-07-19T10:18:48Z'/><meta name='twitter:card' content='summary'>
 
-<meta name="generator" content="Hugo 0.88.1" />
+<meta name="generator" content="Hugo 0.101.0" />
 
   <title>Weekly Notes – 18/7/15 • Geek w/ god complex</title>
   <link rel='canonical' href='https://blog.nicro.land/2015/07/19/weekly-notes-18715/'>
@@ -195,20 +195,20 @@ Docker machine &#43; docker compose So I&rsquo;ve been playing around with docke
 <p>So I&rsquo;ve been playing around with <a href="https://github.com/docker/machine"><code>docker-machine</code></a> while working on a pet project of mine: <a href="https://github.com/nicr9/daftpunk">daftpunk</a>.</p>
 <p>For those of you that aren&rsquo;t familiar: <code>docker-machine</code> is a tool to manage hosts running the docker-engine (the server part of docker that actually manages containers). You can use it to create VMs locally using virtual box or vmware that run boot2docker. It can also create instances on various cloud providers and have them all set up and ready to go in minutes. It&rsquo;s been really handy, I&rsquo;ve used it to create an EC2 instance to host all the components of my project as containers.</p>
 <p>Because daftpunk sports a web front end (written using flask), I thought it would be cool to mount all the flask-related code as a shared volume. That way I could make changes locally and they would be synced to the container hosting the flask app in AWS. Since changes to a flask app would reload the debug server automatically it seemed like a pretty neat way of testing out any changes I was making; at least, in theory. Here&rsquo;s a mock up of the docker-compose config I&rsquo;d need to get this to work:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">web</span>:
- <span style="color:#f92672">build</span>: <span style="color:#ae81ff">frontend</span>
- <span style="color:#f92672">volumes</span>:
- - <span style="color:#f92672">frontend</span>: <span style="color:#ae81ff">/opt/frontend</span>
- <span style="color:#f92672">ports</span>:
- - <span style="color:#ae81ff">5000</span>:<span style="color:#ae81ff">5000</span>
-</code></pre></div><p>It worked just fine when I ran it against my local docker-engine but I spent some time wrestling with the setup when I switched to AWS. The flask server wouldn&rsquo;t start and when I investigated it seemed that the mount point in the container was empty. Eventually it dawned on me. You just can&rsquo;t mount files/folders to a remote container.</p>
-<p>This makes perfect sense once I stopped to think about it for a minute. What would happen if I turned off my local box? Let&rsquo;s say for the sake of the argument that the remote container would keep the files it had; those files might be important to it&rsquo;s operation after all. But things would get complicated if I tried to reconnect to the remote engine. Should it try to find the same stuff on my host and sync with it? This raises questions about merging file changes and that&rsquo;s really the realm of <a href="https://en.wikipedia.org/wiki/Distributed_revision_control">DVCS</a>' like git. Too complicated. Much simpler to just leave that functionality out when working with remote docker-engines.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">web</span>:
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">build</span>: <span style="color:#ae81ff">frontend</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">volumes</span>:
+</span></span><span style="display:flex;"><span> - <span style="color:#f92672">frontend</span>: <span style="color:#ae81ff">/opt/frontend</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">ports</span>:
+</span></span><span style="display:flex;"><span> - <span style="color:#ae81ff">5000</span>:<span style="color:#ae81ff">5000</span>
+</span></span></code></pre></div><p>It worked just fine when I ran it against my local docker-engine but I spent some time wrestling with the setup when I switched to AWS. The flask server wouldn&rsquo;t start and when I investigated it seemed that the mount point in the container was empty. Eventually it dawned on me. You just can&rsquo;t mount files/folders to a remote container.</p>
+<p>This makes perfect sense once I stopped to think about it for a minute. What would happen if I turned off my local box? Let&rsquo;s say for the sake of the argument that the remote container would keep the files it had; those files might be important to it&rsquo;s operation after all. But things would get complicated if I tried to reconnect to the remote engine. Should it try to find the same stuff on my host and sync with it? This raises questions about merging file changes and that&rsquo;s really the realm of <a href="https://en.wikipedia.org/wiki/Distributed_revision_control">DVCS</a>&rsquo; like git. Too complicated. Much simpler to just leave that functionality out when working with remote docker-engines.</p>
 <p>So what&rsquo;s the best way to reload the web front end? Well first I needed to add the front end code when I&rsquo;m building the image instead of mounting it when I&rsquo;m running the container. In the <code>docker-compose.yaml</code> file I just remove the volumes section and I add this to frontend/<code>Dockerfile</code>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-dockerfile" data-lang="dockerfile"><span style="color:#66d9ef">ADD</span> . /opt/frontend<span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><p>Then any time I want to test new changes I can use docker-compose to rebuild and redeploy only the front end container, like so:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ docker-compose build web
-$ docker-compose up web
-</code></pre></div><p>This takes a little bit longer but I don&rsquo;t have to worry about syncing files to remote hosts.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">ADD</span> . /opt/frontend<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Then any time I want to test new changes I can use docker-compose to rebuild and redeploy only the front end container, like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ docker-compose build web
+</span></span><span style="display:flex;"><span>$ docker-compose up web
+</span></span></code></pre></div><p>This takes a little bit longer but I don&rsquo;t have to worry about syncing files to remote hosts.</p>
 
 </div>
 
@@ -332,7 +332,7 @@ $ docker-compose up web
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2021 Nic Roland </p>
+  <p> &copy; 2017-2023 Nic Roland </p>
 </div>
 
         </div>

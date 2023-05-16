@@ -23,7 +23,7 @@ If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or ima
       
       <guid>https://blog.nicro.land/2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/</guid>
       <description>I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)
- The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
+The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
     </item>
     
     <item>
@@ -75,7 +75,6 @@ That was then&amp;hellip; I was in college, I had a macbook at the time and I wa
       
       <guid>https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/</guid>
       <description>I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
-
 Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.</description>
     </item>
     
