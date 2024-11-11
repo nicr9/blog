@@ -12,7 +12,7 @@ tags:
 
 Recently I [wrote a post][1] where I was running a GUI application in a docker container. I did so because I couldn't be confident of the software's origins and thought it'd be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
 
-<img class="alignnone size-full wp-image-833" src="/wp-content/uploads/2016/02/docker_and_xorg2.png" alt="docker_and_xorg" width="2000" height="901" srcset="/wp-content/uploads/2016/02/docker_and_xorg2.png 2000w, /wp-content/uploads/2016/02/docker_and_xorg2-300x135.png 300w, /wp-content/uploads/2016/02/docker_and_xorg2-768x346.png 768w, /wp-content/uploads/2016/02/docker_and_xorg2-1024x461.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" />
+![Docker and Xorg](/wp-content/uploads/2016/02/docker_and_xorg2.png)
 
 ## But isn't everything running in Docker secure?
 

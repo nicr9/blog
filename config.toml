@@ -45,7 +45,7 @@ hideEntryMeta = ["page"] # boolean / array of sections
 showReadingTime = true
 showLastmod = true
 taxonomyCloudShuffle = true
-accentColor = "#ffcd00"
+accentColor = "#8AAAE5"
 hideMainMenu = true
 
 [params.sidebar]
@@ -100,9 +100,9 @@ page = "/:slug/"
 [blackfriday]
 hrefTargetBlank = true
 
-[languages]
-# edit this block for your own language
 [languages.en]
-lang = "en-gb"
 languageName = "English"
 weight = 1
+
+[languages.en.params]
+lang = "en-gb"

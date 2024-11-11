@@ -11,9 +11,7 @@ tags:
 
 I'm a big fan of Microsoft's "Natural Ergonomic Keyboard 4000". I'm just not a fan of it's name, it's a mouthful! (How about for future reference we just call it the Ergo?)
 
-<img class="alignnone size-full wp-image-1498" src="/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg" alt="b112ddfc-0541-4948-a804-a7268b0cc2a7" width="540" height="310" srcset="/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg 540w, /wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7-300x172.jpg 300w" sizes="(max-width: 540px) 100vw, 540px" />
-
-&nbsp;
+![](/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg)
 
 The Ergo's great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc. There's plenty of guides about remapping keys around so I won't talk too much about that here. Google around and if you have questions [askubuntu.com][1] is [a great][2] place [to find answers][3]. What I'm interested in is getting the zoom slider working!
 

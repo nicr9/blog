@@ -13,7 +13,7 @@ tags:
 
 The first thing I ever tried installing from source was Qt. For those who don't know, Qt is a cross platform framework for writing GUI applications.
 
-<img class=" size-full wp-image-134 aligncenter" src="/wp-content/uploads/2015/11/5954820.png" alt="5954820" width="280" height="280" srcset="/wp-content/uploads/2015/11/5954820.png 280w, /wp-content/uploads/2015/11/5954820-150x150.png 150w, /wp-content/uploads/2015/11/5954820-100x100.png 100w" sizes="(max-width: 280px) 100vw, 280px" />
+![](/wp-content/uploads/2015/11/5954820.png)
 
 ## That was then...
 
@@ -29,7 +29,7 @@ I found their [wiki][3] which points to the official download page where you
 
 I thought that it'd be a nice idea to run the installer inside a container. This isn't a perfect buffer from potential threats of executing untrusted code (see security notes below) but at least it's a first step.
 
-<img class=" size-full wp-image-163 aligncenter" src="/wp-content/uploads/2015/11/docker_qt.png" alt="docker_qt" width="1973" height="1080" srcset="/wp-content/uploads/2015/11/docker_qt.png 1973w, /wp-content/uploads/2015/11/docker_qt-300x164.png 300w, /wp-content/uploads/2015/11/docker_qt-768x420.png 768w, /wp-content/uploads/2015/11/docker_qt-1024x561.png 1024w" sizes="(max-width: 767px) 89vw, (max-width: 1000px) 54vw, (max-width: 1071px) 543px, 580px" />
+![](/wp-content/uploads/2015/11/docker_qt.png)
 
 Here's my plan:
 

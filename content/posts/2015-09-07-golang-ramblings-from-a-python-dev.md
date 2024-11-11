@@ -11,7 +11,7 @@ tags:
 
 I've been spending time lately learning Go and I thought I'd throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
 
-[<img class="alignnone" src="https://blog.golang.org/5years/gophers5th.jpg" alt="￼Taken from the golang blog" width="1262" height="733" />][1]
+![5 year anniversary pic, taken from the golang blog](https://blog.golang.org/5years/gophers5th.jpg)
 
 ## Tooling
 
@@ -39,9 +39,9 @@ On the one hand there is no need to set up and actively maintain your project l
 
 On the other hand PYPI can really leverage that metadata and offer a powerful way to search for the package you need. If you haven't tried browsing by package category before, [give it a quick try][12] so you can see what I mean. I can wait...
 
-I tried looking into a similar resource for golang and most of the internet pointed me to <http://godashboard.appspot.com/project>, which seems to be down at the time of writing. After a little bit of research it seems that the listings it hosted were moved around some wikis till they found their new home at <https://github.com/golang/go/wiki/Projects>. Having this page in the language's git wiki seems to makes sense in terms of go's philosophy but it just leaves me wanting something better.
+I tried looking into a similar resource for golang and most of the internet pointed me to [godashboard.appspot.com/...](http://godashboard.appspot.com/project), which seems to be down at the time of writing. After a little bit of research it seems that the listings it hosted were moved around some wikis till they found their new home at [golang/go](https://github.com/golang/go/wiki/Projects). Having this page in the language's git wiki seems to makes sense in terms of go's philosophy but it just leaves me wanting something better.
 
-But I Digress... 
+But I Digress...
 
 ## Lets Talk About Testing
 
