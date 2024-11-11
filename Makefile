@@ -1,5 +1,7 @@
 DOMAIN=blog.nicro.land
 
+all: clean build
+
 gitignore:
 	grep -q -F '^public$$' .gitignore || echo 'public' >> .gitignore
 
@@ -17,9 +19,13 @@ public:
 _clean:
 	git worktree remove public --force
 
-clean: _clean public
+clean: _clean
 
-update:
+build: public
 	hugo
 
-.PHONY: gitignore init _clean clean update
+run: build
+	cd public && python3 -m http.server
+
+
+.PHONY: gitignore init _clean
