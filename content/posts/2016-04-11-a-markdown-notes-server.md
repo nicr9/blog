@@ -52,21 +52,11 @@ This is actually the first image I put on the hub so that was fun.
 
 I also posted some screenshots below:
 
-<div id='gallery-1' class='gallery galleryid-992 gallery-columns-3 gallery-size-thumbnail'>
-  <figure class='gallery-item'>
+![](/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-24.png)
 
-  <div class='gallery-icon landscape'>
-    <a href='/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-24.png'><img width="150" height="150" src="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-24-150x150.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-24-150x150.png 150w, /wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-24-100x100.png 100w" sizes="100vw" /></a>
-  </div></figure><figure class='gallery-item'>
+![](/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-06-45.png)
 
-  <div class='gallery-icon landscape'>
-    <a href='/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-06-45.png'><img width="150" height="150" src="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-06-45-150x150.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-06-45-150x150.png 150w, /wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-06-45-100x100.png 100w" sizes="100vw" /></a>
-  </div></figure><figure class='gallery-item'>
-
-  <div class='gallery-icon landscape'>
-    <a href='/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-58.png'><img width="150" height="150" src="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-58-150x150.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-58-150x150.png 150w, /wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-58-100x100.png 100w" sizes="100vw" /></a>
-  </div></figure>
-</div>
+![](/wp-content/uploads/2016/04/screenshot-from-2016-04-10-19-40-58.png)
 
 Give it a go and let me know what you think! I'd love to hear from you about your own note taking strategies.
 
