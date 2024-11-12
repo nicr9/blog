@@ -5,3 +5,6 @@ logo = "/images/profile-circle.png"
 
 [sidebar_menu]
 mirror = "main"
+
+[social_menu]
+platforms = ["github", "mastodon", "email", "linkedin"]
