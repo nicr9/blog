@@ -58,10 +58,13 @@ sidebar = ["about","sidebar_menu","taxonomy_cloud"]
 footer = ["social_menu"]
 
 [params.opengraph.twitter]
-page = "" # Twitter page username
+page = "nicr9_"
+
+[params.opengraph.mastodon]
+instance = "techhub.social"
+user = "nicr9"
 
 [params.seo]
-# Title Separator: - – — · • * ⋆ | ~ « » < >
 titleSeparator = "•"
 
 [params.social]
