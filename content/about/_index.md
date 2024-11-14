@@ -13,14 +13,15 @@ This blog is intended to be as much about documenting the things I learn as it 
 
 From time to time I may blog about one of my many hobbies too; here's the ones that I can represent with emoji:
 
-# :computer: :video_game: :horse_racing: :bowling: :game_die: :guitar: :books: :bicyclist: :tent:
+# :computer: :climbing_man: :books: :bicyclist: :tent:
+# :video_game: :horse_racing: :bowling: :game_die: :guitar:
 
 If you'd like to get in touch there's a number of ways you can:
 
-  * [Twitter][1]
-  * [LinkedIn][2]
-  * [GitHub][3]
+  * [Mastodon][1]
+  * [GitHub][2]
+  * [LinkedIn][3]
 
- [1]: https://twitter.com/nicr9_
- [2]: https://ie.linkedin.com/pub/nic-roland/41/33/926
- [3]: https://github.com/nicr9/
+ [1]: https://techhub.social/@nicr9
+ [2]: https://github.com/nicr9/
+ [3]: https://www.linkedin.com/in/nicroland/
