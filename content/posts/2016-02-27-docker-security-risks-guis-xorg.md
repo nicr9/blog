@@ -143,9 +143,9 @@ If you don't actually need to interact with the GUI itself (maybe you're conside
 
 **Silver lining**: Programs running in containers need some kind of exploit to escape the confines of that container (like the `/var/run/docker.sock` thing I talked about at the beginning). This means that most of the time we can be assured that as soon as we stop the container running our hypothetical RAT, it will be unable to continue spying on us (it's the equivalent of pulling the plug.)
 
- [1]: http://blog.nicro.land/p87/
- [2]: http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84
- [3]: http://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54
+ [1]: /2015/12/06/running-qtcreator-in-docker/
+ [2]: https://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84
+ [3]: https://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54
  [4]: https://blog.docker.com/2016/02/docker-engine-1-10-security/
  [5]: https://www.google.ie/search?q=remote+access+trojan
- [6]: http://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html
+ [6]: https://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html

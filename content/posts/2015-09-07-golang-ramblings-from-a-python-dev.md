@@ -39,7 +39,7 @@ On the one hand there is no need to set up and actively maintain your project l
 
 On the other hand PYPI can really leverage that metadata and offer a powerful way to search for the package you need. If you haven't tried browsing by package category before, [give it a quick try][12] so you can see what I mean. I can wait...
 
-I tried looking into a similar resource for golang and most of the internet pointed me to [godashboard.appspot.com/...](http://godashboard.appspot.com/project), which seems to be down at the time of writing. After a little bit of research it seems that the listings it hosted were moved around some wikis till they found their new home at [golang/go](https://github.com/golang/go/wiki/Projects). Having this page in the language's git wiki seems to makes sense in terms of go's philosophy but it just leaves me wanting something better.
+I tried looking into a similar resource for golang and most of the internet pointed me to [godashboard.appspot.com/...](https://godashboard.appspot.com/project), which seems to be down at the time of writing. After a little bit of research it seems that the listings it hosted were moved around some wikis till they found their new home at [golang/go](https://github.com/golang/go/wiki/Projects). Having this page in the language's git wiki seems to makes sense in terms of go's philosophy but it just leaves me wanting something better.
 
 But I Digress...
 
@@ -76,12 +76,12 @@ If you have any comments, suggestions, or questions feel free to get in contact 
  [3]: https://golang.org/cmd/gofmt/
  [4]: https://github.com/fatih/vim-go
  [5]: https://golang.org/misc/git/pre-commit
- [6]: http://godoc.org/golang.org/x/tools/cmd/godoc
- [7]: http://golang.org/cmd/fix/
+ [6]: https://godoc.org/golang.org/x/tools/cmd/godoc
+ [7]: https://golang.org/cmd/fix/
  [8]: https://docs.python.org/2/library/2to3.html
  [9]: https://golang.org/cmd/go/#hdr-Compile_packages_and_dependencies
  [10]: https://golang.org/cmd/go/#hdr-Compile_and_install_packages_and_dependencies
- [11]: http://pypi.python.org
+ [11]: https://pypi.python.org
  [12]: https://pypi.python.org/pypi?%3Aaction=browse
  [13]: https://golang.org/cmd/go/#hdr-Test_packages
  [14]: https://golang.org/doc/faq#assertions

@@ -63,7 +63,7 @@ Give it a go and let me know what you think! I'd love to hear from you about you
 Enjoy!
 
  [1]: https://daringfireball.net/projects/markdown/basics
- [2]: http://pandoc.org/
+ [2]: https://pandoc.org/
  [3]: https://gist.github.com/dashed/6714393
  [4]: http://localhost:4000/
  [5]: https://github.com/nicr9/mdserver

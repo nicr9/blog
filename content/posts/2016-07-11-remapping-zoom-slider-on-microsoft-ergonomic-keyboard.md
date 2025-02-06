@@ -104,10 +104,10 @@ KEYBOARD_KEY_c022d=pageup
   3. Got some of the nitty gritty details of how to write hwdb rules by reading [this Arch wiki page][6].
   4. To figure out how to use evtest I used [this guide][7].
 
- [1]: http://askubuntu.com/
- [2]: http://askubuntu.com/questions/24916/how-do-i-remap-certain-keys-or-devices
- [3]: http://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys
- [4]: http://askubuntu.com/questions/471802/make-the-zoom-slider-of-microsoft-natural-ergonomic-keyboard-4000-and-7000-scrol
+ [1]: https://askubuntu.com/
+ [2]: https://askubuntu.com/questions/24916/how-do-i-remap-certain-keys-or-devices
+ [3]: https://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys
+ [4]: https://askubuntu.com/questions/471802/make-the-zoom-slider-of-microsoft-natural-ergonomic-keyboard-4000-and-7000-scrol
  [5]: https://www.freedesktop.org/software/systemd/man/hwdb.html
  [6]: https://wiki.archlinux.org/index.php/Map_scancodes_to_keycodes
- [7]: http://shkspr.mobi/blog/2011/12/changing-the-microsoft-4000s-zoom-keys-in-ubuntu/
+ [7]: https://shkspr.mobi/blog/2011/12/changing-the-microsoft-4000s-zoom-keys-in-ubuntu/

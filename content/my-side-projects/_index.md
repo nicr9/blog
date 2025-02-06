@@ -40,10 +40,10 @@ I've also made a number of contributions to various open source projects:
   * [astaxie/bat][9]
   * [MicahElliott/Rocannon][10]
 
- [1]: http://trello.com
+ [1]: https://trello.com
  [2]: https://github.com/nicr9/greptools
  [3]: https://github.com/nicr9/daftpunk
- [4]: http://daft.ie
+ [4]: https://daft.ie
  [5]: https://github.com/nicr9/vim-orca
  [6]: https://github.com/tpope/vim-fugitive
  [7]: https://github.com/python-diamond/Diamond

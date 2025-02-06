@@ -114,4 +114,4 @@ Class decorators are confusing because arguments and functions are sent to diffe
 
 Hope this comes in handy!
 
-[1]: http://python.ie/previous-pycons/pycon-2015/
+[1]: https://python.ie/previous-pycons/pycon-2015/

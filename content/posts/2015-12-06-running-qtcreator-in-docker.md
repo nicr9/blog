@@ -59,7 +59,7 @@ RUN apt-get update && apt-get install -y libxcb-keysyms1-dev libxcb-image0-dev \
     libxcb-xkb-dev libxslt1-dev libgstreamer-plugins-base0.10-dev wget
 
 # Download script
-RUN wget http://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
+RUN wget https://download.qt.io/official_releases/online_installers/qt-unified-linux-x64-online.run
 RUN chmod +x ./qt-unified-linux-x64-online.run
 
 # Run installer as entrypoint
@@ -93,7 +93,7 @@ This error in particular appeared straight away and meant that both the install
 ```
 xkbcommon: ERROR: failed to add default include path /usr/share/X11/xkb
 Qt: Failed to create XKB context!
-Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see https://cgit.freedesktop.org/xkeyboard-config/ .
 ```
 
 When launching QtCreator it also warned me with pop ups about a few libs it couldn't find like `libxslt` and `libgstapp`.
@@ -125,12 +125,12 @@ For anyone who hasn't seen 'em yet, Jessie Frazelle (a core contributor to Dock
 
 Aquameerkat also had a [great article][10] that gives a crash course on the X server, what displays are, and how to run headless GUIs in docker containers for testing purposes (not what I was doing here but interesting all the same!).
 
- [1]: /p496/
+ [1]: /2016/02/27/docker-security-risks-guis-xorg/
  [2]: https://github.com/Homebrew/homebrew
  [3]: https://wiki.qt.io/Install_Qt_5_on_Ubuntu
- [4]: http://docs.docker.com/engine/articles/security/
+ [4]: https://docs.docker.com/engine/articles/security/
  [5]: https://www.stgraber.org/2014/02/09/lxc-1-0-gui-in-containers/
- [6]: https://twitter.com/nicr9_
+ [6]: https://techhub.social/@nicr9
  [7]: https://blog.jessfraz.com/post/docker-containers-on-the-desktop/
  [8]: https://youtu.be/1qlLUf7KtAw
  [9]: https://youtu.be/GsLZz8cZCzc

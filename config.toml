@@ -33,7 +33,7 @@ gopher = "images/lost-and-found.gif" # used in 404 template ( Generator: https:/
 [params.copyright]
 prefix = ""
 holder = "Nic Roland"
-startYear = "2017"
+startYear = "2015"
 suffix = ""
 
 [params.settings]
