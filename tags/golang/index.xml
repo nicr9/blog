@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on Geek w/ god complex</title>
+    <title>Golang on Geek w/ god complex</title>
     <link>https://blog.nicro.land/tags/golang/</link>
-    <description>Recent content in golang on Geek w/ god complex</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 07 Sep 2015 07:28:17 +0000</lastBuildDate><atom:link href="https://blog.nicro.land/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Golang on Geek w/ god complex</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Sep 2015 07:28:17 +0000</lastBuildDate>
+    <atom:link href="https://blog.nicro.land/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang Ramblings from a Python Dev</title>
       <link>https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/</link>
       <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/</guid>
-      <description>I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
-Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;5 year anniversary pic, taken from the golang blog&#34; src=&#34;https://blog.golang.org/5years/gophers5th.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;tooling&#34;&gt;Tooling&lt;/h2&gt;&#xA;&lt;p&gt;I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

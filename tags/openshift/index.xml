@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>openshift on Geek w/ god complex</title>
+    <title>Openshift on Geek w/ god complex</title>
     <link>https://blog.nicro.land/tags/openshift/</link>
-    <description>Recent content in openshift on Geek w/ god complex</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate><atom:link href="https://blog.nicro.land/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Openshift on Geek w/ god complex</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
+    <atom:link href="https://blog.nicro.land/tags/openshift/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenShift: Automated Resource Pruning</title>
       <link>https://blog.nicro.land/posts/resource-pruning/</link>
       <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/posts/resource-pruning/</guid>
-      <description>I&amp;rsquo;ve used cronjobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.
-If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve used &lt;code&gt;cronjobs&lt;/code&gt; to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re looking to tidy up old resources (&lt;code&gt;builds&lt;/code&gt;, &lt;code&gt;deployments&lt;/code&gt; or &lt;code&gt;images&lt;/code&gt;) then OpenShift provides the &lt;code&gt;oc adm prune ...&lt;/code&gt; command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -3,17 +3,21 @@
   <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <meta name='description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
-<meta name='theme-color' content='#ffcd00'>
+
+But isn&rsquo;t everything running in Docker secure?
+First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+<meta name='theme-color' content='#8AAAE5'>
 
 <meta property='og:title' content='Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex'>
 <meta property='og:description' content='Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&rsquo;t everything running in Docker secure? First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
+
+But isn&rsquo;t everything running in Docker secure?
+First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.'>
 <meta property='og:url' content='https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/'>
 <meta property='og:site_name' content='Geek w/ god complex'>
-<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='security'><meta property='article:published_time' content='2016-02-27T11:39:47Z'/><meta property='article:modified_time' content='2016-02-27T11:39:47Z'/><meta name='twitter:card' content='summary'>
+<meta property='og:type' content='article'><meta property='article:section' content='posts'><meta property='article:tag' content='docker'><meta property='article:tag' content='security'><meta property='article:published_time' content='2016-02-27T11:39:47Z'/><meta property='article:modified_time' content='2016-02-27T11:39:47Z'/><meta property='fediverse:creator' content='@nicr9@techhub.social'><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@nicr9_'>
 
-<meta name="generator" content="Hugo 0.101.0" />
+<meta name="generator" content="Hugo 0.138.0">
 
   <title>Docker Security Risks: GUIs &#43; Xorg • Geek w/ god complex</title>
   <link rel='canonical' href='https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/'>
@@ -21,7 +25,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
   
   <link rel='icon' href='/favicon.ico'>
 <link rel='stylesheet' href='/assets/css/main.ab98e12b.css'><link rel='stylesheet' href='/css/custom.css'><style>
-:root{--color-accent:#ffcd00;}
+:root{--color-accent:#8AAAE5;}
 </style>
 
   
@@ -37,7 +41,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
     
     <div class='logo'>
       <a href='/'>
-        <img src='/images/shocked-circle.png'>
+        <img src='/images/profile-circle.png'>
       </a>
     </div>
     
@@ -69,19 +73,19 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 
   <div class='container list-container'>
   <ul class='list taxonomy-cloud'><li>
-        <a href='/tags/docker/' style='font-size:2em'>docker</a>
+        <a href='/tags/docker/' style='font-size:2em'>Docker</a>
       </li><li>
-        <a href='/tags/golang/' style='font-size:1em'>golang</a>
+        <a href='/tags/golang/' style='font-size:1em'>Golang</a>
       </li><li>
-        <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>lifehacks</a>
+        <a href='/tags/lifehacks/' style='font-size:1.3333333333333333em'>Lifehacks</a>
       </li><li>
-        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>linux</a>
+        <a href='/tags/linux/' style='font-size:1.3333333333333333em'>Linux</a>
       </li><li>
-        <a href='/tags/openshift/' style='font-size:1em'>openshift</a>
+        <a href='/tags/openshift/' style='font-size:1em'>Openshift</a>
       </li><li>
-        <a href='/tags/python/' style='font-size:1.6666666666666665em'>python</a>
+        <a href='/tags/python/' style='font-size:1.6666666666666665em'>Python</a>
       </li><li>
-        <a href='/tags/security/' style='font-size:1em'>security</a>
+        <a href='/tags/security/' style='font-size:1em'>Security</a>
       </li></ul>
 </div>
 
@@ -186,12 +190,12 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
   
 
   <div class='container entry-content'>
-  <p>Recently I <a href="http://blog.nicro.land/p87/">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
-<!-- raw HTML omitted -->
+  <p>Recently I <a href="/2015/12/06/running-qtcreator-in-docker/">wrote a post</a> where I was running a GUI application in a docker container. I did so because I couldn&rsquo;t be confident of the software&rsquo;s origins and thought it&rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?</p>
+<p><img alt="Docker and Xorg" src="/wp-content/uploads/2016/02/docker_and_xorg2.png"></p>
 <h2 id="but-isnt-everything-running-in-docker-secure">But isn&rsquo;t everything running in Docker secure?</h2>
 <p>First things first, let&rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</p>
-<p>One of the major selling points of containers is the various forms of isolation that they provide (here&rsquo;s Solomon&rsquo;s <a href="http://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84">list from DockerConEu</a>). Docker&rsquo;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
-<p>This means that you&rsquo;re free to provide containers with access to things like <code>/var/run/docker.sock</code> which means they can control the docker engine running on the host. People do this all the time, e.g., if they&rsquo;re running Continuous Integration software inside a container that wants to execute build plans in other containers. That doesn&rsquo;t mean that it&rsquo;s particularly safe if you don&rsquo;t trust code running in those build plans. Processes in these containers could use this to become root on the host (here&rsquo;s a <a href="http://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54">pretty succinct explanation</a> of how this works), although it&rsquo;s my understanding that the new <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/">support for user namespaces</a> in Docker 1.10 nips this in the bud.</p>
+<p>One of the major selling points of containers is the various forms of isolation that they provide (here&rsquo;s Solomon&rsquo;s <a href="https://www.slideshare.net/Docker/dockercon-eu-day-1-general-session/84">list from DockerConEu</a>). Docker&rsquo;s strategy is to lock down as many avenues between containers and the host as it can. From here it lets you decide whether or not your application needs them and lets you open some of these avenues at your discretion.</p>
+<p>This means that you&rsquo;re free to provide containers with access to things like <code>/var/run/docker.sock</code> which means they can control the docker engine running on the host. People do this all the time, e.g., if they&rsquo;re running Continuous Integration software inside a container that wants to execute build plans in other containers. That doesn&rsquo;t mean that it&rsquo;s particularly safe if you don&rsquo;t trust code running in those build plans. Processes in these containers could use this to become root on the host (here&rsquo;s a <a href="https://www.slideshare.net/gvarisco/road-to-opscon-pisa-15-devooops/54">pretty succinct explanation</a> of how this works), although it&rsquo;s my understanding that the new <a href="https://blog.docker.com/2016/02/docker-engine-1-10-security/">support for user namespaces</a> in Docker 1.10 nips this in the bud.</p>
 <p>This brings me back to running  GUI applications in Docker. To display the GUI they need to be able to talk to the X server (Xorg) running on your host through a socket file; <code>/tmp/.X11-unix</code>. This also provides it with access to a smorgasbord of things that it can use against you.</p>
 <p>The problem is that Xorg is in charge of more than just what gets displayed on the screen, it also handles input from keyboard/mouse. It does have a security layer but it&rsquo;s kinda tacked on and doesn&rsquo;t support fine grain control over which resources are accessible.</p>
 <h2 id="what-can-i-do-about-it">What can I do about it?</h2>
@@ -266,14 +270,27 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 <p>With all of this we could put together a <a href="https://www.google.ie/search?q=remote+access+trojan">RAT</a>!&hellip; But at the risk of being put on some kinda watch-list, I think I&rsquo;ll just leave that as an exercise for the reader&hellip;</p>
 <h2 id="conclusions">Conclusions</h2>
 <p>The purpose of this article is to inform you of what you&rsquo;re opening yourself up to when running GUIs in containers. Don&rsquo;t do it when you&rsquo;re working on anything sensitive on the host!</p>
-<p>If you don&rsquo;t actually need to interact with the GUI itself (maybe you&rsquo;re considering your testing options) then you might get some of the benefits of containerisation by running these applications headless (a lot of people <a href="http://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html">containerise Selenium tests</a> this way).</p>
+<p>If you don&rsquo;t actually need to interact with the GUI itself (maybe you&rsquo;re considering your testing options) then you might get some of the benefits of containerisation by running these applications headless (a lot of people <a href="https://agiletesting.blogspot.ie/2016/01/running-headless-selenium-webdriver.html">containerise Selenium tests</a> this way).</p>
 <p><strong>Silver lining</strong>: Programs running in containers need some kind of exploit to escape the confines of that container (like the <code>/var/run/docker.sock</code> thing I talked about at the beginning). This means that most of the time we can be assured that as soon as we stop the container running our hypothetical RAT, it will be unable to continue spying on us (it&rsquo;s the equivalent of pulling the plug.)</p>
 
 </div>
 
   
 <footer class='entry-footer'>
-  <div class='container sep-before'><div class='tags'><svg
+  <div class='container sep-before'><div class='last-updated'><svg
+  class="icon"
+  xmlns="http://www.w3.org/2000/svg"
+  viewbox="0 0 24 24"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  aria-hidden="true"
+><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34" />
+<polygon points="18 2 22 6 12 16 8 16 8 12 18 2" />
+</svg>
+<span class='screen-reader-text'>Last updated: </span>
+      <time class='entry-date' datetime='2016-02-27T11:39:47Z'>27 Feb 2016</time>
+    </div><div class='tags'><svg
   class="icon"
   xmlns="http://www.w3.org/2000/svg"
   viewbox="0 0 24 24"
@@ -284,7 +301,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 ><path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z" />
 <line x1="7" y1="7" x2="7" y2="7" />
 </svg>
-<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>docker</a>, <a class='tag' href='/tags/security/'>security</a></div>
+<span class='screen-reader-text'>Tags: </span><a class='tag' href='/tags/docker/'>Docker</a>, <a class='tag' href='/tags/security/'>Security</a></div>
 
   </div>
 </footer>
@@ -327,8 +344,6 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 </nav>
 
 
-
-
       </main>
 
       <footer id='footer' class='footer'>
@@ -347,8 +362,8 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
 </svg>
 </a>
       </li><li>
-        <a href='https://twitter.com/nicr9_' target='_blank' rel='noopener me'>
-          <span class='screen-reader-text'>Open Twitter account in new tab</span><svg
+        <a href='https://techhub.social/@nicr9' target='_blank' rel='noopener me'>
+          <span class='screen-reader-text'>Open Mastodon account in new tab</span><svg
   class="icon"
   xmlns="http://www.w3.org/2000/svg"
   viewbox="0 0 24 24"
@@ -356,7 +371,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
   stroke-linejoin="round"
   stroke-width="2"
   aria-hidden="true"
-><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+><path d="M 22.6028 5.6096 C 22.2687 3.1531 20.1043 1.2172 17.5386 0.8421 C 17.1057 0.7787 15.4656 0.548 11.6664 0.548 H 11.638 C 7.8377 0.548 7.0224 0.7787 6.5896 0.8421 C 4.0953 1.2068 1.8174 2.9463 1.2648 5.4319 C 0.9989 6.656 0.9706 8.0131 1.02 9.258 C 1.0904 11.0432 1.104 12.8253 1.2679 14.6033 C 1.3812 15.7843 1.5789 16.9559 1.8595 18.1093 C 2.3848 20.2395 4.5113 22.0122 6.5948 22.7355 C 8.8255 23.4897 11.2244 23.6149 13.5229 23.0971 C 13.7758 23.0389 14.0258 22.9713 14.2731 22.8945 C 14.831 22.7189 15.4856 22.5224 15.9668 22.1775 C 15.9734 22.1726 15.9788 22.1664 15.9826 22.1592 C 15.9864 22.152 15.9885 22.144 15.9888 22.1359 V 20.413 C 15.9887 20.4054 15.9869 20.398 15.9835 20.3912 C 15.98 20.3844 15.9752 20.3784 15.9691 20.3737 C 15.963 20.369 15.956 20.3658 15.9485 20.3641 C 15.941 20.3624 15.9333 20.3625 15.9258 20.3642 C 14.4531 20.7121 12.9441 20.8865 11.43 20.8837 C 8.8243 20.8837 8.1235 19.6607 7.9228 19.1515 C 7.7615 18.7115 7.6591 18.2524 7.6181 17.7861 C 7.6177 17.7783 7.6192 17.7705 7.6224 17.7633 C 7.6256 17.7561 7.6305 17.7498 7.6366 17.7448 C 7.6428 17.7399 7.65 17.7364 7.6577 17.7348 C 7.6655 17.7331 7.6735 17.7332 7.6812 17.7352 C 9.1293 18.0807 10.6138 18.2551 12.1035 18.2548 C 12.4617 18.2548 12.819 18.2548 13.1773 18.2454 C 14.6755 18.2038 16.2546 18.128 17.7287 17.8433 C 17.7655 17.836 17.8023 17.8297 17.8338 17.8204 C 20.1589 17.3788 22.3716 15.9926 22.5965 12.4824 C 22.6049 12.3442 22.6259 11.0349 22.6259 10.8915 C 22.6269 10.4041 22.7846 7.4343 22.6028 5.6096 Z M 19.0242 14.3684 H 16.5793 V 8.4454 C 16.5793 7.1984 16.054 6.5625 14.9854 6.5625 C 13.8108 6.5625 13.2224 7.3148 13.2224 8.8008 V 12.0428 H 10.7922 V 8.8008 C 10.7922 7.3148 10.2028 6.5625 9.0282 6.5625 C 7.9659 6.5625 7.4353 7.1984 7.4343 8.4454 V 14.3684 H 4.9915 V 8.2656 C 4.9915 7.0187 5.3133 6.028 5.9571 5.2937 C 6.6211 4.5611 7.4921 4.185 8.5732 4.185 C 9.8245 4.185 10.7702 4.6609 11.4006 5.6117 L 12.0089 6.6217 L 12.6183 5.6117 C 13.2487 4.6609 14.1943 4.185 15.4435 4.185 C 16.5236 4.185 17.3946 4.5611 18.0607 5.2937 C 18.7045 6.0273 19.0263 7.018 19.0263 8.2656 L 19.0242 14.3684 Z" fill="inherit"/>
 </svg>
 </a>
       </li><li>
@@ -391,7 +406,7 @@ But isn&rsquo;t everything running in Docker secure? First things first, let&rsq
       </li></ul>
   </nav>
 </section><div class='copyright'>
-  <p> &copy; 2017-2023 Nic Roland </p>
+  <p> &copy; 2015-2025 Nic Roland </p>
 </div>
 
         </div>

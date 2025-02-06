@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>lifehacks on Geek w/ god complex</title>
+    <title>Lifehacks on Geek w/ god complex</title>
     <link>https://blog.nicro.land/tags/lifehacks/</link>
-    <description>Recent content in lifehacks on Geek w/ god complex</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 11 Jul 2016 14:39:07 +0000</lastBuildDate><atom:link href="https://blog.nicro.land/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
+    <description>Recent content in Lifehacks on Geek w/ god complex</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 11 Jul 2016 14:39:07 +0000</lastBuildDate>
+    <atom:link href="https://blog.nicro.land/tags/lifehacks/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Remapping zoom slider on Microsoft Ergonomic Keyboard</title>
       <link>https://blog.nicro.land/2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/</link>
       <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/</guid>
-      <description>I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)
-The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.nicro.land/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc. There&amp;rsquo;s plenty of guides about remapping keys around so I won&amp;rsquo;t talk too much about that here. Google around and if you have questions &lt;a href=&#34;https://askubuntu.com/&#34;&gt;askubuntu.com&lt;/a&gt; is &lt;a href=&#34;https://askubuntu.com/questions/24916/how-do-i-remap-certain-keys-or-devices&#34;&gt;a great&lt;/a&gt; place &lt;a href=&#34;https://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys&#34;&gt;to find answers&lt;/a&gt;. What I&amp;rsquo;m interested in is getting the zoom slider working!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Markdown notes server</title>
       <link>https://blog.nicro.land/2016/04/11/a-markdown-notes-server/</link>
       <pubDate>Mon, 11 Apr 2016 08:35:01 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/04/11/a-markdown-notes-server/</guid>
-      <description>I keep a lot of notes&amp;hellip;
-Writing notes Any time I&amp;rsquo;m researching anything computing related, whether it&amp;rsquo;s for work or in my spare time, I keep a log of my &amp;ldquo;stream of conciousness&amp;rdquo;. This includes thoughts like &amp;ldquo;I think this is because&amp;hellip;&amp;rdquo;, &amp;ldquo;I wonder if this is related to&amp;hellip;&amp;rdquo;, &amp;ldquo;What the fuck is&amp;hellip;?&amp;rdquo;.
-This is great when I&amp;rsquo;ve spent a lot of time learning something new and I can look back over them once a week to reinforce the stuff I&amp;rsquo;ve covered.</description>
+      <description>&lt;p&gt;I keep a lot of notes&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;writing-notes&#34;&gt;Writing notes&lt;/h2&gt;&#xA;&lt;p&gt;Any time I&amp;rsquo;m researching anything computing related, whether it&amp;rsquo;s for work or in my spare time, I keep a log of my &amp;ldquo;stream of conciousness&amp;rdquo;. This includes thoughts like &amp;ldquo;I think this is because&amp;hellip;&amp;rdquo;, &amp;ldquo;I wonder if this is related to&amp;hellip;&amp;rdquo;, &amp;ldquo;What the fuck is&amp;hellip;?&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;This is great when I&amp;rsquo;ve spent a lot of time learning something new and I can look back over them once a week to reinforce the stuff I&amp;rsquo;ve covered. I get to see how wrong I was about some things and I can gain a new appreciation for other things that might not have dawned on me the first time around. I encourage anyone to keep stream of conciousness notes while they&amp;rsquo;re in learning mode.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

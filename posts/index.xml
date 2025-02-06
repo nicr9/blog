@@ -4,120 +4,86 @@
     <title>Posts on Geek w/ god complex</title>
     <link>https://blog.nicro.land/posts/</link>
     <description>Recent content in Posts on Geek w/ god complex</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate><atom:link href="https://blog.nicro.land/posts/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 22 Dec 2017 12:56:17 +0000</lastBuildDate>
+    <atom:link href="https://blog.nicro.land/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenShift: Automated Resource Pruning</title>
       <link>https://blog.nicro.land/posts/resource-pruning/</link>
       <pubDate>Fri, 22 Dec 2017 12:56:17 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/posts/resource-pruning/</guid>
-      <description>I&amp;rsquo;ve used cronjobs to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.
-If you&amp;rsquo;re looking to tidy up old resources (builds, deployments or images) then OpenShift provides the oc adm prune ... command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve used &lt;code&gt;cronjobs&lt;/code&gt; to implement a number of system automation tasks in the past and I&amp;rsquo;m going to run through a common example here; resource pruning in OpenShift.&lt;/p&gt;&#xA;&lt;p&gt;If you&amp;rsquo;re looking to tidy up old resources (&lt;code&gt;builds&lt;/code&gt;, &lt;code&gt;deployments&lt;/code&gt; or &lt;code&gt;images&lt;/code&gt;) then OpenShift provides the &lt;code&gt;oc adm prune ...&lt;/code&gt; command for doing just that. You can specify the resource type you want to target and provide criteria for which of those resources you want to preserve.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Remapping zoom slider on Microsoft Ergonomic Keyboard</title>
       <link>https://blog.nicro.land/2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/</link>
       <pubDate>Mon, 11 Jul 2016 14:39:07 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/07/11/remapping-zoom-slider-on-microsoft-ergonomic-keyboard/</guid>
-      <description>I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)
-The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m a big fan of Microsoft&amp;rsquo;s &amp;ldquo;Natural Ergonomic Keyboard 4000&amp;rdquo;. I&amp;rsquo;m just not a fan of it&amp;rsquo;s name, it&amp;rsquo;s a mouthful! (How about for future reference we just call it the Ergo?)&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.nicro.land/wp-content/uploads/2016/07/b112ddfc-0541-4948-a804-a7268b0cc2a7.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The Ergo&amp;rsquo;s great for typing on and also has a selection of feature keys that you can key-map to. Depending on your distro/desktop environment, you can map keys for all sorts of reasons: to replace caps lock with ctrl, control your music player, to run scripts, etc. There&amp;rsquo;s plenty of guides about remapping keys around so I won&amp;rsquo;t talk too much about that here. Google around and if you have questions &lt;a href=&#34;https://askubuntu.com/&#34;&gt;askubuntu.com&lt;/a&gt; is &lt;a href=&#34;https://askubuntu.com/questions/24916/how-do-i-remap-certain-keys-or-devices&#34;&gt;a great&lt;/a&gt; place &lt;a href=&#34;https://askubuntu.com/questions/296155/how-can-i-remap-keyboard-keys&#34;&gt;to find answers&lt;/a&gt;. What I&amp;rsquo;m interested in is getting the zoom slider working!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>A Markdown notes server</title>
       <link>https://blog.nicro.land/2016/04/11/a-markdown-notes-server/</link>
       <pubDate>Mon, 11 Apr 2016 08:35:01 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/04/11/a-markdown-notes-server/</guid>
-      <description>I keep a lot of notes&amp;hellip;
-Writing notes Any time I&amp;rsquo;m researching anything computing related, whether it&amp;rsquo;s for work or in my spare time, I keep a log of my &amp;ldquo;stream of conciousness&amp;rdquo;. This includes thoughts like &amp;ldquo;I think this is because&amp;hellip;&amp;rdquo;, &amp;ldquo;I wonder if this is related to&amp;hellip;&amp;rdquo;, &amp;ldquo;What the fuck is&amp;hellip;?&amp;rdquo;.
-This is great when I&amp;rsquo;ve spent a lot of time learning something new and I can look back over them once a week to reinforce the stuff I&amp;rsquo;ve covered.</description>
+      <description>&lt;p&gt;I keep a lot of notes&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;writing-notes&#34;&gt;Writing notes&lt;/h2&gt;&#xA;&lt;p&gt;Any time I&amp;rsquo;m researching anything computing related, whether it&amp;rsquo;s for work or in my spare time, I keep a log of my &amp;ldquo;stream of conciousness&amp;rdquo;. This includes thoughts like &amp;ldquo;I think this is because&amp;hellip;&amp;rdquo;, &amp;ldquo;I wonder if this is related to&amp;hellip;&amp;rdquo;, &amp;ldquo;What the fuck is&amp;hellip;?&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;This is great when I&amp;rsquo;ve spent a lot of time learning something new and I can look back over them once a week to reinforce the stuff I&amp;rsquo;ve covered. I get to see how wrong I was about some things and I can gain a new appreciation for other things that might not have dawned on me the first time around. I encourage anyone to keep stream of conciousness notes while they&amp;rsquo;re in learning mode.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Docker Security Risks: GUIs &#43; Xorg</title>
       <link>https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/</link>
       <pubDate>Sat, 27 Feb 2016 11:39:47 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/</guid>
-      <description>Recently I wrote a post where I was running a GUI application in a docker container. I did so because I couldn&amp;rsquo;t be confident of the software&amp;rsquo;s origins and thought it&amp;rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?
-But isn&amp;rsquo;t everything running in Docker secure? First things first, let&amp;rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.</description>
+      <description>&lt;p&gt;Recently I &lt;a href=&#34;https://blog.nicro.land/2015/12/06/running-qtcreator-in-docker/&#34;&gt;wrote a post&lt;/a&gt; where I was running a GUI application in a docker container. I did so because I couldn&amp;rsquo;t be confident of the software&amp;rsquo;s origins and thought it&amp;rsquo;d be best not to take any chances. What other potential exploits does this leave one vulnerable to and how can one best protect themselves?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;Docker and Xorg&#34; src=&#34;https://blog.nicro.land/wp-content/uploads/2016/02/docker_and_xorg2.png&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;but-isnt-everything-running-in-docker-secure&#34;&gt;But isn&amp;rsquo;t everything running in Docker secure?&lt;/h2&gt;&#xA;&lt;p&gt;First things first, let&amp;rsquo;s talk about what kind of security assurances docker tries to provide and under what circumstances those assurances would be considered null and void.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Nested decorator functions in Python</title>
       <link>https://blog.nicro.land/2016/01/20/nested-decorator-functions-in-python/</link>
       <pubDate>Wed, 20 Jan 2016 23:32:58 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2016/01/20/nested-decorator-functions-in-python/</guid>
-      <description>When I was at PyConIE last October I was talking with an old friend about Python&amp;rsquo;s decorator functions.
-He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).</description>
+      <description>&lt;p&gt;When I was at &lt;a href=&#34;https://python.ie/previous-pycons/pycon-2015/&#34;&gt;PyConIE last October&lt;/a&gt; I was talking with an old friend about Python&amp;rsquo;s decorator functions.&lt;/p&gt;&#xA;&lt;p&gt;He lamented how you need to google around for tutorials any time you wanted to write a parametrised decorator because it can be so confusing. I told him that there was a way to do it by nesting decorator functions which is much simpler than implementing them using classes (which seems to be the widely known about way).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Running QtCreator in Docker</title>
       <link>https://blog.nicro.land/2015/12/06/running-qtcreator-in-docker/</link>
       <pubDate>Sun, 06 Dec 2015 19:53:55 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/12/06/running-qtcreator-in-docker/</guid>
-      <description>Update: I wrote a follow up post detailing potential security risks of running GUIs in containers, check it out here.
-The first thing I ever tried installing from source was Qt. For those who don&amp;rsquo;t know, Qt is a cross platform framework for writing GUI applications.
-That was then&amp;hellip; I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&amp;rsquo;s limitations and I finally decided it was time to find something with more power.</description>
+      <description>&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; I wrote a follow up post detailing potential security risks of running GUIs in containers, &lt;a href=&#34;https://blog.nicro.land/2016/02/27/docker-security-risks-guis-xorg/&#34;&gt;check it out here&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;The first thing I ever tried installing from source was Qt. For those who don&amp;rsquo;t know, Qt is a cross platform framework for writing GUI applications.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.nicro.land/wp-content/uploads/2015/11/5954820.png&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;that-was-then&#34;&gt;That was then&amp;hellip;&lt;/h2&gt;&#xA;&lt;p&gt;I was in college, I had a macbook at the time and I was toying around with writing GUIs with Python/Tkinter. I kept fighting against Tkinter&amp;rsquo;s limitations and I finally decided it was time to find something with more power.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Golang Ramblings from a Python Dev</title>
       <link>https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/</link>
       <pubDate>Mon, 07 Sep 2015 07:28:17 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/09/07/golang-ramblings-from-a-python-dev/</guid>
-      <description>I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!
-Tooling I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been spending time lately learning Go and I thought I&amp;rsquo;d throw some of my thoughts down here. As the title implies my experience is mostly in Python so expect lots of apples to oranges comparisons!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;5 year anniversary pic, taken from the golang blog&#34; src=&#34;https://blog.golang.org/5years/gophers5th.jpg&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;tooling&#34;&gt;Tooling&lt;/h2&gt;&#xA;&lt;p&gt;I guess the first thing that jumps out is the quality of the tooling, I&amp;rsquo;ve only had a chance to play around with a few of the CLI&amp;rsquo;s features but already I&amp;rsquo;m impressed with how simple it makes some day to day things.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>I’m back!</title>
       <link>https://blog.nicro.land/2015/08/23/im-back/</link>
       <pubDate>Sun, 23 Aug 2015 14:36:18 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/08/23/im-back/</guid>
-      <description>I know that it&amp;rsquo;s been a while since I wrote a post! I haven&amp;rsquo;t been keeping up with my own goal to write something new at least every week.
-At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;rsquo;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!</description>
+      <description>&lt;p&gt;I know that it&amp;rsquo;s been a while since I wrote a post! I haven&amp;rsquo;t been keeping up with my own goal to write something new at least every week.&lt;/p&gt;&#xA;&lt;p&gt;At first this was because I was on holidays and internet access was spotty at best. More recently I&amp;rsquo;ve been very busy at work and not had as much time for reflection. I wanted to call this out here to keep myself honest and to make a fresh commitment!&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Weekly Notes – 26/7/15</title>
       <link>https://blog.nicro.land/2015/07/26/weekly-notes-26715/</link>
       <pubDate>Sun, 26 Jul 2015 12:06:03 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/07/26/weekly-notes-26715/</guid>
-      <description>setup.py and rpm.spec So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.
-Python tools are generally packaged by writing a setup.py script. There are actually a number of tools you can use (I&amp;rsquo;ve used distutils and setuptools in the past) and there&amp;rsquo;s a bit of a confusing history regarding which tool is recommended.</description>
+      <description>&lt;h3 id=&#34;setuppy-and-rpmspec&#34;&gt;&lt;code&gt;setup.py&lt;/code&gt; and &lt;code&gt;rpm.spec&lt;/code&gt;&lt;/h3&gt;&#xA;&lt;p&gt;&lt;img alt=&#34;https://rkuska.fedorapeople.org/pyp2rpm.png&#34; src=&#34;https://rkuska.fedorapeople.org/pyp2rpm.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;So recently at work I needed to package a tool we wrote at work. The tool was written in Python (big surprise) and it was designed to be run as a daemon so it had an init-script.&lt;/p&gt;&#xA;&lt;p&gt;Python tools are generally packaged by writing a &lt;code&gt;setup.py&lt;/code&gt; script. There are actually a number of tools you can use (I&amp;rsquo;ve used &lt;code&gt;distutils&lt;/code&gt; and &lt;code&gt;setuptools&lt;/code&gt; in the past) and there&amp;rsquo;s a bit of a confusing &lt;a href=&#34;https://stackoverflow.com/a/14753678&#34;&gt;history regarding which tool is recommended&lt;/a&gt;. I mostly use &lt;code&gt;setuptools&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Weekly Notes – 18/7/15</title>
       <link>https://blog.nicro.land/2015/07/19/weekly-notes-18715/</link>
       <pubDate>Sun, 19 Jul 2015 10:18:48 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/07/19/weekly-notes-18715/</guid>
-      <description>This is the first post in a series that I&amp;rsquo;ll (hopefully) send out every week. It&amp;rsquo;ll cover the problems I have during the week as well as how I overcome those issues.
-Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!
-Docker machine + docker compose So I&amp;rsquo;ve been playing around with docker-machine while working on a pet project of mine: daftpunk.</description>
+      <description>&lt;p&gt;This is the first post in a series that I&amp;rsquo;ll (hopefully) send out every week. It&amp;rsquo;ll cover the problems I have during the week as well as how I overcome those issues.&lt;/p&gt;&#xA;&lt;p&gt;Hopefully this will be of some use to people out there, leave me a comment if you find any of this useful!&lt;/p&gt;&#xA;&lt;h2 id=&#34;docker-machine--docker-compose&#34;&gt;Docker machine + docker compose&lt;/h2&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://blog.nicro.land/wp-content/uploads/2015/07/docker-machine.png&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;So I&amp;rsquo;ve been playing around with &lt;a href=&#34;https://github.com/docker/machine&#34;&gt;&lt;code&gt;docker-machine&lt;/code&gt;&lt;/a&gt; while working on a pet project of mine: &lt;a href=&#34;https://github.com/nicr9/daftpunk&#34;&gt;daftpunk&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hello world!</title>
       <link>https://blog.nicro.land/2015/07/16/hello-world/</link>
       <pubDate>Thu, 16 Jul 2015 21:46:52 +0000</pubDate>
-      
       <guid>https://blog.nicro.land/2015/07/16/hello-world/</guid>
-      <description>Why I started this blog I&amp;rsquo;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.
-I&amp;rsquo;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;rsquo;ll help others who run into the same stumbling blocks on their own journey.</description>
+      <description>&lt;h2 id=&#34;why-i-started-this-blog&#34;&gt;Why I started this blog&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m not very good at writing about my experiences, I prefer to just talk. In fact I could ramble on about my own thing all night, constantly meandering and exploring tangents as I go.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve decided that I should put more of an effort into collecting my thoughts in blog form so that I can focus them. At the very least I hope this will make me a better developer but maybe I&amp;rsquo;ll help others who run into the same stumbling blocks on their own journey.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>
